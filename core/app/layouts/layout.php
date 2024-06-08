@@ -309,7 +309,7 @@
 
                                               </ul>
                                             </li> 
-
+                                                    <!--
                                              <li>
                                               <a  role="button" tabindex="0"><i class='fa fa-bar-chart-o'></i> <span>Gráficos</span></a>
                                               <ul >
@@ -319,7 +319,7 @@
                                                 
                                               </ul> 
                                             </li>
-
+                                            -->
                                             <?php 
                                             $u=null; 
                                             $u = UserData::getById(Session::getUID());
