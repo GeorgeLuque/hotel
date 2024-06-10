@@ -870,8 +870,8 @@ class simple_html_dom_node
 	 * Function to try a few tricks to determine the displayed size of an img on the page.
 	 * NOTE: This will ONLY work on an IMG tag. Returns FALSE on all other tag types.
 	 *
-	 * @author John Schlick
-	 * @version April 19 2012
+	 *
+	 * 
 	 * @return array an array containing the 'height' and 'width' of the image on the page or -1 if we can't figure it out.
 	 */
 	function get_display_size()

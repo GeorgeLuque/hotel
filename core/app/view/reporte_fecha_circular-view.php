@@ -204,7 +204,7 @@
 
     </body>
 
-<!-- Mirrored from www.tattek.sk/Webadmin-noAngular/charts.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Apr 2018 16:49:36 GMT -->
+<!-- Mirrored from www.tattek.sk/Webadmin-noAngular/charts.html by HTTrack Website Copier/3.x [XR&CO'2024], Sunday, 09 Jun 2024 16:49:36 GMT -->
 </html>
 <?php }else{
     print "<script>window.location='index.php?view=pre_reporte_fecha_circular';</script>";

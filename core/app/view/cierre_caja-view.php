@@ -146,7 +146,7 @@
           </form>
           <?php }else{ ?>
             <div class="box-header with-border" style="text-align: center;">
-              <h3 class="box-title">NO HAY NINGÚN CAJA QUE CERRAR</h3>
+              <h3 class="box-title">NO HAY NINGÚNA CAJA QUE CERRAR</h3>
               <!-- /.box-tools -->
             </div>
             <!-- /.box-header -->
