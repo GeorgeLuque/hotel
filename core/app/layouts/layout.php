@@ -461,6 +461,19 @@
                                                 <button type="submit" style="background-color: #2fcc71;color: white;" class="btn btn-rounded btn-primary btn form-control">Ingresar</button>
                                             
                                         </div>
+                                        <!--Leyanda en login-->
+                                        
+                                        <?php 
+                                        if (isset($_GET['e'])) {
+                                            print ('<div class="alert alert-warning"  role="alert" id="mensaje" onclick="m();">CREDENCIALES INCORRECTAS</div>');
+                                                
+                                            }
+                                            # code...
+                                        
+
+                                    
+                                    ?>
+                                    <script>function m() { document.getElementById("mensaje").style.display = "none";  }</script>
                                     </form>
  
                                 </div>

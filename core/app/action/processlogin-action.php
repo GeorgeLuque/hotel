@@ -1,5 +1,9 @@
 <head>
+	<!-- la primera linea pertenece a la alerta-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<!--pertence al bootstrap-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel= "stylesheet">
+
 </head>
 <?php
 
@@ -53,24 +57,17 @@ while($r = $query->fetch_array()){
 }
 
 if($found==true) {
-//	session_start();
-//	print $userid;
+
+
 	$_SESSION['user_id']=$userid ;
-//	setcookie('userid',$userid);
-//	print $_SESSION['userid'];
-	
+
+// SI HAY USUARIO Y CONTRASEÑA CORRECTA//
 	print "<script>window.location='index.php?view=reserva';</script>";
 }else {
 	?>
-    <script>
-		Swal.fire({
-			icon: "error",
-			title: "Atencion",
-			text: <?php  echo $msg;   ?>,
-			});
-	</script>
+    
     <?php
-	/*print "<script>window.location='index.php?view=login';</script>";*/
+	print "<script>window.location='index.php?view=login&e=yes';</script>";
 }
 
 }else{
