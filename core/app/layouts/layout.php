@@ -151,21 +151,16 @@
                                     </a>
                                 </li>
                             -->
-                                <li>
+ <li>
                                     <a href="./logout.php">
                                         <i class="fa fa-sign-out"></i>Salir
                                     </a>
-                                </li>
+                                </li>                               
  
                             </ul>
 
                         </li>
 
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-comments"></i>
-                            </a>
-                        </li>
                     </ul>
                     <!-- Right-side navigation end -->
 
