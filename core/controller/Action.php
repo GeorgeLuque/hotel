@@ -1,6 +1,5 @@
 <?php
 
-
 // Action.php
 // @brief Un action corresponde a una rutina de un modulo.
 

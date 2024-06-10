@@ -3,7 +3,7 @@
 
 
 // Post.php
-// @brief esto es algo mucho mas magico
+
 
 class Post {
 	function __get($value){

@@ -177,7 +177,7 @@ $operacion = ProcesoData::getById($_GET['id']);
 		$pdf->Text(2, $get_Y+25, '-----------------------------------------------------------------------');
 		
 		$pdf->SetFont('Arial','BI',8.5);
-		$pdf->Text(3, $get_Y+52, 'Precios en : '.'PESOS MEXICANOS ');
+		$pdf->Text(3, $get_Y+52, 'Precios en : '.'DOLLAR AMERICANOS ');
 		
 		$pdf->SetFont('Arial','B',8.5);
 		$pdf->Text(19, $get_Y+62, 'GRACIAS POR VISITARNOS');
