@@ -5,7 +5,8 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel= "stylesheet">
 
 </head>
-<!-- Proceso intento de ejecucion en sql-->
+<!-- PROCESO INTENTO DE EJECUCION EN SQL-->
+ <!-- ACTULIAZADO 10/06/2024-->
 <?php
 
 // define('LBROOT',getcwd()); // LegoBox Root ... the server root
@@ -22,7 +23,8 @@ function is_sql_injection($input) {
     return preg_match($pattern, $input) === 1;
 }
 $msg ='';
-/* metodo guardia */
+/* METODO GUARDIA */
+/*ACTUALIZADO 10/06/2024*/
 if (is_sql_injection($user)) {
     $msg='intento de inyecion sql';
 	echo "<script>
