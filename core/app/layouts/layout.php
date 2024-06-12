@@ -9,7 +9,7 @@
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <!--<title>HOTEL EL DESCANSO </title>-->
+        <title>HOTEL EL DESCANSO </title>
         <link rel="icon" type="image/ico" href="assets/images/favicon.ico" />
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -430,7 +430,7 @@
                         <?php }
                         ?>
 
-                                    <center><h1><b>HOTEL EL DESCANSO</b></h1><br><?php if($logo!=''){ ?><img width="50%" src="img/<?php echo $logo; ?>"><?php }; ?></center>
+                                    <center><h1><b></b></h1><br><?php if($logo!=''){ ?><img width="50%" src="img/<?php echo $logo; ?>"><?php }; ?></center>
 
 
                                 </div>
