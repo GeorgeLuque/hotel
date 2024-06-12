@@ -211,9 +211,9 @@
                                         ================= CONTENIDO DE NAVEGACION ===================
                                         ==================================================== -->
                                         <ul id="navigation">
-                                            <li class="<?php if($_GET['view']=='reserva'){ echo 'active';} ?>"><a href="./?view=reserva"><i class="fa fa-calendar"></i> <span>Reserva</span></a></li>
+                                            <li class="<?php if($_GET['view']=='reserva'){ echo 'active';} ?>"><a href="./?view=reserva"><i class="fa fa-calendar-o"></i> <span>Reserva</span></a></li>
                                             <li class="<?php if($_GET['view']=='recepcion'){ echo 'active';} ?>">
-                                                <a href="index.php?view=recepcion"><i class="fa fa-sign-in"></i> <span>Recepción</span> <span class="badge bg-lightred">6</span></a>
+                                                <a href="index.php?view=recepcion"><i class="fa fa-check"></i> <span>Recepción</span> <span class="badge bg-lightred">6</span></a>
                                                
                                             </li> 
                                             <!-- 
@@ -448,12 +448,9 @@
                                             <label for="exampleInputPassword1">Password</label>
                                             <input type="password" name="password" required="" class="form-control" id="exampleInputPassword1" placeholder="Password">
                                         </div>
-                                        <label class="checkbox checkbox-custom">
-                                            <input type="checkbox" checked disabled><i></i>
-                                            Mantener abierto
-                                        </label>
+                                     
                                         <div class="form-group">
-                                                <button type="submit" style="background-color: #2fcc71;color: white;" class="btn btn-rounded btn-primary btn form-control">Ingresar</button>
+                                                <button type="submit"  class="btn btn-primary btn-lg btn-block">Ingresar</button>
                                             
                                         </div>
                                         <!--Leyanda en login-->
