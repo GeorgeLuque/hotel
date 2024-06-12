@@ -96,7 +96,7 @@
                 <header class="clearfix">
 
                     <!-- Branding -->
-                    <div class="branding">
+                    <<div class="branding scheme-default" style="background-color: #; padding: 8px;">
                         <a class="brand" href="./">
                             <span><strong>EL DESCANSO</strong></span>
                         </a>
@@ -110,7 +110,7 @@
                     <ul class="nav-left pull-left list-unstyled list-inline">
                         <li class="sidebar-collapse divided-right">
                             <a href="#" class="collapse-sidebar">
-                                <i class="fa fa-outdent"></i>
+                                <i class=""></i>
                             </a>
                         </li>
                         
@@ -187,7 +187,7 @@
                 <!-- ================================================
                 ================= CONTENIDO BARA LATERAL===================
                 ================================================= -->
-                <aside id="sidebar">
+                <aside id="sidebar" class="custom-sidebar">
 
                     <div id="sidebar-wrap">
 
@@ -211,9 +211,9 @@
                                         ================= CONTENIDO DE NAVEGACION ===================
                                         ==================================================== -->
                                         <ul id="navigation">
-                                            <li class="<?php if($_GET['view']=='reserva'){ echo 'active';} ?>"><a href="./?view=reserva"><i class="fa fa-calendar-o"></i> <span>Reserva</span></a></li>
+                                            <li class="<?php if($_GET['view']=='reserva'){ echo 'active';} ?>"><a href="./?view=reserva"><i class="fa fa-calendar"></i> <span>Reserva</span></a></li>
                                             <li class="<?php if($_GET['view']=='recepcion'){ echo 'active';} ?>">
-                                                <a href="index.php?view=recepcion"><i class="fa fa-check"></i> <span>Recepción</span> <span class="badge bg-lightred">6</span></a>
+                                                <a href="index.php?view=recepcion"><i class="fa fa-list-alt"></i> <span>Recepción</span> <span class="badge bg-lightred"></span></a>
                                                
                                             </li> 
                                             <!-- 
@@ -240,7 +240,7 @@
                 -->
                                             
                                             <li class="<?php if($_GET['view']=='apertura_caja'){ echo 'active';} ?>">
-                                                <a role="button" tabindex="0"><i class="fa fa-cube"></i> <span>Módulo caja</span></a>
+                                                <a role="button" tabindex="0"><i class="fa fa-money"></i> <span>Módulo caja</span></a>
                                                 <ul>
                                                     <li><a href="./?view=apertura_caja"><i class="fa fa-caret-right"></i> Apertura caja</a></li>
                                                     <li><a href="./?view=cierre_caja"><i class="fa fa-caret-right"></i> Cierre caja</a></li>
@@ -274,7 +274,7 @@
                                             <?php if($u->is_admin):?>
 
                                             <li class="<?php if($_GET['view']=='habitacion' or $_GET['view']=='categoria' or $_GET['view']=='tarifa'){ echo 'active';} ?>">
-                                              <a role="button" tabindex="0"><i class='fa fa-database'></i> <span>Configuración</span> </a>
+                                              <a role="button" tabindex="0"><i class='fa fa-connectdevelop'></i> <span>Configuración</span> </a>
                                               <ul>
                                                 <li><a href="./?view=habitacion"> <i class="fa fa-caret-right"></i>  Habitaciones</a></li>
                                                 <li><a href="./?view=categoria"> <i class="fa fa-caret-right"></i>  Categorías</a></li>
@@ -285,13 +285,13 @@
                                              
 
                                             <li class="<?php if($_GET['view']=='cliente'){ echo 'active';} ?>">
-                                                <a href="index.php?view=cliente"><i class="fa fa-users"></i> <span>Clientes</span></a>
+                                                <a href="index.php?view=cliente"><i class="fa fa-user-plus"></i> <span>Clientes</span></a>
                                                 
                                             </li>
                                             <?php endif;?>
 
                                             <li>
-                                              <a  role="button" tabindex="0"><i class='fa fa-file-text-o'></i> <span>Reportes</span></a>
+                                              <a  role="button" tabindex="0"><i class='fa fa-folder-open'></i> <span>Reportes</span></a>
                                               <ul >
 
                                                 <li><a href="./?view=pre_reporte_rango"><i class="fa fa-caret-right"></i> Reporte detallado cliente</a></li>
