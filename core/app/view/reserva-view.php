@@ -60,15 +60,29 @@
     padding: 0 1px;
     display: none !important;
 }
-  
+   /* ESTILOS PERSONALIZADOS DE CALENDARIO*/
+   .fc-toolbar {
+    background-color: #6A4CAF; /* Cambiar color de la barra de herramientas */
+  }
+  .fc-day-header {
+    background-color: #89A444; /* Cambiar color de los encabezados de los días */
+    color: black;
+  }
+  .fc-today {
+    background-color: #F9F3EB !important; /* Cambiar color del día actual */
+  }
+  .fc-event {
+    background-color: #1583DA; /* Cambiar color de los eventos */
+    color: white;
+  }
 
 </style>
 </head>
 <body>
 
-
+<!--CALENDARIO-->
   <div id='calendar'></div>
-
+ <!--FORMULARIO DE RESERVA-->
 
   <!-- Modal add. update, delete-->
   <div class="modal fade" id="ModalEvent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -82,7 +96,6 @@
         <div class="modal-body" style="background-color: #f5eded !important;">
           <div class="row">
             <div class="col-md-offset-1 col-md-10">
-
               <div class="form-group"> 
                 <div class="input-group">
                     <span class="input-group-addon"> Habitación &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -149,7 +162,7 @@
            </div>
 
           <input type="hidden" id="txtId" name="txtId"><br>
-        
+           <!--BOTONES-->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-success"  id="btnAdd">Agregar</button>
@@ -173,7 +186,7 @@
       now: new Date(),
       editable: true,
       selectable: true,
-      aspectRatio: 1.8,
+      aspectRatio: 2.0, //MODIFICA TAMAÑO DE CALENDARIO EN PAGINA//
       scrollTime: '00:00',
       header: {
         left: 'promptResource today prev,next',
@@ -187,7 +200,7 @@
           duration: { days: 5 } 
         }
       },
-      resourceAreaWidth: '15%',   
+      resourceAreaWidth: '10%',   //MODIFICA BARRA HABITACIONES//
       resourceColumns: [
         {
           labelText: 'Habitaciones', 
@@ -298,17 +311,17 @@
       resources: "index.php?action=reserva",
       events: "index.php?action=reservas",
       
- 
- 
+     
+      
      eventRender: function(calEvent, element) {
 
-        
+       
         var hoy = Date();
         
         if (calEvent.estado == '0') {
             element.css({
-                'background-color': '#33ad85',
-                'border-color': '#333333',
+                'background-color': '5BEE0C',
+                'border-color': '060400',
                 'color': 'white'
             });
         }
@@ -319,8 +332,8 @@
                 'color': 'white'
             });
         }
-    }
-
+    } 
+   
     });
   
   }); 
