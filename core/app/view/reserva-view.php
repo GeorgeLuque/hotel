@@ -37,7 +37,7 @@
 
   #calendar {
   
-    max-width: 1200px !important;
+    max-width: 1400px !important;
     margin: 50px auto;
 
   }
