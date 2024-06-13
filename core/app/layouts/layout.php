@@ -10,7 +10,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>HOTEL EL DESCANSO </title>
-        <link rel="icon" type="image/ico" href="assets/images/favicon.ico" />
+        <link rel="icon" type="image/ico" href="assets/images/logoesquina.png" />
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -96,7 +96,7 @@
                 <header class="clearfix">
 
                     <!-- Branding -->
-                    <<div class="branding scheme-default" style="background-color: #; padding: 8px;">
+                    <div class="branding scheme-default" style="background-color: #; padding: 8px;">
                         <a class="brand" href="./">
                             <span><strong>EL DESCANSO</strong></span>
                         </a>

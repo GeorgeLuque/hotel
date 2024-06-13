@@ -14,13 +14,14 @@
 
 
 
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link href='lib/fullcalendar.min.css' rel='stylesheet' />
 <link href='lib/fullcalendar.print.min.css' rel='stylesheet' media='print' />
 <link href='lib/scheduler.min.css' rel='stylesheet' />
 <script src='lib/moment.min.js'></script>
 <script src='lib/fullcalendar.min.js'></script>
 <script src='lib/scheduler.min.js'></script>
+
 
 <style>
 
@@ -87,93 +88,77 @@
   <!-- Modal add. update, delete-->
   <div class="modal fade" id="ModalEvent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content modal-success">
-        <div class="modal-header">
+        <div class="modal-content modal-success">
+            <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
+                    <span aria-hidden="true">&times;</span>
+                </button>
                 <h4 class="modal-title" id="titleEvent"> </h4>
-              </div>
-        <div class="modal-body" style="background-color: #f5eded !important;">
-          <div class="row">
-            <div class="col-md-offset-1 col-md-10">
-              <div class="form-group"> 
-                <div class="input-group">
-                    <span class="input-group-addon"> Habitación &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                     <select name="id_habitacion" id="id_habitacion" class="form-control">
-                      <?php $rooms = HabitacionData::getAll();?>
-                      <?php foreach($rooms as $room):?>
-                      <option value="<?php echo $room->id;?>"><?php echo $room->nombre;?></option>
-                      <?php endforeach;?>
-                    </select> 
-                </div>
-              </div>
-
-              <div class="form-group"> 
-                <div class="input-group">
-                    <span class="input-group-addon"> Check In  &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <input type="date" class="form-control" name="txtDate" id="txtDate" required >
-                    <span class="input-group-addon"> Hora</span>
-                    <input type="time" class="form-control" name="txtHour" id="txtHour"  required >
-                </div>
-              </div>
-
-              <div class="form-group"> 
-                <div class="input-group">
-                    <span class="input-group-addon"> Check Out &nbsp;&nbsp; &nbsp;</span>
-                    <input type="date" class="form-control" name="txtDateEnd" id="txtDateEnd"  required >
-                    <span class="input-group-addon"> Hora &nbsp;&nbsp;</span>
-                    <input type="time" class="form-control" name="txtHourEnd" id="txtHourEnd" required >
-
-                </div>
-              </div>
-
-              <div class="form-group"> 
-                <div class="input-group">
-                  <span class="input-group-addon"> Documento &nbsp;&nbsp; </span>
-                  <input type="text" class="form-control" name="documento" id="documento" required placeholder="Ingrese documento">
-                </div>
-              </div>
-
-              <div class="form-group"> 
-                <div class="input-group">
-                  <span class="input-group-addon"> Nombres &nbsp;&nbsp; &nbsp;&nbsp;</span>
-                  <input type="text" class="form-control" name="nombre" id="nombre" required placeholder="Nombres completos">
-                </div>
-              </div>
-
-              <div class="form-group"> 
-                <div class="input-group">
-                  <span class="input-group-addon"> Dirección &nbsp;&nbsp; &nbsp;&nbsp;</span>
-                  <input type="text" class="form-control" name="direccion" id="direccion" required placeholder="Dirección">
-                </div>
-              </div>
-
-              <div class="form-group"> 
-                <div class="input-group">
-                  <span class="input-group-addon"> Observación </span>
-                  <input type="text" class="form-control" name="observacion" id="observacion" required placeholder="Observación">
-                </div>
-              </div>
- 
-              
-
-
             </div>
-           </div>
-
-          <input type="hidden" id="txtId" name="txtId"><br>
-           <!--BOTONES-->
+            <div class="modal-body" style="background-color: #f5eded !important;">
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-10">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"> Habitación &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <select name="id_habitacion" id="id_habitacion" class="form-control">
+                                    <!-- PHP code to fetch rooms -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"> Check In  &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <input type="date" class="form-control" name="txtDate" id="txtDate" required>
+                                <span class="input-group-addon"> Hora</span>
+                                <input type="time" class="form-control" name="txtHour" id="txtHour" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"> Check Out &nbsp;&nbsp; &nbsp;</span>
+                                <input type="date" class="form-control" name="txtDateEnd" id="txtDateEnd" required>
+                                <span class="input-group-addon"> Hora &nbsp;&nbsp;</span>
+                                <input type="time" class="form-control" name="txtHourEnd" id="txtHourEnd" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"> Documento &nbsp;&nbsp; </span>
+                                <input type="text" class="form-control" name="documento" id="documento" required placeholder="Ingrese documento">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"> Nombres &nbsp;&nbsp; &nbsp;&nbsp;</span>
+                                <input type="text" class="form-control" name="nombre" id="nombre" required placeholder="Nombres completos">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"> Dirección &nbsp;&nbsp; &nbsp;&nbsp;</span>
+                                <input type="text" class="form-control" name="direccion" id="direccion" required placeholder="Dirección">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"> Observación </span>
+                                <input type="text" class="form-control" name="observacion" id="observacion" required placeholder="Observación">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" id="txtId" name="txtId"><br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="btnAdd">Agregar</button>
+                <button type="button" class="btn btn-secondary" id="btnUpdate">Actualizar</button>
+                <button type="button" class="btn btn-danger" id="btnDel">Eliminar</button>
+                <button type="button" class="btn btn-default" id="btnClose" data-dismiss="modal">Cancelar</button>
+            </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-success"  id="btnAdd">Agregar</button>
-          <button type="button" class="btn btn-secondary" id="btnUpdate">Actualizar</button>
-          <button type="button" class="btn btn-danger" id="btnDel">Eliminar</button>
-          <button type="button" class="btn btn-default"  id="btnClose">Cancelar</button>
-          
-        </div>
-      </div>
     </div>
-  </div>
+</div>
 
 
 
@@ -227,7 +212,14 @@
         $("#ModalEvent").modal();
         }
         else {
-          alert("No se pueden crear reserva en el pasado!");
+
+        Swal.fire({
+            title: 'Error',
+            text: 'No se pueden crear reservas en el pasado!',
+            icon: 'error',
+            confirmButtonText: 'Entendido'
+        });
+
         }
         
     },
