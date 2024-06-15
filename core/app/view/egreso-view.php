@@ -3,7 +3,7 @@
 
 	
  <?php 
-     date_default_timezone_set('America/Auncion');
+     date_default_timezone_set('America/Asuncion');
      $hoy = date("Y-m-d");
 
       			 $u=null;

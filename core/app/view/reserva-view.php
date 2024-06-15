@@ -102,8 +102,12 @@
                             <div class="input-group">
                                 <span class="input-group-addon"> Habitación &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                 <select name="id_habitacion" id="id_habitacion" class="form-control">
-                                    <!-- PHP code to fetch rooms -->
-                                </select>
+                                <?php $rooms = HabitacionData::getAll();?>
+                                      <?php foreach($rooms as $room):?>
+                                      <option value="<?php echo $room->id;?>"><?php echo $room->nombre;?></option>
+                                      <?php endforeach;?>
+                                    </select>
+                              </select>
                             </div>
                         </div>
                         <div class="form-group">
