@@ -408,27 +408,55 @@
  
     }       
 
-    function DataSendUI(accion,objEvento){ 
-        $.ajax({
-          type:'POST',
-          url:'index.php?action=reserva&accion='+accion,
-          data:objEvento, 
-          success:function(msg){
-            if (msg){
-              $('#calendar').fullCalendar('refetchEvents');
-              if(!modal){
-              $('#ModalEvent').modal('toggle');
-              $('#ModalRoom').modal('toggle');
-              }
-            }
-          },
-          error:function(){
-           // alert("Hay un error");
-            window.location.reload();
-          }
-        });
+    function DataSendUI(accion, objEvento) {
+            $.ajax({
+                type: 'POST',
+                url: 'index.php?action=reserva&accion=' + accion,
+                data: objEvento,
+                success: function(response) {
+                    console.log(response); // Muestra la respuesta en la consola
+                    // Verifica el estado de la respuesta
+                    if (response.status === "error") {
+                        // Si la respuesta indica un error
+                        Swal.fire({
+                            title: 'Error',
+                            text: response.message, // Muestra el mensaje de error recibido
+                            icon: 'error',
+                            confirmButtonText: 'Entendido'
+                        });
+                    } 
+                    if (response.status === "success") {
+                        $('#calendar').fullCalendar('refetchEvents');
+                        Swal.fire({
+                            title: "Correcto",
+                            text: "Presiona OK para continuar",
+                            icon: "success"
+                        });
+                        if (!modal) {
+                            $('#ModalEvent').modal('toggle');
+                            $('#ModalRoom').modal('toggle');
+                        }
+                        // Si la respuesta es exitosa
+                     
 
-    }
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error("Error details:", {
+                        textStatus: textStatus,
+                        errorThrown: errorThrown,
+                        jqXHR: jqXHR
+                    });
+                    Swal.fire({
+                        title: 'Error',
+                        text: jqXHR.responseText,
+                        icon: 'error',
+                        confirmButtonText: 'Entendido'
+                    });
+                    //window.location.reload();
+                }
+            });
+        }
 
 
 
