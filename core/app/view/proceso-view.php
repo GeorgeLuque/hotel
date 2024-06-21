@@ -216,10 +216,10 @@
                                                       <div class="form-group">
                                                           <div class="input-group">
                                                               <div class="input-group-addon">
-                                                                  RFC:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                  RUC:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                               </div>
                                                               <input type="text" class="form-control"
-                                                                  placeholder="Ingrese RFC" name="giro"
+                                                                  placeholder="Ingrese RUC" name="giro"
                                                                   id="giro" required value="">
                                                               <div class="input-group-addon">
                                                                   Teléfono:
@@ -304,7 +304,7 @@
                                                           <!-- /.input group -->
                                                       </div>
 
-                                                      <div class="form-group">
+                                                      <div class="form-group" style="display: none;">
                                                           <div class="input-group">
                                                               <div class="input-group-addon">
                                                                   Toallas:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

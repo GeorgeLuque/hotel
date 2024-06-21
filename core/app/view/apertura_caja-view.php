@@ -58,7 +58,7 @@ $fecha_completo = date('Y-m-d H:i:s');
         <div class="tile-footer dvd dvd-top">
 
             <div class="input-group">
-                <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-left">Refrescar</a>
+                <button type="button" class="btn btn-sm btn-default btn-flat pull-left" onclick="refrescar();" >Refrescar</button>
                 <input type="hidden" name="fecha_apertura" value="<?php echo $fecha_completo; ?>">
                 <input type="hidden" name="hora" value="<?php echo $hora; ?>">
                 <input type="hidden" name="id_usuario" value="<?php echo $id_usuario; ?>">
@@ -92,6 +92,10 @@ $fecha_completo = date('Y-m-d H:i:s');
             e.preventDefault();
         }
     });
+
+    function refrescar(){
+      window.location.reload();
+    }
 </script>
 
 
