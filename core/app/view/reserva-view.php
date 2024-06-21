@@ -70,7 +70,7 @@
     color: black;
   }
   .fc-today {
-    background-color: #F9F3EB !important; /* Cambiar color del día actual */
+    background-color: #C1C6C2 !important; /* Cambiar color del día actual */
   }
   .fc-event {
     background-color: #1583DA; /* Cambiar color de los eventos */
@@ -307,7 +307,7 @@
       resources: "index.php?action=reserva",
       events: "index.php?action=reservas",
       
-     
+     // COLOCA NOMBRE DE HUESPED EN CALENADARIO
       
      eventRender: function(calEvent, element) {
 
@@ -318,14 +318,14 @@
             element.css({
                 'background-color': '5BEE0C',
                 'border-color': '060400',
-                'color': 'white'
+                'color': 'BLACK'
             });
         }
-        if (calEvent.estado == '3') {
+        if (calEvent.estado == '2') {
             element.css({
-                'background-color': '#f0ad4e',
-                'border-color': '#333333',
-                'color': 'white'
+                'background-color': '#5BEE0C',
+                'border-color': '#060400',
+                'color': 'BLACK'
             });
         }
     } 
