@@ -58,12 +58,13 @@ $fecha_completo = date('Y-m-d H:i:s');
         <div class="tile-footer dvd dvd-top">
 
             <div class="input-group">
-                <button type="button" class="btn btn-sm btn-default btn-flat pull-left" onclick="refrescar();" >Refrescar</button>
+                <button type="button" class="btn btn-sm btn-default btn-flat pull-left"
+                    onclick="refrescar();">Refrescar</button>
                 <input type="hidden" name="fecha_apertura" value="<?php echo $fecha_completo; ?>">
                 <input type="hidden" name="hora" value="<?php echo $hora; ?>">
                 <input type="hidden" name="id_usuario" value="<?php echo $id_usuario; ?>">
                 <?php $cajas_abiertas = CajaData::getAllAbierto();
-
+                
                 if (is_array($cajas_abiertas) && count($cajas_abiertas) > 0) {
                     $caja_abierta = '1';
                 } else {
@@ -78,11 +79,14 @@ $fecha_completo = date('Y-m-d H:i:s');
 
         </div>
         <!-- /tile footer -->
-
+        <div class="alert alert-primary" role="alert" id="a1" onclick="ocultar();" style="font-weight: bold;">
+            Cada apertura equivale a una caja nueva
+        </div>
     </form>
 
 
 </section>
+
 <script>
     $("#addcaja").submit(function(e) {
         caja = $("#caja_abierta").val();
@@ -93,8 +97,12 @@ $fecha_completo = date('Y-m-d H:i:s');
         }
     });
 
-    function refrescar(){
-      window.location.reload();
+    function refrescar() {
+        window.location.reload();
+    }
+
+    function ocultar() {
+        document.getElementById('a1').style.visibility = "hidden";
     }
 </script>
 

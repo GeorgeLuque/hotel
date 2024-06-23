@@ -18,7 +18,13 @@ $fecha_completo = date('Y-m-d H:i:s');
 <?php $caja_abierta = CajaData::getCierreCaja(); ?>
 <section class="tile tile-simple col-md-4 col-md-offset-4">
     <?php 
-    if(count(get_object_vars($caja_abierta))>0){
+    $flag = false;
+    if(!is_null($caja_abierta)){
+        if(count(get_object_vars($caja_abierta))>0){
+            $flag = true;
+        }
+    }
+    if($flag){
       ?>
     <div class="tile-widget dvd dvd-btm" style="text-align: center;">
         <h3 class="box-title">CIERRE DE CAJA</h3>
