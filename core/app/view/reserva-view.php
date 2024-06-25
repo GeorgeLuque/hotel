@@ -26,20 +26,20 @@
 <style>
 
   body {
-    margin: 0;
-    padding: 0;
+    margin:0;
+    padding:0;
     font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
     font-size: 14px;
-  }
+  } 
 
   p {
     text-align: center;
   }
-
+/* MODIFICA TAÑANO DE CALENADARIO Y MARGEN*/
   #calendar {
   
-    max-width: 1400px !important;
-    margin: 50px auto;
+    max-width: 2000px !important;
+    margin: 1px auto;
 
   }
 
@@ -48,26 +48,27 @@
   }
   .close{
     float: right;
-    font-size: 21px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 400;
     line-height: 1;
     color: #fff;
     text-shadow: 0 1px 0 #fff;
     filter: alpha(opacity=20);
     opacity: 1;
   }
+  
   .fc-timeline-event .fc-time {
     font-weight: 700;
     padding: 0 1px;
     display: none !important;
-}
+}*/
    /* ESTILOS PERSONALIZADOS DE CALENDARIO*/
    .fc-toolbar {
-    background-color: #6A4CAF; /* Cambiar color de la barra de herramientas */
+    background-color: #745DA8 /* Cambiar color de la barra de herramientas */
   }
   .fc-day-header {
     background-color: #89A444; /* Cambiar color de los encabezados de los días */
-    color: black;
+    color: blue;
   }
   .fc-today {
     background-color: #C1C6C2 !important; /* Cambiar color del día actual */
@@ -175,7 +176,7 @@
       now: new Date(),
       editable: true,
       selectable: true,
-      aspectRatio: 2.0, //MODIFICA TAMAÑO DE CALENDARIO EN PAGINA//
+      aspectRatio: 2.3, //MODIFICA ALTURA DE CALENDARIO EN PAGINA//
       scrollTime: '00:00',
       header: {
         left: 'promptResource today prev,next',

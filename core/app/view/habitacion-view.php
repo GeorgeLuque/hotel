@@ -180,8 +180,6 @@
                       <input type="text" class="form-control col-md-8" name="nombre" value="<?php echo $habitacion->nombre; ?>" required placeholder="Ingrese nombre">
                     </div>
                   </div>
-
-
                   
                 </div>
                 </div>
