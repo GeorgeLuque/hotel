@@ -4,20 +4,23 @@
 	session_start();
 	/* Connect To Database*/
 include "../../../core/autoload.php";
+include "../../../core/app/model/UserData.php";
+/*
+include "../../../core/app/model/HabitacionData.php";
 include "../../../core/app/model/ProcesoData.php";
 include "../../../core/app/model/PersonaData.php";
-include "../../../core/app/model/UserData.php";
 include "../../../core/app/model/ProcesoVentaData.php";
-include "../../../core/app/model/HabitacionData.php";
 include "../../../core/app/model/ProductoData.php";
+*/
 include "../../../core/app/model/CajaData.php";
 
-
-	require_once(dirname(__FILE__).'/../html2pdf.class.php');
+	//require_once(dirname(__FILE__).'/../html2pdf.class.php');
+    include(dirname(__FILE__).'/reporte_caja/reporte_caja_html.php');
+    $caja=CajaData::getById($_GET['id']); 
+   // print_r($caja);
     
-     include(dirname('__FILE__').'/reporte_caja/reporte_caja_html.php');
-    $content = ob_get_clean();
-
+   // $content = ob_get_clean();
+    /*
     try
     {
         // init HTML2PDF
@@ -33,4 +36,6 @@ include "../../../core/app/model/CajaData.php";
         echo $e;
         exit;
     }
- 
+    */
+    
+ ?>

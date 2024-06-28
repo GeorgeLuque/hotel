@@ -65,7 +65,7 @@ tr:hover td { background: #d0dafd; color: #339; }
      $hoy = date("Y-m-d");
      $hora = date("H:i:s");
      //require_once 'autoload.php';
-     require_once(dirname(__FILE__).'/../../../../../autoload.php');            
+    // require_once(dirname(__FILE__).'/../../../../../autoload.php');            
 ?>
 <?php $caja=CajaData::getById($_GET['id']); ?>
 <page backtop="15mm" backbottom="28mm" backleft="5mm" backright="5mm" style="font-size: 12pt; font-family: arial" >

@@ -12,7 +12,10 @@ class CajaData {
 		$this->fecha_creada = "NOW()"; 
 	} 
 
-	public function getUsuario(){ return UserData::getById($this->id_usuario);}
+	public function getUsuario(){ 
+		$userData =  UserData::getById($this->id_usuario);
+		return $userData;;
+	}
 
 	public function add(){
 		$sql = "insert into ".self::$tablename." (fecha_apertura,monto_apertura,estado,id_usuario,fecha_creada) ";
