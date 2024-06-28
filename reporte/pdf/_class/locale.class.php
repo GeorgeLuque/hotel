@@ -37,6 +37,7 @@ class HTML2PDF_locale
      */
     static public function load($code)
     {
+        
         if (self::$_directory===null) {
             self::$_directory = dirname(dirname(__FILE__)).'/locale/';
         }
@@ -61,14 +62,50 @@ class HTML2PDF_locale
         }
 
         // load the file
+        //print_r($line);
         self::$_list = array();
         $handle = fopen($file, 'r');
+        /*
         while (!feof($handle)) {
             $line = fgetcsv($handle);
             if (count($line)!=2) continue;
             self::$_list[trim($line[0])] = trim($line[1]);
         }
         fclose($handle);
+        */
+        if ($handle) {
+            while (!feof($handle)) {
+                $line = fgetcsv($handle);
+        
+                // Verificar la línea y los datos obtenidos
+                if ($line === false) {
+                    continue; // Saltar líneas que no se pudieron leer
+                }
+        
+                // Imprimir la línea leída para depuración
+                /*
+                echo "<pre>";
+                print_r($line);
+                echo "</pre>";
+                */
+                if (count($line) != 2) {
+                    // Línea malformada, imprimir mensaje de depuración
+                    /*
+                    echo "Línea malformada: ";
+                    echo "<pre>";
+                    print_r($line);
+                    echo "</pre>";
+                    */
+                    continue; // Saltar líneas malformadas
+                }
+        
+                // Añadir a la lista si la línea es válida
+                self::$_list[trim($line[0])] = trim($line[1]);
+            }
+            fclose($handle);
+        } else {
+            echo "Error al abrir el archivo.";
+        }
     }
 
     /**
