@@ -1,7 +1,7 @@
 <?php
 
+session_start();
 	 ob_start();
-	session_start();
 	/* Connect To Database*/
 include "../../../core/autoload.php";
 include "../../../core/app/model/UserData.php";
@@ -14,12 +14,15 @@ include "../../../core/app/model/ProductoData.php";
 */
 include "../../../core/app/model/CajaData.php";
 
-	//require_once(dirname(__FILE__).'/../html2pdf.class.php');
+	require_once(dirname(__FILE__).'/../html2pdf.class.php');
     include(dirname(__FILE__).'/reporte_caja/reporte_caja_html.php');
     $caja=CajaData::getById($_GET['id']); 
-   // print_r($caja);
     
-   // $content = ob_get_clean();
+    $content = ob_get_clean();
+    // print_r($caja);
+    echo "<pre>";
+    print_r($content);
+    echo "</pre>";
     /*
     try
     {
