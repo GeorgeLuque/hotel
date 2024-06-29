@@ -189,7 +189,7 @@ $hora = date('H:i:s');
                             <h5><br>Apertura caja:</h5>
                         </td>
                         <td>
-                            <h5 class="control-label text-red"><br>$ <?php echo number_format($caja_abierta->monto_apertura, 2, '.', ','); ?></h5>
+                            <h5 class="control-label text-red"><br>Gs. <?php echo number_format($caja_abierta->monto_apertura, 0, '.', ','); ?></h5>
                         </td>
                     </tr>
                     <tr>
@@ -197,7 +197,7 @@ $hora = date('H:i:s');
                             <h5><br>Alquiler habitación:</h5>
                         </td>
                         <td>
-                            <h5 class="control-label text-red"><br>$ <?php echo number_format($total_sin_cerrar, 2, '.', ','); ?></h5>
+                            <h5 class="control-label text-red"><br>Gs. <?php echo number_format($total_sin_cerrar, 0, '.', ','); ?></h5>
                         </td>
                     </tr>
                     <tr>
@@ -205,25 +205,27 @@ $hora = date('H:i:s');
                             <h5><br>Servicio habitación:</h5>
                         </td>
                         <td>
-                            <h5 class="control-label text-red"><br>$ <?php echo number_format($subtotal3, 2, '.', ','); ?></h5>
+                            <h5 class="control-label text-red"><br>Gs. <?php echo number_format($subtotal3, 0, '.', ','); ?></h5>
                         </td>
                     </tr>
                     <tr>
+                      <!--
                         <td>
                             <h5><br>Egresos:</h5>
                         </td>
                         <td>
-                            <h5 class="control-label text-red"><br>$ <?php echo number_format($total_egreso, 2, '.', ','); ?></h5>
+                            <h5 class="control-label text-red"><br>Gs. <?php echo number_format($total_egreso, 0, '.', ','); ?></h5>
                         </td>
-                    </tr>
-                    <tr style="border-top: 2px solid #00a65a">
+                      </tr>
+                      <tr style="border-top: 2px solid #00a65a">
                         <td>
-                            <h5><br>TOTAL:</h5>
+                          <h5><br>TOTAL:</h5>
                         </td>
                         <td>
-                            <h5 class="control-label text-red"><br>$ <?php echo number_format($caja_abierta->monto_apertura + $total_ingreso - $total_egreso, 2, '.', ','); ?></h5>
+                          <h5 class="control-label text-red"><br>Gs. <?php echo number_format($caja_abierta->monto_apertura + $total_ingreso - $total_egreso, 0, '.', ','); ?></h5>
                         </td>
-                    </tr>
+                      </tr>
+                      -->
 
                 </table>
 
@@ -283,10 +285,10 @@ $hora = date('H:i:s');
                                 <tr>
                                     <td><?php echo $numero; ?></td>
                                     <td><?php echo $reportediario->getHabitacion()->nombre; ?></td>
-                                    <td><b>$ <?php echo number_format($reportediario->precio, 2, '.', ','); ?></b></td>
-                                    <td><b>$ <?php echo number_format($reportediario->cant_noche, 2, '.', ','); ?></b></td>
+                                    <td><b>Gs. <?php echo number_format($reportediario->precio, 0, '.', ','); ?></b></td>
+                                    <td><b>Gs. <?php echo number_format($reportediario->cant_noche, 0, '.', ','); ?></b></td>
                                     <?php $subtotal = $reportediario->precio * $reportediario->cant_noche + $reportediario->total; ?>
-                                    <td>$ <?php echo number_format($subtotal, 2, '.', ','); ?></td>
+                                    <td>Gs. <?php echo number_format($subtotal, 0, '.', ','); ?></td>
                                     <td><?php echo date($reportediario->fecha_entrada); ?></td>
                                     <td><?php echo date($reportediario->fecha_salida); ?></td>
                                 </tr>
@@ -297,7 +299,7 @@ $hora = date('H:i:s');
                                     <th colspan="4">
                                         <p class="pull-right">Total</p>
                                     </th>
-                                    <th><b>$ <?php echo number_format($total, 2, '.', ','); ?> </b></th>
+                                    <th><b>Gs. <?php echo number_format($total, 0, '.', ','); ?> </b></th>
                                     <th></th>
                                     <th></th>
                                 </tfoot>
@@ -338,9 +340,9 @@ $hora = date('H:i:s');
                                     <td><?php echo $reporproduct->getProceso()->getHabitacion()->nombre; ?></td>
                                     <td><?php echo $reporproduct->getProducto()->nombre; ?></td>
                                     <td><b><?php echo $reporproduct->cantidad; ?></b></td>
-                                    <td><b>$ <?php echo number_format($reporproduct->precio, 2, '.', ','); ?></b></td>
+                                    <td><b>Gs. <?php echo number_format($reporproduct->precio, 0, '.', ','); ?></b></td>
                                     <?php $subtotal1 = $reporproduct->cantidad * $reporproduct->precio; ?>
-                                    <td><b>$ <?php echo number_format($subtotal1, 2, '.', ','); ?></b></td>
+                                    <td><b>Gs. <?php echo number_format($subtotal1, 0, '.', ','); ?></b></td>
                                     <td><?php echo date($reporproduct->fecha_creada); ?></td>
                                 </tr>
                                 <?php $subtotal2 = $subtotal1 + $subtotal2; ?>
@@ -351,7 +353,7 @@ $hora = date('H:i:s');
                                     <th colspan="5">
                                         <p class="pull-right">Total</p>
                                     </th>
-                                    <th><b>$ <?php echo number_format($subtotal2, 2, '.', ','); ?></b> </th>
+                                    <th><b>Gs. <?php echo number_format($subtotal2, 0, '.', ','); ?></b> </th>
                                     <th></th>
                                 </tfoot>
 
