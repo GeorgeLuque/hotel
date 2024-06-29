@@ -26,14 +26,14 @@ try {
     // init HTML2PDF
     $html2pdf = new HTML2PDF('P', 'LETTER', 'es', true, 'UTF-8', [0, 0, 0, 0]);
 
-    /*
+    
         // display the full page
         $html2pdf->pdf->SetDisplayMode('fullpage');
         // convert
         $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
         // send the PDF
         $html2pdf->Output('reporte_diario_user.pdf');
-        */
+        
 } catch (HTML2PDF_exception $e) {
     echo $e;
     exit();

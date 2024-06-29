@@ -1526,11 +1526,28 @@ if (!defined('__CLASS_HTML2PDF__')) {
                 $inBL[0]-= $border['l']['width'];
                 $inBL[1]-= $border['b']['width'];
             }
-
+            /*
+            var_dump($inTL, $inTR, $inBR, $inBL);
             if ($inTL[0]<=0 || $inTL[1]<=0) $inTL = null;
             if ($inTR[0]<=0 || $inTR[1]<=0) $inTR = null;
             if ($inBR[0]<=0 || $inBR[1]<=0) $inBR = null;
             if ($inBL[0]<=0 || $inBL[1]<=0) $inBL = null;
+            */
+
+           // var_dump($inTL, $inTR, $inBR, $inBL);
+
+if (is_array($inTL) && ($inTL[0] <= 0 || $inTL[1] <= 0)) {
+    $inTL = null;
+}
+if (is_array($inTR) && ($inTR[0] <= 0 || $inTR[1] <= 0)) {
+    $inTR = null;
+}
+if (is_array($inBR) && ($inBR[0] <= 0 || $inBR[1] <= 0)) {
+    $inBR = null;
+}
+if (is_array($inBL) && ($inBL[0] <= 0 || $inBL[1] <= 0)) {
+    $inBL = null;
+}
 
             // prepare the background color
             $pdfStyle = '';
