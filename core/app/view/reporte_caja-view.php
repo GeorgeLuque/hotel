@@ -103,10 +103,6 @@ $hora = date('H:i:s');
         <!-- /.box-header -->
         <form method="post" action="index.php?view=agregar_caja" id="addcaja">
             <div class="tile-body p-0" style="text-align: left;">
-
-
-
-
                 <!-- INGRESOS -->
                 <?php $montos_sin_cerrar = ProcesoData::getIngresoCaja($id_caja);
                 $total_sin_cerrar = 0;
@@ -254,12 +250,14 @@ $hora = date('H:i:s');
                 <!-- Custom Tabs (Pulled to the right) -->
 
                 <div class="nav-tabs-custom">
+                  <!--
                     <ul class="nav nav-tabs" style="background-color: #d2d6de;">
                         <li class="active"><a href="#tab_1" data-toggle="tab">Tabla alquiler</a></li>
                         <li><a href="#tab_2" data-toggle="tab">Tabla servicio a la habitación</a></li>
                         <li class="pull-right text-red"><a href="reporte/pdf/documentos/reporte_diario_caja.php"
                                 target="_blank" class="text-muted"><i class="fa fa-print"></i> IMPRIMIR</a></li>
                     </ul>
+                -->
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
                             <?php $reportediarios = ProcesoData::getIngresoCaja($id_caja);
