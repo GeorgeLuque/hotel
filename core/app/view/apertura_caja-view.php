@@ -72,9 +72,9 @@ $fecha_completo = date('Y-m-d H:i:s');
                 }
                 ?>
                 <input type="hidden" name="" value="<?php echo $caja_abierta; ?>" id="caja_abierta">
-                <?php if($caja_abierta=='0'){ ?>
+           
                 <input type="submit" class="btn btn-sm btn-success btn-flat pull-right" value="Dar apertura">
-                <?php }; ?>
+               
             </div>
 
         </div>
