@@ -149,10 +149,10 @@ tr:hover td { background: #d0dafd; color: #339; }
                   <tr> 
             <td><?php echo $numero; ?></td>
             <td><?php echo $reportediario->getHabitacion()->nombre; ?></td>
-            <td><b>$   <?php echo number_format($reportediario->precio,2,'.',','); ?></b></td>
-            <td ><b>$   <?php echo number_format($reportediario->cant_noche,2,'.',','); ?></b></td>
+            <td><b>Gs.   <?php echo number_format($reportediario->precio,2,'.',','); ?></b></td>
+            <td ><b>Gs.   <?php echo number_format($reportediario->cant_noche,2,'.',','); ?></b></td>
             <?php $subtotal= ($reportediario->precio*$reportediario->cant_noche)+$reportediario->total; ?>
-            <td >$   <?php echo number_format($subtotal,2,'.',','); ?></td>
+            <td >Gs.   <?php echo number_format($subtotal,2,'.',','); ?></td>
             <td><?php echo date($reportediario->fecha_entrada); ?></td>
             <?php $fecha=date($reportediario->fecha_salida); ?>
             
@@ -218,9 +218,9 @@ tr:hover td { background: #d0dafd; color: #339; }
             <td><?php if($reporproduct->id_operacion!=NULL){ echo $reporproduct->getProceso()->getHabitacion()->nombre;}else{echo "Venta libre";} ?></td>
             <td><?php echo $reporproduct->getProducto()->nombre; ?></td>
             <td ><?php echo   $reporproduct->cantidad; ?><br /></td>
-            <td >$   <?php echo   number_format($reporproduct->precio,2,'.',','); ?><br /></td>
+            <td >Gs.   <?php echo   number_format($reporproduct->precio,2,'.',','); ?><br /></td>
             <?php $subtotal1=$reporproduct->cantidad*$reporproduct->precio; ?>
-            <td><b>$   <?php echo number_format($subtotal1,2,'.',','); ?></b></td>
+            <td><b>Gs.   <?php echo number_format($subtotal1,2,'.',','); ?></b></td>
             <?php $fecha=date($reporproduct->fecha_creada);?>
             
             <td><?php echo date("h:j:i", strtotime($fecha)); ?></td>
