@@ -67,7 +67,7 @@ class CajaData {
 	}
 
 	public static function getCierreCaja(){
-		$sql = "select * from ".self::$tablename." where estado=1";
+		$sql = "select * from ".self::$tablename." where estado = 1";
 		$query = Executor::doit($sql);
 		$caja_abierta =  Model::one($query[0],new CajaData());
 		//print_r($caja_abierta);
@@ -75,9 +75,10 @@ class CajaData {
 	}
 
 	public static function getAllAbierto(){
-		$sql = "select * from ".self::$tablename." where estado=1";
+		$sql = "select * from ".self::$tablename." where estado = 1";
 		$query = Executor::doit($sql);
-		return Model::one($query[0],new CajaData());
+		$cajas = Model::many($query[0],new CajaData());
+		return $cajas;
 	}
 
 

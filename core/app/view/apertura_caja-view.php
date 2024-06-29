@@ -106,10 +106,10 @@ $fecha_completo = date('Y-m-d H:i:s');
     }
 </script>
 
-
-
-
-<?php $cajas = CajaData::getAllAbierto(); ?>
+<?php 
+$cajas = CajaData::getAllAbierto(); 
+//print_r($cajas);
+?>
 
 <!-- tile -->
 <section class="tile  col-md-12">
@@ -123,28 +123,38 @@ $fecha_completo = date('Y-m-d H:i:s');
     <!-- tile body -->
     <div class="tile-body p-0">
         <?php 
-                                    
-                                    if(is_array($cajas) && count($cajas)>0){?>
+        /*
+        if (!is_null($cajas) && count($cajas) > 0) {
+            // El array $cajas no es null y tiene elementos
+            foreach ($cajas as $caja) {
+            }
+        } else {
+            echo 'No hay cajas disponibles.';
+        }
+        */
+       // if(is_null($cajas) && count(get_object_vars($cajas))>0){
+                 
+       if (!is_null($cajas) && count($cajas) > 0) {
+        foreach ($cajas as $caja) {
+        ?>
         <table class="table table-condensed" style="font-size: 12px;">
-            <thead style="background-color: #16a085;
-    color: white;">
+            <thead style="background-color: #16a085; color: white;">
                 <tr>
                     <th>FECHA DE APERTURA</th>
                     <th>MONTO APERTURA</th>
                     <th>EGRESOS</th>
                     <th>VENTA TOTAL</th>
-
                     <th>VENTA TOTAL + APERTURA</th>
                     <th>USUARIO RESPONSABLE</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><?php echo $cajas->fecha_apertura; ?></td>
-                    <td>$ <?php echo number_format($cajas->monto_apertura, 2, '.', ','); ?></td>
+                    <td><?php echo $caja->fecha_apertura; ?></td>
+                    <td>$ <?php echo number_format($caja->monto_apertura, 2, '.', ','); ?></td>
 
                     <!-- INGRESOS -->
-                    <?php $montos_sin_cerrar = ProcesoData::getIngresoCaja($cajas->id);
+                    <?php $montos_sin_cerrar = ProcesoData::getIngresoCaja($caja->id);
                     $total_sin_cerrar = 0;
                     if (count($montos_sin_cerrar) > 0) {
                         foreach ($montos_sin_cerrar as $monto_sin_cerrar):
@@ -155,8 +165,8 @@ $fecha_completo = date('Y-m-d H:i:s');
 
 
                     <?php  
-                                              if($cajas->id!=0){ 
-                                              $reporproducts = ProcesoVentaData::getIngresoCaja($cajas->id);
+                                              if($caja->id!=0){ 
+                                              $reporproducts = ProcesoVentaData::getIngresoCaja($caja->id);
                                               $subtotal3=0;
                                               if(count($reporproducts)>0){ ?>
                     <?php foreach($reporproducts as $reporproduct):?>
@@ -167,13 +177,9 @@ $fecha_completo = date('Y-m-d H:i:s');
                     <?php }else{$subtotal3=0;} ?>
 
                     <!-- FIN INGRESOS -->
-
-
-
-
                     <!-- EGRESOS -->
 
-                    <?php $montos_sin_cerrar_egresos = GastoData::getEgresoCaja($cajas->id);
+                    <?php $montos_sin_cerrar_egresos = GastoData::getEgresoCaja($caja->id);
                     $total_sin_cerrar_egreso = 0;
                     if (count($montos_sin_cerrar_egresos) > 0) {
                         foreach ($montos_sin_cerrar_egresos as $montos_sin_cerrar_egreso):
@@ -182,7 +188,7 @@ $fecha_completo = date('Y-m-d H:i:s');
                     }
                     ?>
 
-                    <?php $montos_sin_cerrar_sueldos = ProcesoSueldoData::getSueldoCaja($cajas->id);
+                    <?php $montos_sin_cerrar_sueldos = ProcesoSueldoData::getSueldoCaja($caja->id);
                     $total_sin_cerrar_sueldos = 0;
                     if (count($montos_sin_cerrar_sueldos) > 0) {
                         foreach ($montos_sin_cerrar_sueldos as $montos_sin_cerrar_sueldo):
@@ -193,8 +199,8 @@ $fecha_completo = date('Y-m-d H:i:s');
 
 
                     <?php  
-                                              if($cajas->id!=0){ 
-                                              $reporproducts_es = ProcesoVentaData::getEgresoCaja($cajas->id);
+                                              if($caja->id!=0){ 
+                                              $reporproducts_es = ProcesoVentaData::getEgresoCaja($caja->id);
                                               $subtotal4=0;
                                               if(count($reporproducts_es)>0){ ?>
                     <?php foreach($reporproducts_es as $reporproduct_e):?>
@@ -217,10 +223,10 @@ $fecha_completo = date('Y-m-d H:i:s');
 
                     <td>$ <?php echo number_format($total_egreso, 2, '.', ','); ?></td>
                     <td>$ <?php echo number_format($total_ingreso, 2, '.', ','); ?></td>
-                    <?php $total = $cajas->monto_apertura + $total_ingreso - $total_egreso; ?>
+                    <?php $total = $caja->monto_apertura + $total_ingreso - $total_egreso; ?>
                     <td>$ <?php echo number_format($total, 2, '.', ','); ?></td>
-                    <td><?php if ($cajas->id_usuario != null) {
-                        echo $cajas->getUsuario()->name;
+                    <td><?php if ($caja->id_usuario != null) {
+                        echo $caja->getUsuario()->name;
                     } else {
                         echo '<center>----</center>';
                     } ?></td>
@@ -228,7 +234,9 @@ $fecha_completo = date('Y-m-d H:i:s');
             </tbody>
         </table>
 
-        <?php }else{ ?>
+        <?php
+         } 
+        }else{ ?>
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <h4><i class="icon fa fa-ban"></i> No hay ningún apertura de caja!</h4>
