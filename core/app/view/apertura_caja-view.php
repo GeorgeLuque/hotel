@@ -148,7 +148,7 @@ $cajas = CajaData::getAllAbierto();
             <tbody>
                 <tr>
                     <td><?php echo $caja->fecha_apertura; ?></td>
-                    <td>Gs. <?php echo number_format($caja->monto_apertura, 2, '.', ','); ?></td>
+                    <td>Gs. <?php echo number_format($caja->monto_apertura, 0, '.', ','); ?></td>
 
                     <!-- INGRESOS -->
                     <?php $montos_sin_cerrar = ProcesoData::getIngresoCaja($caja->id);
