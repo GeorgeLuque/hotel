@@ -85,7 +85,7 @@ tr:hover td { background: #d0dafd; color: #339; }
                 <td style="width: 80%; text-align: left">
                 </td>
                 <td style="width: 20%; text-align: right; font-size:12px;" >
-                  WWW.<b>El Descanso</b>.com.py<br />
+                  WWW.<b>El Descanso</b>.com<br />
                   Móvil 0981965981 <br />Fijo (021) 647555<br />
                 </td>
                 

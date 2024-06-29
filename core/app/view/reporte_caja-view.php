@@ -199,6 +199,7 @@ $hora = date('H:i:s');
                         <td>
                             <h5 class="control-label text-red"><br>Gs. <?php echo number_format($total_sin_cerrar, 0, '.', ','); ?></h5>
                         </td>
+                        <!--
                     </tr>
                     <tr>
                         <td>
@@ -209,7 +210,6 @@ $hora = date('H:i:s');
                         </td>
                     </tr>
                     <tr>
-                      <!--
                         <td>
                             <h5><br>Egresos:</h5>
                         </td>

@@ -298,7 +298,9 @@
 
                                                 <li><a href="./?view=reporte_diario"><i class="fa fa-caret-right"></i> Reporte diario</a></li>
                                                 <li><a href="./?view=reporte_user"><i class="fa fa-caret-right"></i> Reporte Recepcionista</a></li>
+                                                <!--
                                                 <li><a href="./?view=reporte_caja"><i class="fa fa-caret-right"></i> Reporte de caja</a></li>
+                                            -->
                                                 <li><a href="./?view=reporte_estado"><i class="fa fa-caret-right"></i> Reporte estado habitación</a></li>
                                                 <li><a href="./?view=reporte_mensual"><i class="fa fa-caret-right"></i> Reporte de mensual</a></li>
 

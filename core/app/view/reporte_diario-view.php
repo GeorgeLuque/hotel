@@ -107,7 +107,7 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs" style="background-color: #d2d6de;">
               <li class="active"><a href="#tab_1" data-toggle="tab">Tabla alquiler</a></li>
-              <li><a href="#tab_2" data-toggle="tab">Venta de productos</a></li>
+             <!-- <li><a href="#tab_2" data-toggle="tab">Venta de productos</a></li> -->
               <li class="pull-right text-red"><a href="reporte/pdf/documentos/reporte_diario.php" target="_blank" class="text-muted"><i class="fa fa-print"></i> IMPRIMIR</a></li>
             </ul>
             <div class="tab-content">
