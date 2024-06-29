@@ -218,7 +218,7 @@ tr:hover td { background: #d0dafd; color: #339; }
             <td><?php if($reporproduct->id_operacion!=NULL){ echo $reporproduct->getProceso()->getHabitacion()->nombre;}else{echo "Venta libre";} ?></td>
             <td><?php echo $reporproduct->getProducto()->nombre; ?></td>
             <td ><?php echo   $reporproduct->cantidad; ?><br /></td>
-            <td >Gs.   <?php echo   number_format($reporproduct->precio,2,'.',','); ?><br /></td>
+            <td >Gs.   <?php echo   number_format($reporproduct->precio,0,'.',','); ?><br /></td>
             <?php $subtotal1=$reporproduct->cantidad*$reporproduct->precio; ?>
             <td><b>Gs.   <?php echo number_format($subtotal1,2,'.',','); ?></b></td>
             <?php $fecha=date($reporproduct->fecha_creada);?>
@@ -237,7 +237,7 @@ tr:hover td { background: #d0dafd; color: #339; }
                         <th style="width: 56%;"></th>
                         <th style="width: 15%;"></th>
                         <th style="width: 30%;float: right !important;"> TOTAL: </th>
-                        <th style="width: 20%;">$    <?php echo   number_format($subtotal2,2,'.',','); ?></th>
+                        <th style="width: 20%;">Gs.    <?php echo   number_format($subtotal2,0,'.',','); ?></th>
                         <th style="width: 10%;"> </th> 
             </tr>
 <?php 
