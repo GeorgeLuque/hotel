@@ -137,10 +137,10 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
                         <td><?php echo $numero; ?></td>
                         <td><?php echo $reportediario->getCliente()->documento; ?></td>
                         <td><?php echo $reportediario->getHabitacion()->nombre; ?></td>
-                        <td><b>$  <?php echo number_format($reportediario->precio,2,'.',','); ?></b></td>
-                        <td><b>$   <?php echo number_format($reportediario->cant_noche,2,'.',','); ?></b></td>
+                        <td><b>Gs.  <?php echo number_format($reportediario->precio,0,'.',','); ?></b></td>
+                        <td><b>Gs.   <?php echo number_format($reportediario->cant_noche,0,'.',','); ?></b></td>
                         <?php $subtotal= $reportediario->cant_noche*$reportediario->precio; ?>
-                        <td>$   <?php echo number_format($subtotal,2,'.',','); ?></td>
+                        <td>$   <?php echo number_format($subtotal,0,'.',','); ?></td>
                         <td><?php if($reportediario->id_tipo_pago=='1'){ echo "EFECTIVO";}elseif ($reportediario->id_tipo_pago=='2') {
                          echo "TARJETA";
                         }elseif ($reportediario->id_tipo_pago=='3') {
@@ -154,7 +154,7 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
 
                      <tfoot style="color: black; background-color: #e3e4e6;">
                         <th colspan="5"><p class="pull-right">Total</p></th>
-                        <th><b>$   <?php echo number_format($total,2,'.',','); ?> </b></th> 
+                        <th><b>Gs.   <?php echo number_format($total,0,'.',','); ?> </b></th> 
                         <th></th>
                         <th></th>
                     </tfoot>
@@ -194,9 +194,9 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
                         <td><?php if($reporproduct->id_operacion!=NULL){ echo $reporproduct->getProceso()->getHabitacion()->nombre;}else{echo "Venta libre";} ?></td>
                         <td><?php echo $reporproduct->getProducto()->nombre; ?></td>
                         <td><b><?php echo $reporproduct->cantidad; ?></b></td>
-                        <td><b>$   <?php echo number_format($reporproduct->precio,2,'.',','); ?></b></td>
+                        <td><b>Gs.   <?php echo number_format($reporproduct->precio,2,'.',','); ?></b></td>
                         <?php $subtotal1=$reporproduct->cantidad*$reporproduct->precio; ?>
-                        <td><b>$   <?php echo number_format($subtotal1,2,'.',','); ?></b></td>
+                        <td><b>Gs.   <?php echo number_format($subtotal1,2,'.',','); ?></b></td>
                         <td><?php echo date($reporproduct->fecha_creada); ?></td>
                       </tr> 
                     <?php $subtotal2=$subtotal1+$subtotal2; ?>
@@ -205,7 +205,7 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
 
                     <tfoot style="color: black; background-color: #e3e4e6;">
                         <th colspan="5"><p class="pull-right">Total</p></th>
-                        <th><b>$   <?php echo number_format($subtotal2,2,'.',','); ?></b> </th> 
+                        <th><b>Gs.   <?php echo number_format($subtotal2,2,'.',','); ?></b> </th> 
                         <th></th>
                     </tfoot>
 
