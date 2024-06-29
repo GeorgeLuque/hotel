@@ -142,16 +142,13 @@ $cajas = CajaData::getAllAbierto();
                 <tr>
                     <th>FECHA DE APERTURA</th>
                     <th>MONTO APERTURA</th>
-                    <th>EGRESOS</th>
-                    <th>VENTA TOTAL</th>
-                    <th>VENTA TOTAL + APERTURA</th>
                     <th>USUARIO RESPONSABLE</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td><?php echo $caja->fecha_apertura; ?></td>
-                    <td>$ <?php echo number_format($caja->monto_apertura, 2, '.', ','); ?></td>
+                    <td>Gs. <?php echo number_format($caja->monto_apertura, 2, '.', ','); ?></td>
 
                     <!-- INGRESOS -->
                     <?php $montos_sin_cerrar = ProcesoData::getIngresoCaja($caja->id);
@@ -221,10 +218,6 @@ $cajas = CajaData::getAllAbierto();
                     <!-- Fin Total ingreso -->
                     <?php ?>
 
-                    <td>$ <?php echo number_format($total_egreso, 2, '.', ','); ?></td>
-                    <td>$ <?php echo number_format($total_ingreso, 2, '.', ','); ?></td>
-                    <?php $total = $caja->monto_apertura + $total_ingreso - $total_egreso; ?>
-                    <td>$ <?php echo number_format($total, 2, '.', ','); ?></td>
                     <td><?php if ($caja->id_usuario != null) {
                         echo $caja->getUsuario()->name;
                     } else {
