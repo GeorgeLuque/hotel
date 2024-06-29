@@ -140,7 +140,7 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
                         <td><b>Gs.  <?php echo number_format($reportediario->precio,0,'.',','); ?></b></td>
                         <td><b>Gs.   <?php echo number_format($reportediario->cant_noche,0,'.',','); ?></b></td>
                         <?php $subtotal= $reportediario->cant_noche*$reportediario->precio; ?>
-                        <td>$   <?php echo number_format($subtotal,0,'.',','); ?></td>
+                        <td>Gs.   <?php echo number_format($subtotal,0,'.',','); ?></td>
                         <td><?php if($reportediario->id_tipo_pago=='1'){ echo "EFECTIVO";}elseif ($reportediario->id_tipo_pago=='2') {
                          echo "TARJETA";
                         }elseif ($reportediario->id_tipo_pago=='3') {
