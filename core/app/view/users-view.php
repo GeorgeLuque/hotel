@@ -17,10 +17,10 @@
   <div class="col-md-12">
     <section class="tile">
       <div class="tile-header dvd dvd-btm">  
-        <h1 class="custom-font"><strong>REGISTRO DE </strong> COUNTERS</h1>
+        <h1 class="custom-font"><strong>REGISTRO DE </strong> CLIENTE</h1>
         <ul class="controls">
           <li class="remove">
-            <a  data-toggle="modal" data-target="#myModal"  ><i class="fa fa-user-plus"></i> REGISTRAR NUEVO COUNTER</a>
+            <a  data-toggle="modal" data-target="#myModal"  ><i class="fa fa-user-plus"></i> REGISTRAR NUEVO CLIENTE</a>
           </li>
           <li class="dropdown">
             <a role="button" tabindex="0" class="dropdown-toggle settings" data-toggle="dropdown">
@@ -114,7 +114,7 @@
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><span class="fa fa-user"></span> INGRESAR NUEVO COUNTER</h4>
+                <h4 class="modal-title"><span class="fa fa-user"></span> INGRESAR NUEVO CLIENTE</h4>
               </div>
               <div class="modal-body" style="background-color:#fff !important;">
                 
