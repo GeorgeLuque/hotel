@@ -85,8 +85,8 @@ tr:hover td { background: #d0dafd; color: #339; }
                 <td style="width: 80%; text-align: left">
                 </td>
                 <td style="width: 20%; text-align: right; font-size:12px;" >
-                  WWW.<b>empresa</b>.com<br />
-                  Móvil 964000482 <br />Fijo (064) 201773<br />
+                  WWW.<b>El Descanso</b>.com.py<br />
+                  Móvil 0981965981 <br />Fijo (021) 647555<br />
                 </td>
                 
             </tr>

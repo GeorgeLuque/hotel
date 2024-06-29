@@ -2,7 +2,7 @@
 
 
 <?php 
-date_default_timezone_set('America/Lima');
+date_default_timezone_set('America/Asuncion');
   $hoy = date("Y-m-d"); 
   
   
