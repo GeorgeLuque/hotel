@@ -5,7 +5,7 @@ $base = new Database();
 $pdo = $base->connect1();
 
 $accion = isset($_GET['accion']) ? $_GET['accion'] : 'leer';
-
+//echo '<pre>'; print_r($accion); echo '</pre>';
 switch ($accion) {
     case 'agregar':
         //add instruction
@@ -51,8 +51,8 @@ switch ($accion) {
 			}
 
         $sentenciaSQL = $pdo->prepare("INSERT INTO
-			proceso(id_habitacion,id_cliente,dinero_dejado,id_tipo_pago,fecha_entrada,fecha_salida,total,id_usuario,cant_personas,id_caja,estado,fecha_creada,observacion)
-			values(:id_habitacion,$id_cliente,0,1,:start,:end,0,:id_usuario,1,NULL,3,NOW(),:observacion)");
+			proceso(id_habitacion,id_cliente,dinero_dejado,id_tipo_pago,fecha_entrada,fecha_salida,total,id_usuario,cant_personas,id_caja,estado,fecha_creada,observacion,pagado)
+			values(:id_habitacion,$id_cliente,0,1,:start,:end,0,:id_usuario,1,NULL,3,NOW(),:observacion,0)");
 
         $respuesta = $sentenciaSQL->execute([
             'id_habitacion' => $_POST['id_habitacion'],
