@@ -31,7 +31,7 @@
               minLength: 2,
               select: function(event, ui) {
                   event.preventDefault();
-                 // $('#documento').val(ui.item.documento);
+                  $('#documento').val(ui.item.documento);
                   $('#nombre').val(ui.item.nombre);
                   $('#direccion').val(ui.item.direccion);
                   $('#id').val(ui.item.id);
@@ -47,7 +47,7 @@
               minLength: 2,
               select: function(event, ui) {
                   event.preventDefault();
-                 // $('#documento').val(ui.item.documento);
+                  $('#documento').val(ui.item.documento);
                   $('#nombre').val(ui.item.nombre);
                   $('#direccion').val(ui.item.direccion);
                   $('#id').val(ui.item.id);
