@@ -389,8 +389,9 @@ $fecha1 = new DateTime($habitacion->fecha_entrada);//fecha inicial
 	                <input type="hidden" name="id_operacion" value="<?php echo $habitacion->id; ?>">
 	                <input type="hidden" name="fecha_salida" value="<?php echo $hoy.' '.$hora; ?>">
 	                <input type="hidden" name="id_habitacion" value="<?php echo $habitacion->getHabitacion()->id; ?>">
-                 
+                 <!--
 	                <button type="submit" name="boleta" class="btn btn-success pull-right"><i class='fa fa-print'></i> Imprimir Boleta</button>
+                -->
                   <button type="submit" name="factura" class="btn btn-warning pull-right" style="margin-right: 10px;"><i class='fa fa-print'></i> Imprimir Factura</button>
  
                   <button type="submit" name="ticket" class="btn btn-primary pull-right" style="margin-right: 10px;"><i class='fa fa-print'></i> Imprimir Ticket</button>
