@@ -1,12 +1,12 @@
   <?php
-  date_default_timezone_set('America/Asuncion');
-  $hoy = date('Y-m-d');
-  $hora = date('H:i:s');
-  $doce = date('12:00:00');
-  
-  $nuevafecha = strtotime('+1 day', strtotime($hoy));
-  $nuevafecha = date('Y-m-j', $nuevafecha);
-  ?>
+    date_default_timezone_set('America/Asuncion');
+    $hoy = date('Y-m-d');
+    $hora = date('H:i:s');
+    $doce = date('12:00:00');
+
+    $nuevafecha = strtotime('+1 day', strtotime($hoy));
+    $nuevafecha = date('Y-m-j', $nuevafecha);
+    ?>
   <style type="text/css">
       .table>tbody>tr>td {
           padding: 0px !important;
@@ -31,7 +31,7 @@
               minLength: 2,
               select: function(event, ui) {
                   event.preventDefault();
-                  $('#documento').val(ui.item.documento);
+                 // $('#documento').val(ui.item.documento);
                   $('#nombre').val(ui.item.nombre);
                   $('#direccion').val(ui.item.direccion);
                   $('#id').val(ui.item.id);
@@ -47,7 +47,7 @@
               minLength: 2,
               select: function(event, ui) {
                   event.preventDefault();
-                  $('#documento').val(ui.item.documento);
+                 // $('#documento').val(ui.item.documento);
                   $('#nombre').val(ui.item.nombre);
                   $('#direccion').val(ui.item.direccion);
                   $('#id').val(ui.item.id);
@@ -75,415 +75,366 @@
 
 
                   <?php if (isset($_GET['id_habitacion'])) { ?>
-                  <?php $habitacion = HabitacionData::getById($_GET['id_habitacion']);
-                 // print_r($habitacion);
-                if( /*is_array($habitacion) && */count(get_object_vars($habitacion))>0){
-                  // si hay habitacion
-                  ?>
-                  <div class="tile-header dvd dvd-btm">
-                      <div class="box-header with-border">
-                          <h3 class="box-title">Datos de la habitación</h3>
-                      </div>
-                      <!-- /.box-header -->
-                      <div class="box-body">
-                          <div class="table-responsive">
-                              <table class="table no-margin">
-                                  <tbody style="padding: 0px;">
-                                      <tr style="padding: 0px;">
-                                          <td>
-                                              <h4 class="text-primary" style="margin-top: 0px !important;">Nombre:</h4>
-                                          </td>
-                                          <td><?php echo $habitacion->nombre; ?></td>
-                                          <td>
-                                              <h4 class="text-primary" style="margin-top: 0px !important;">Tipo:</h4>
-                                          </td>
-                                          <td>
-                                              <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                  <?php echo $habitacion->getCategoria()->nombre; ?></div>
-                                          </td>
-                                      </tr>
-                                      <tr style="padding: 0px;">
-                                          <td>
-                                              <h4 class="text-primary" style="margin-top: 0px !important;">Detalles:
-                                              </h4>
-                                          </td>
-                                          <td><?php echo $habitacion->descripcion; ?></td>
-                                          <td>
-                                              <h4 class="text-primary" style="margin-top: 0px !important;">Estado:</h4>
-                                          </td>
-                                          <td>
-                                              <div class="sparkbar" data-color="#f39c12" data-height="20"><span
-                                                      class="label label-success">DISPONIBLE</span></div>
-                                          </td>
-                                      </tr>
-
-                                  </tbody>
-                              </table>
-
-                          </div>
-                          <!-- /.table-responsive -->
-                      </div>
-
-                  </div>
-                  <!-- /.box -->
-
-                  <!-- Modal -->
-
-
-
-                  <form class="form-horizontal" method="post" id="addproduct" action="index.php?view=addproceso"
-                      role="form">
-                      <div class="box box-info">
-
-                          <div class="box-body">
-                              <div class="table-responsive">
-
-                                  <div class="col-md-6">
-                                      <table class="table no-margin">
-                                          <tr>
-                                              <th colspan="4" style="text-align: center;">DATOS DEL CLIENTE <div
-                                                      class="col-md-2">
-
-                                                  </div>
-                                              </th>
-                                          </tr>
-                                          <tbody style="padding: 0px;">
-
-
-
-
-
-                                              <tr style="padding: 0px;">
-
-
-                                                  <td colspan="2">
-
-
-
-
-
-
-
-
-
-
-
-                                                      <div class="form-group">
-
-                                                          <div class="input-group">
-                                                              <div class="input-group-addon">
-                                                                  <i class="fa fa-globe"></i> Tipo Documento:
-                                                              </div>
-                                                              <?php $tipo_documentos = TipoDocumentoData::getAll(); ?>
-                                                              <select name="tipo_documento" id="tipo_documento" required
-                                                                  class="form-control">
-                                                                  <?php foreach($tipo_documentos as $tipo_documento):?>
-                                                                  <option value="<?php echo $tipo_documento->id; ?>">
-                                                                      <?php echo $tipo_documento->nombre; ?></option>
-                                                                  <?php endforeach;?>
-                                                              </select>
-
-                                                              <div class="input-group-addon">
-                                                                  <i class="fa  fa-arrow-circle-o-right"></i> E-mail:
-                                                              </div>
-
-                                                              <input type="text" class="form-control"
-                                                                  name="documento" id="documento" required="required"
-                                                                  placeholder="Ingrese e-mail para buscar">
-                                                              <input type="hidden" id="id">
-
-
-
-
-                                                          </div>
-                                                          <!-- /.input group -->
-                                                      </div>
-
-
-
-
-                                                      <div class="form-group">
-                                                          <div class="input-group">
-                                                              <div class="input-group-addon">
-                                                                  Nombres:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                              </div>
-                                                              <input type="text" class="form-control" name="nombre"
-                                                                  id="nombre" required placeholder="Ingrese nombres">
-                                                          </div>
-                                                          <!-- /.input group -->
-                                                      </div>
-
-                                                      <div class="form-group">
-                                                          <div class="input-group">
-                                                              <div class="input-group-addon">
-                                                                  RUC:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                              </div>
-                                                              <input type="text" class="form-control"
-                                                                  placeholder="Ingrese RUC" name="giro"
-                                                                  id="giro" required value="">
-                                                              <div class="input-group-addon">
-                                                                  Teléfono:
-                                                              </div>
-                                                              <input type="text" class="form-control"
-                                                                  placeholder="Ingrese teléfono" name="estado_civil"
-                                                                  id="estado_civil" required value="">
-                                                          </div>
-                                                          <!-- /.input group -->
-                                                      </div>
-
-                                                      <div class="form-group">
-                                                          <div class="input-group">
-                                                              <div class="input-group-addon">
-                                                                  Razón
-                                                                  social:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                              </div>
-                                                              <input type="text" class="form-control"
-                                                                  name="nacionalidad" id="nacionalidad" required
-                                                                  placeholder="Ingrese razon social">
-                                                          </div>
-                                                          <!-- /.input group -->
-                                                      </div>
-
-
-
-                                                      <!--
-                            <div class="form-group">
-                              <div class="input-group">
-                                <div class="input-group-addon">
-                                   Profesión:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                </div>
-                                <input type="text" class="form-control" name="ocupacion" id="ocupacion"  required placeholder="Ingrese ocupacion" >
+                      <?php $habitacion = HabitacionData::getById($_GET['id_habitacion']);
+                        // print_r($habitacion);
+                        if ( /*is_array($habitacion) && */count(get_object_vars($habitacion)) > 0) {
+                            // si hay habitacion
+                        ?>
+                          <div class="tile-header dvd dvd-btm">
+                              <div class="box-header with-border">
+                                  <h3 class="box-title">Datos de la habitación</h3>
                               </div>
-                              
-                            </div>
-                          -->
+                              <!-- /.box-header -->
+                              <div class="box-body">
+                                  <div class="table-responsive">
+                                      <table class="table no-margin">
+                                          <tbody style="padding: 0px;">
+                                              <tr style="padding: 0px;">
+                                                  <td>
+                                                      <h4 class="text-primary" style="margin-top: 0px !important;">Nombre:</h4>
+                                                  </td>
+                                                  <td><?php echo $habitacion->nombre; ?></td>
+                                                  <td>
+                                                      <h4 class="text-primary" style="margin-top: 0px !important;">Tipo:</h4>
+                                                  </td>
+                                                  <td>
+                                                      <div class="sparkbar" data-color="#00a65a" data-height="20">
+                                                          <?php echo $habitacion->getCategoria()->nombre; ?></div>
+                                                  </td>
+                                              </tr>
+                                              <tr style="padding: 0px;">
+                                                  <td>
+                                                      <h4 class="text-primary" style="margin-top: 0px !important;">Detalles:
+                                                      </h4>
+                                                  </td>
+                                                  <td><?php echo $habitacion->descripcion; ?></td>
+                                                  <td>
+                                                      <h4 class="text-primary" style="margin-top: 0px !important;">Estado:</h4>
+                                                  </td>
+                                                  <td>
+                                                      <div class="sparkbar" data-color="#f39c12" data-height="20"><span class="label label-success">DISPONIBLE</span></div>
+                                                  </td>
+                                              </tr>
 
-
-                                                      <div class="form-group">
-                                                          <div class="input-group">
-                                                              <div class="input-group-addon">
-                                                                  Procedencia:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                              </div>
-                                                              <input type="text" class="form-control"
-                                                                  name="direccion" id="direccion"
-                                                                  placeholder="Ingrese procedencia (No es obligatorio)"
-                                                                  data-inputmask='"mask": "(999) 999-9999"' data-mask>
-                                                          </div>
-                                                          <!-- /.input group -->
-                                                      </div>
-
-                                                      <div class="form-group">
-                                                          <div class="input-group">
-                                                              <div class="input-group-addon">
-                                                                  Factura:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                              </div>
-                                                              <input type="text" class="form-control"
-                                                                  name="medio_transporte" id="medio_transporte"
-                                                                  required placeholder="Ingrese factura">
-                                                              <div class="input-group-addon">
-                                                                  Folio de factura:
-                                                              </div>
-                                                              <input type="text" class="form-control"
-                                                                  name="destino" id="destino" required
-                                                                  placeholder="Ingrese folio de factura ">
-                                                          </div>
-                                                          <!-- /.input group -->
-                                                      </div>
-
-
-
-                                                      <div class="form-group">
-                                                          <div class="input-group">
-                                                              <div class="input-group-addon">
-                                                                  Nota:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                              </div>
-                                                              <input type="text" class="form-control"
-                                                                  name="motivo" id="motivo" required
-                                                                  placeholder="Ingrese Nota">
-                                                          </div>
-                                                          <!-- /.input group -->
-                                                      </div>
-
-                                                      <div class="form-group" style="display: none;">
-                                                          <div class="input-group">
-                                                              <div class="input-group-addon">
-                                                                  Toallas:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                              </div>
-                                                              <input type="text" placeholder="Cant. toallas"
-                                                                  class="form-control" name="ocupacion"
-                                                                  id="ocupacion" required value="1">
-                                                          </div>
-                                                          <!-- /.input group -->
-                                                      </div>
-
-                                                      <!-- /.FIN -->
-
+                                          </tbody>
+                                      </table>
 
                                   </div>
-
-
-                                  </td>
-
-                                  </tr>
-
-
-
-
-                                  </tbody>
-                                  </table>
-                              </div>
-                              <div class="col-md-1"></div>
-                              <div class="col-md-5">
-                                  <table class="table no-margin">
-                                      <thead>
-                                          <tr>
-                                              <th colspan="4" style="text-align: center;">DATOS DEL ALOJAMIENTO
-                                              </th>
-                                          </tr>
-                                      </thead>
-                                      <tbody style="padding: 0px;">
-
-                                          <tr style="padding: 0px;">
-
-
-                                              <td colspan="3">
-
-                                                  <!-- Date dd/mm/yyyy -->
-                                                  <div class="form-group">
-                                                      <label>Tarifa:</label>
-
-                                                      <div class="input-group">
-                                                          <div class="input-group-addon">
-                                                              <i class="fa fa-globe"></i>
-                                                          </div>
-                                                          <select class="form-control"
-                                                              onchange="CargarTarifa(this.value);" required
-                                                              name="id_tarifa">
-                                                              <?php $tarifas_ha = TarifaHabitacionData::getAllHabitacion($_GET['id_habitacion']); ?>
-                                                              <option value="">--- Selecciona ---</option>
-                                                              <?php foreach($tarifas_ha as $tarifa_ha):?>
-                                                              <option value="<?php echo $tarifa_ha->id; ?>"><?php echo $tarifa_ha->getTarifa()->nombre; ?>
-                                                              </option>
-                                                              <?php endforeach;?>
-
-                                                          </select>
-                                                      </div>
-                                                      <!-- /.input group -->
-                                                  </div>
-
-                                                  <div class="form-group" id="mostrar_precio">
-
-                                                  </div>
-
-
-
-                                                  <div class="form-group">
-
-                                                      <div class="input-group">
-                                                          <div class="input-group-addon">
-                                                              Cant. de personas:
-                                                          </div>
-                                                          <select class="form-control" name="cantidad">
-                                                              <option value="1">1</option>
-                                                              <option value="2">2</option>
-                                                              <option value="3">3</option>
-                                                              <option value="4">4</option>
-                                                              <option value="5">5</option>
-                                                              <option value="6">6</option>
-                                                          </select>
-
-                                                      </div>
-                                                      <!-- /.input group -->
-                                                  </div>
-
-                                                  <div class="form-group">
-                                                      <div class="input-group">
-                                                          <div class="input-group-addon">
-                                                              Estado de pago &nbsp;&nbsp;&nbsp;&nbsp;
-                                                          </div>
-                                                          <select class="form-control" name="pagado"
-                                                              onchange="MostrarSelectMedioPago(this.value);" required>
-                                                              <option value="">--- Selecciona ---</option>
-                                                              <option value="1">Pagado</option>
-                                                              <option value="0">Falta pagar</option>
-                                                          </select>
-                                                      </div>
-                                                      <!-- /.input group -->
-                                                  </div>
-
-                                                  <!-- Date dd/mm/yyyy -->
-                                                  <div class="form-group" id="mostrar_selectmediopago">
-
-                                                      <!-- /.input group -->
-                                                  </div>
-
-                                                  <div class="form-group" id="mostrar_mediopago">
-
-                                                  </div>
-
-
-                                                  <div class="form-group">
-                                                      <div class="input-group">
-                                                          <div class="input-group-addon">
-                                                              Fecha
-                                                              salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                          </div>
-                                                          <input type="text" class="form-control"
-                                                              name="fecha_salida" id="fecha_salida"
-                                                              value="<?php echo $nuevafecha; ?>"
-                                                              data-inputmask='"mask": "(999) 999-9999"' data-mask>
-                                                          <div class="input-group-addon">
-                                                              Hora salida
-                                                          </div>
-                                                          <input type="time" class="form-control"
-                                                              name="hora_salida" value="<?php echo $doce; ?>">
-                                                      </div>
-                                                      <!-- /.input group -->
-                                                  </div>
-
-
-
-                                                  <div class="box-footer">
-                                                      <a href="index.php?view=recepcion"
-                                                          class="btn btn-danger">Cancelar</a>
-                                                      <input type="hidden" name="id_habitacion"
-                                                          value="<?php echo $habitacion->id; ?>">
-                                                      <button type="submit"
-                                                          class="btn btn-success pull-right">Registrar ingreso</button>
-                                                  </div>
-
-                                              </td>
-
-                                          </tr>
-
-
-
-                                      </tbody>
-                                  </table>
+                                  <!-- /.table-responsive -->
                               </div>
 
                           </div>
-                          <!-- /.table-responsive -->
-                      </div>
+                          <!-- /.box -->
+
+                          <!-- Modal -->
+
+
+
+                          <form class="form-horizontal" method="post" id="addproduct" action="index.php?view=addproceso" role="form">
+                              <div class="box box-info">
+
+                                  <div class="box-body">
+                                      <div class="table-responsive">
+
+                                          <div class="col-md-6">
+                                              <table class="table no-margin">
+                                                  <tr>
+                                                      <th colspan="4" style="text-align: center;">DATOS DEL CLIENTE <div class="col-md-2">
+
+                                                          </div>
+                                                      </th>
+                                                  </tr>
+                                                  <tbody style="padding: 0px;">
+
+
+
+
+
+                                                      <tr style="padding: 0px;">
+
+
+                                                          <td colspan="2">
+
+
+
+
+
+
+
+
+
+
+
+                                                              <div class="form-group">
+
+                                                                  <div class="input-group">
+                                                                      <div class="input-group-addon">
+                                                                          <i class="fa fa-globe"></i> Tipo Documento:
+                                                                      </div>
+                                                                      <?php $tipo_documentos = TipoDocumentoData::getAll(); ?>
+                                                                      <select name="tipo_documento" id="tipo_documento" required class="form-control">
+                                                                          <?php foreach ($tipo_documentos as $tipo_documento) : ?>
+                                                                              <option value="<?php echo $tipo_documento->id; ?>">
+                                                                                  <?php echo $tipo_documento->nombre; ?></option>
+                                                                          <?php endforeach; ?>
+                                                                      </select>
+
+                                                                      <div class="input-group-addon">
+                                                                          <i class="fa  fa-arrow-circle-o-right"></i> E-mail:
+                                                                      </div>
+
+                                                                      <input type="text" class="form-control" name="documento" id="documento"  placeholder="Ingrese e-mail para buscar" autocomplete="off">
+                                                                      <input type="hidden" id="id">
+
+
+
+
+                                                                  </div>
+                                                                  <!-- /.input group -->
+                                                              </div>
+
+
+
+
+                                                              <div class="form-group">
+                                                                  <div class="input-group">
+                                                                      <div class="input-group-addon">
+                                                                          Nombres:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                      </div>
+                                                                      <input type="text" class="form-control" name="nombre" id="nombre" required placeholder="Ingrese nombres">
+                                                                  </div>
+                                                                  <!-- /.input group -->
+                                                              </div>
+
+                                                              <div class="form-group">
+                                                                  <div class="input-group">
+                                                                      <div class="input-group-addon">
+                                                                          RUC:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                      </div>
+                                                                      <input type="text" class="form-control" placeholder="Ingrese RUC" name="giro" id="giro" required value="">
+                                                                      <div class="input-group-addon">
+                                                                          Teléfono:
+                                                                      </div>
+                                                                      <input type="text" class="form-control" placeholder="Ingrese teléfono" name="estado_civil" id="estado_civil" required value="">
+                                                                  </div>
+                                                                  <!-- /.input group -->
+                                                              </div>
+
+                                                              <div class="form-group">
+                                                                  <div class="input-group">
+                                                                      <div class="input-group-addon">
+                                                                          Razón
+                                                                          social:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                      </div>
+                                                                      <input type="text" class="form-control" name="nacionalidad" id="nacionalidad" required placeholder="Ingrese razon social">
+                                                                  </div>
+                                                                  <!-- /.input group -->
+                                                              </div>
+
+
+                                                              <div class="form-group">
+                                                                  <div class="input-group">
+                                                                      <div class="input-group-addon">
+                                                                          Direccion:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                      </div>
+                                                                      <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Ingrese procedencia (No es obligatorio)" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+                                                                  </div>
+                                                                  <!-- /.input group -->
+                                                              </div>
+
+                                                              <div class="form-group">
+                                                                  <div class="input-group">
+                                                                      <div class="input-group-addon">
+                                                                          Factura:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                      </div>
+                                                                      <input type="text" class="form-control" name="medio_transporte" id="medio_transporte" required placeholder="Ingrese factura">
+                                                                      <div class="input-group-addon">
+                                                                          Folio de factura:
+                                                                      </div>
+                                                                      <input type="text" class="form-control" name="destino" id="destino" required placeholder="Ingrese folio de factura ">
+                                                                  </div>
+                                                                  <!-- /.input group -->
+                                                              </div>
+
+
+
+                                                              <div class="form-group">
+                                                                  <div class="input-group">
+                                                                      <div class="input-group-addon">
+                                                                          Nota:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                      </div>
+                                                                      <input type="text" class="form-control" name="motivo" id="motivo" required placeholder="Ingrese Nota">
+                                                                  </div>
+                                                                  <!-- /.input group -->
+                                                              </div>
+
+                                                              <div class="form-group" style="display: none;">
+                                                                  <div class="input-group">
+                                                                      <div class="input-group-addon">
+                                                                          Toallas:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                      </div>
+                                                                      <input type="text" placeholder="Cant. toallas" class="form-control" name="ocupacion" id="ocupacion" required value="1">
+                                                                  </div>
+                                                                  <!-- /.input group -->
+                                                              </div>
+
+                                                              <!-- /.FIN -->
+
+
+                                          </div>
+
+
+                                          </td>
+
+                                          </tr>
+
+
+
+
+                                          </tbody>
+                                          </table>
+                                      </div>
+                                      <div class="col-md-1"></div>
+                                      <div class="col-md-5">
+                                          <table class="table no-margin">
+                                              <thead>
+                                                  <tr>
+                                                      <th colspan="4" style="text-align: center;">DATOS DEL ALOJAMIENTO
+                                                      </th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody style="padding: 0px;">
+
+                                                  <tr style="padding: 0px;">
+
+
+                                                      <td colspan="3">
+
+                                                          <!-- Date dd/mm/yyyy -->
+                                                          <div class="form-group">
+                                                              <label>Tarifa:</label>
+
+                                                              <div class="input-group">
+                                                                  <div class="input-group-addon">
+                                                                      <i class="fa fa-globe"></i>
+                                                                  </div>
+                                                                  <select class="form-control" onchange="CargarTarifa(this.value);" required name="id_tarifa">
+                                                                      <?php $tarifas_ha = TarifaHabitacionData::getAllHabitacion($_GET['id_habitacion']); ?>
+                                                                      <option value="">--- Selecciona ---</option>
+                                                                      <?php foreach ($tarifas_ha as $tarifa_ha) : ?>
+                                                                          <option value="<?php echo $tarifa_ha->id; ?>"><?php echo $tarifa_ha->getTarifa()->nombre; ?>
+                                                                          </option>
+                                                                      <?php endforeach; ?>
+
+                                                                  </select>
+                                                              </div>
+                                                              <!-- /.input group -->
+                                                          </div>
+
+                                                          <div class="form-group" id="mostrar_precio">
+
+                                                          </div>
+
+
+
+                                                          <div class="form-group">
+
+                                                              <div class="input-group">
+                                                                  <div class="input-group-addon">
+                                                                      Cant. de personas:
+                                                                  </div>
+                                                                  <select class="form-control" name="cantidad">
+                                                                      <option value="1">1</option>
+                                                                      <option value="2">2</option>
+                                                                      <option value="3">3</option>
+                                                                      <option value="4">4</option>
+                                                                      <option value="5">5</option>
+                                                                      <option value="6">6</option>
+                                                                  </select>
+
+                                                              </div>
+                                                              <!-- /.input group -->
+                                                          </div>
+
+                                                          <div class="form-group">
+                                                              <div class="input-group">
+                                                                  <div class="input-group-addon">
+                                                                      Estado de pago &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                  </div>
+                                                                  <select class="form-control" name="pagado" onchange="MostrarSelectMedioPago(this.value);" required>
+                                                                      <option value="">--- Selecciona ---</option>
+                                                                      <option value="1">Pagado</option>
+                                                                      <option value="0">Falta pagar</option>
+                                                                  </select>
+                                                              </div>
+                                                              <!-- /.input group -->
+                                                          </div>
+
+                                                          <!-- Date dd/mm/yyyy -->
+                                                          <div class="form-group" id="mostrar_selectmediopago">
+
+                                                              <!-- /.input group -->
+                                                          </div>
+
+                                                          <div class="form-group" id="mostrar_mediopago">
+
+                                                          </div>
+
+
+                                                          <div class="form-group">
+                                                              <div class="input-group">
+                                                                  <div class="input-group-addon">
+                                                                      Fecha
+                                                                      salida&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                  </div>
+                                                                  <input type="text" class="form-control" name="fecha_salida" id="fecha_salida" value="<?php echo $nuevafecha; ?>" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+                                                                  <div class="input-group-addon">
+                                                                      Hora salida
+                                                                  </div>
+                                                                  <input type="time" class="form-control" name="hora_salida" value="<?php echo $doce; ?>">
+                                                              </div>
+                                                              <!-- /.input group -->
+                                                          </div>
+
+
+
+                                                          <div class="box-footer">
+                                                              <a href="index.php?view=recepcion" class="btn btn-danger">Cancelar</a>
+                                                              <input type="hidden" name="id_habitacion" value="<?php echo $habitacion->id; ?>">
+                                                              <button type="submit" class="btn btn-success pull-right">Registrar ingreso</button>
+                                                          </div>
+
+                                                      </td>
+
+                                                  </tr>
+
+
+
+                                              </tbody>
+                                          </table>
+                                      </div>
+
+                                  </div>
+                                  <!-- /.table-responsive -->
+                              </div>
 
           </div>
 
           </form>
           <!-- /.box -->
 
-          <?php }else{ 
-            echo"<h4 class='alert alert-success'>NO EXISTE ESTA HABITACIÓN</h4>";
-
-         }; ?>
-
+      <?php } else {
+                            echo "<h4 class='alert alert-success'>NO EXISTE ESTA HABITACIÓN</h4>";
+                        }; ?>
 
 
-          <?php }else{ 
-      echo"<h4 class='alert alert-success'>NO SE SELECCIONÓ HABITACIÓN</h4>";
-    };?>
+
+  <?php } else {
+                        echo "<h4 class='alert alert-success'>NO SE SELECCIONÓ HABITACIÓN</h4>";
+                    }; ?>
 
 
-          </section>
+  </section>
 
       </div>
       </div>
