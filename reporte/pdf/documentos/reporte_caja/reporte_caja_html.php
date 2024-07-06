@@ -140,11 +140,11 @@ tr:hover td { background: #d0dafd; color: #339; }
             </tr>
             <tr class="tr" style="width: 100%; ">
                         <th style="width: 8%;">MONTO APERTURA</th> 
-                        <th style="width: 20%;">$   <?php echo number_format($caja->monto_apertura,2,'.',','); ?></th>
+                        <th style="width: 20%;">Gs.   <?php echo number_format($caja->monto_apertura,0,',','.'); ?></th>
             </tr>
             <tr class="tr" style="width: 100%; ">
                         <th style="width: 8%;">MONTO CIERRE</th> 
-                        <th style="width: 20%;">$   <?php echo number_format($caja->monto_cierre+$caja->monto_apertura,2,'.',','); ?></th>
+                        <th style="width: 20%;">Gs.   <?php echo number_format($caja->monto_cierre+$caja->monto_apertura,0,',','.'); ?></th>
             </tr>
             <tr>
                 <th></th>
@@ -152,7 +152,7 @@ tr:hover td { background: #d0dafd; color: #339; }
             </tr>
             <tr class="tr" style="width: 100%; ">
                         <th style="width: 8%;">TOTAL EN CAJA</th> 
-                        <th style="width: 20%;"><b>$   <?php echo number_format($caja->monto_cierre+$caja->monto_apertura,2,'.',','); ?></b></th>
+                        <th style="width: 20%;"><b>Gs.   <?php echo number_format($caja->monto_cierre+$caja->monto_apertura,0,',','.'); ?></b></th>
             </tr>
 
     </table>
