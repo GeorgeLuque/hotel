@@ -145,10 +145,10 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
                       <tr>
                         <td><?php echo $numero; ?></td>
                         <td><?php echo $reportediario->getHabitacion()->nombre; ?></td>
-                        <td><b>$   <?php echo number_format($reportediario->precio,2,'.',','); ?></b></td>
-                        <td><b>$   <?php echo number_format($reportediario->cant_noche,2,'.',','); ?></b></td>
+                        <td><b>Gs.   <?php echo number_format($reportediario->precio,0,',','.'); ?></b></td>
+                        <td><b>   <?php echo number_format($reportediario->cant_noche,0,',','.'); ?></b></td>
                         <?php $subtotal= $reportediario->cant_noche*$reportediario->precio; ?>
-                        <td>$    <?php echo number_format($subtotal,2,'.',','); ?></td>
+                        <td>Gs.    <?php echo number_format($subtotal,0,',','.'); ?></td>
                         <td><?php echo date($reportediario->fecha_entrada); ?></td>
                         <td><?php echo date($reportediario->fecha_salida); ?></td>
                       </tr> 
@@ -157,7 +157,7 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
 
                      <tfoot style="color: black; background-color: #e3e4e6;">
                         <th colspan="4"><p class="pull-right">Total</p></th>
-                        <th><b>$   <?php echo number_format($total,2,'.',','); ?> </b></th> 
+                        <th><b>Gs.   <?php echo number_format($total,0,',','.'); ?> </b></th> 
                         <th></th>
                         <th></th>
                     </tfoot>

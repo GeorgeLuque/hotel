@@ -156,7 +156,7 @@ tr:hover td { background: #d0dafd; color: #339; }
             <td><?php echo date($reportediario->fecha_entrada); ?></td>
             <?php $fecha=date($reportediario->fecha_salida); ?>
             
-            <td><?php echo date("h:j:i", strtotime($fecha)); ?></td>
+            <td><?php echo date($fecha); ?></td>
             
             
         </tr>
@@ -181,7 +181,7 @@ tr:hover td { background: #d0dafd; color: #339; }
 
 
 
-
+<!--
 <table>
 <tr>
     <td>Tabla venta de productos</td>
@@ -246,6 +246,7 @@ tr:hover td { background: #d0dafd; color: #339; }
     
 
     </table>
+    -->
     <br />
  
 

@@ -328,8 +328,9 @@
                                                           <ul>
                                                             <li><a href="./?view=users"><i class="fa fa-caret-right"></i> Usuarios</a></li>
                                                             <li><a href="./?view=configuracion"><i class="fa fa-caret-right"></i> Configuración</a></li>
+                                                            <!--
                                                             <li><a href="./?view=backup"><i class="fa fa-database"></i> Respaldo base de datos</a></li>
-
+                                            -->
                                                             <!--
                                                              <li><a href="./?view=configuracion"><i class="fa fa-caret-right"></i> Configurar</a></li>
                                                             -->

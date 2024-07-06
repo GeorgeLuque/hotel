@@ -263,16 +263,18 @@ $egreso=$cero1+$egreso+$cero101+$cero102;   ?>
 
     <tr>
         <td>INGRESOS:</td>
-        <td>$   <?php echo number_format($ingreso,2,'.',',');?></td>
+        <td> Gs.   <?php echo number_format($ingreso,0,',','.');?></td>
     </tr>
+    <!--
     <tr>
         <td>EGRESOS:</td>
-        <td> $    <?php echo number_format($egreso,2,'.',','); ?></td>
+        <td> Gs.    <?php echo number_format($egreso,0,',','.'); ?></td>
     </tr>
     <tr>
         <td>NETO:</td>
-        <td>$   <?php echo number_format($ingreso-$egreso,2,'.',','); ?></td>
+        <td> Gs.   <?php echo number_format($ingreso-$egreso,0,',','.'); ?></td>
     </tr>
+    -->
 </table>
 
 
@@ -290,7 +292,9 @@ $numero1=0;
                 <th style="width: 10%;">Nº</th>
                 <th style="width: 60%;">FECHA </th>
                 <th style="width:40%;">INGRESOS</th>
+                <!--
                 <th style="width: 40%;">EGRESOS</th>
+                -->
             </tr>
 <?php
 $egreso=0;
@@ -359,14 +363,14 @@ $mes=date("m", strtotime($fecha));
 
 
         
-                        $   <?php echo number_format($subcero+$cero,2,'.',','); ?>
+                        Gs.   <?php echo number_format($subcero+$cero,0,',','.'); ?>
             
                 </td>
                 <?php $egreso=$cero+$egreso; ?>
 
 
 
-
+<!--
                 <td style="width: 40%;">
 
 
@@ -403,6 +407,7 @@ $mes=date("m", strtotime($fecha));
 
 
                 </td>
+                -->
 </tr>
 <?php
 }
