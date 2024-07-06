@@ -44,7 +44,7 @@ class ProcesoData {
 	} 
 
 	public function updateSalida(){
-		$sql = "update ".self::$tablename." set total=\"$this->total\",id_tipo_pago=$this->id_tipo_pago,estado=1 where id=$this->id";
+		$sql = "update ".self::$tablename." set pagado = 1 , total=\"$this->total\",id_tipo_pago=$this->id_tipo_pago,estado=1 where id=$this->id ";
 		Executor::doit($sql);
 	}
 	

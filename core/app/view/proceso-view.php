@@ -180,10 +180,10 @@
                                                                       </select>
 
                                                                       <div class="input-group-addon">
-                                                                          <i class="fa  fa-arrow-circle-o-right"></i> E-mail:
+                                                                          <i class="fa  fa-arrow-circle-o-right"></i> Documento:
                                                                       </div>
 
-                                                                      <input type="text" class="form-control" name="documento" id="documento"  placeholder="Ingrese e-mail para buscar" autocomplete="off">
+                                                                      <input type="text" class="form-control" name="documento" id="documento" required placeholder="Ingrese nro documento para buscar" autocomplete="off">
                                                                       <input type="hidden" id="id">
 
 

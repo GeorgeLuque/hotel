@@ -247,7 +247,7 @@ $fecha1 = new DateTime($habitacion->fecha_entrada);//fecha inicial
                 <tr>
                   <td style="border-right: 1px solid #a09e9e;">1.</td>
             
-                  <td >$  <?php echo number_format($habitacion->precio,2,'.',','); ?></td>
+                  <td >Gs.  <?php echo number_format($habitacion->precio,0,',','.'); ?></td>
                   <td ><b> <?php echo $habitacion->cant_noche; ?></b></td>
                   <script>
                   function fncSumar(){ 
@@ -303,7 +303,7 @@ $fecha1 = new DateTime($habitacion->fecha_entrada);//fecha inicial
 		                  <td style="border-right: 1px solid #a09e9e;">1.</td>
 
 		                  <td><?php echo $producto->getProducto()->nombre; ?></td>
-		                  <td><b>$  <?php echo number_format($producto->precio,2,'.',','); ?></b></td>
+		                  <td><b>$  <?php echo number_format($producto->precio,0,',','.'); ?></b></td>
 		                  <td ><?php echo $producto->cantidad; ?></td>
                       <?php if($producto->fecha_creada!=NULL){ ?>
                       <td style="border-right: 1px solid #a09e9e;"><p class="text-green">Pagado</p></td>
@@ -316,7 +316,7 @@ $fecha1 = new DateTime($habitacion->fecha_entrada);//fecha inicial
                       <?php }else{ ?>
                       <?php $sub_total=$producto->precio*$producto->cantidad; ?>
                       <?php }; ?>
-		                  <td><span class="badge"><b>$   <?php echo number_format($sub_total,2,'.',','); ?></b></span></td>
+		                  <td><span class="badge"><b>$   <?php echo number_format($sub_total,0,',','.'); ?></b></span></td>
 		                </tr>
 		            	<?php $total=$sub_total+$total; ?>
                     <?php endforeach; ?>
@@ -331,7 +331,7 @@ $fecha1 = new DateTime($habitacion->fecha_entrada);//fecha inicial
 
                 <tr style="background-color: #dcd6d6;">
                   <th style="width: 10px;border-right: 1px solid #a09e9e;"></th>
-                  <th colspan="4" style="border-right: 1px solid #a09e9e;"><p style="float: right;font-size: 18px;">Total $  </p></th>
+                  <th colspan="4" style="border-right: 1px solid #a09e9e;"><p style="float: right;font-size: 18px;">Total Gs.  </p></th>
                   <input type="hidden" name="subtotal" value="<?php echo $total; ?>" onKeyUp="fncSumar()">
 
                   <?php if($habitacion->pagado=='1'){ $sumarrr=0;}else{ $sumarrr= $habitacion->precio*$habitacion->cant_noche; } ?>
@@ -360,7 +360,7 @@ $fecha1 = new DateTime($habitacion->fecha_entrada);//fecha inicial
 
                 <tr style="background-color: #dcd6d6;">
                   <th style="width: 10px;border-right: 1px solid #a09e9e;"></th>
-                  <th colspan="4" style="border-right: 1px solid #a09e9e;"><p style="float: right;font-size: 14px;">Nro operación</p></th> 
+                  <th colspan="4" style="border-right: 1px solid #a09e9e;"><p style="float: right;font-size: 14px;">Nro operación </p></th> 
                  
                   <th style="width: 100px;" id="mostrar_mediopago">
                     
