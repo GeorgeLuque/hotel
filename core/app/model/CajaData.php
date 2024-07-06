@@ -70,6 +70,7 @@ class CajaData {
 		$sql = "select * from ".self::$tablename." where estado = 1";
 		$query = Executor::doit($sql);
 		$caja_abierta =  Model::one($query[0],new CajaData());
+		//$caja_abierta =  Model::many($query[0],new CajaData());
 		//print_r($caja_abierta);
 		return $caja_abierta;
 	}

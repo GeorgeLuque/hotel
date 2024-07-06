@@ -15,7 +15,10 @@ $fecha_completo = date('Y-m-d H:i:s');
 ?>
 
 
-<?php $caja_abierta = CajaData::getCierreCaja(); ?>
+<?php 
+$caja_abierta = CajaData::getCierreCaja(); 
+
+?>
 <section class="tile tile-simple col-md-4 col-md-offset-4">
     <?php 
     $flag = false;
@@ -124,11 +127,11 @@ $fecha_completo = date('Y-m-d H:i:s');
                 <?php ?>
                 <tr>
                     <td>
-                        <h5>MONTO CIERRE: $ </h5>
+                        <h5>MONTO CIERRE: Gs. </h5>
                     </td>
                     <td>
                         <input type="text" name="monto_apertura" required class="form-control text-red"
-                            placeholder="Ingrese monto" style="border-color: #dd4b47;" value="<?php echo number_format($caja_abierta->monto_apertura + $total_ingreso - $total_egreso, 2, '.', ','); ?>">
+                            placeholder="Ingrese monto" style="border-color: #dd4b47;" value="<?php echo number_format($caja_abierta->monto_apertura + $total_ingreso - $total_egreso, 0, ',', '.'); ?>">
                     </td>
                 </tr>
             </table>
@@ -212,16 +215,16 @@ $fecha_completo = date('Y-m-d H:i:s');
                             echo '<center>----</center>';
                         } ?></td>
                         <td><?php echo $caja->fecha_apertura; ?></td>
-                        <td>$ <?php echo number_format($caja->monto_apertura, 2, '.', ','); ?></td>
+                        <td>Gs. <?php echo number_format($caja->monto_apertura, 0, ',', '.'); ?></td>
 
 
                         <td><?php echo $caja->fecha_cierre; ?></td>
 
 
                         <td><?php if ($caja->estado == 1) {
-                            echo '$   ' . number_format($caja_abierta->monto_apertura + $total_ingreso - $total_egreso, 2, '.', ',');
+                            echo 'Gs.   ' . number_format($caja_abierta->monto_apertura + $total_ingreso - $total_egreso, 0, ',', '.');
                         } else {
-                            echo '$   ' . number_format($caja->monto_apertura + $caja->monto_cierre, 2, '.', ',');
+                            echo 'Gs.   ' . number_format($caja->monto_apertura + $caja->monto_cierre, 0, ',', '.');
                         } ?>
                         </td>
 
