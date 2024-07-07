@@ -84,7 +84,7 @@ $cliente = PersonaData::getById($habitacion->id_cliente);
                   <b>Nombre </b> <a href="#"  data-toggle="modal" data-target="#mostrar_cliente"  class="pull-right"><?php echo $habitacion->getCliente()->nombre; ?></a>
                 </li>
                 <li class="list-group-item">
-                  <b>E-mail cliente</b> <a class="pull-right"><?php echo $habitacion->getCliente()->documento; ?></a>
+                  <b>Nro Ci/Pasaporte</b> <a class="pull-right"><?php echo $habitacion->getCliente()->documento; ?></a>
                 </li>
                 
                 <!-- Modal -->
@@ -279,9 +279,9 @@ $fecha1 = new DateTime($habitacion->fecha_entrada);//fecha inicial
                 </tr>
 
                 <tr style="background-color: #dcd6d6;">
-                  <th style="width: 10px;border-right: 1px solid #a09e9e;"></th>
-                  <th colspan="4" style="border-right: 1px solid #a09e9e;">Servicio al cuarto</th>
-                  <th style="width: 100px"></th>
+                  <!--<th style="width: 10px;border-right: 1px solid #a09e9e;"></th>-->
+                 <!-- <th colspan="4" style="border-right: 1px solid #a09e9e;">Servicio al cuarto</th>-->
+                  <!--<th style="width: 100px"></th>-->
                 </tr>
 
                  <tr>
