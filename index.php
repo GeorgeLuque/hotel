@@ -1,6 +1,6 @@
 <?php
 /**
-* @author Nelson
+* @author Jorge
 **/
 /* definimos la ruta principal o base */
 define("ROOT", dirname(__FILE__));

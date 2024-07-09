@@ -105,7 +105,7 @@
 
                         <thead style="color: black; background-color: #d2d6de;">
                             <th>Nº</th>
-                            <th>Cliente</th>
+                            <th>Documento</th>
                             <th>Cliente Nombres</th>
                             <th>Habitación</th>
 

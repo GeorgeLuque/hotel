@@ -75,7 +75,7 @@
                       <tr>
                         
                         <td><?php echo $tarifa_ha->getTarifa()->nombre; ?></td>
-                        <td><?php echo number_format($tarifa_ha->precio,2,'.',','); ?></td>
+                        <td><?php echo number_format($tarifa_ha->precio,0,'.','.'); ?></td>
                         <td>
                         <a href="index.php?view=deltarifa_ha&id=<?php echo $tarifa_ha->id; ?>&id_ha=<?php echo $tarifa_ha->id_habitacion; ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Quitar</a>
                         </td>

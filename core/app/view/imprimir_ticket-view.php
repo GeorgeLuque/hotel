@@ -196,8 +196,8 @@
                                                                 <tr>
                                                                     <td><a href="javascript:;"><?php echo $operacion->cant_noche; ?></a></td>
                                                                     <td><?php echo 'Alojamiento de la habitación '.$operacion->getHabitacion()->nombre; ?></td>
-                                                                    <td>Gs.  <?php echo number_format($operacion->precio,2,'.',','); ?></td>
-                                                                    <td class="ng-binding"><b>Gs.  <?php echo number_format(($operacion->precio*$operacion->cant_noche)+$operacion->total,2,'.',','); ?> </b></td>
+                                                                    <td>Gs.  <?php echo number_format($operacion->precio,0,'.','.'); ?></td>
+                                                                    <td class="ng-binding"><b>Gs.  <?php echo number_format(($operacion->precio*$operacion->cant_noche)+$operacion->total,0,'.','.'); ?> </b></td>
                                                                     
                                                                 </tr>
 
@@ -211,11 +211,11 @@
                                                                 <tr>
                                                                   <td ><?php echo $producto->cantidad; ?></td>
                                                                   <td><?php echo $producto->getProducto()->nombre; ?></td>
-                                                                  <td>Gs.  <?php echo number_format($producto->precio,2,'.',','); ?></td>
+                                                                  <td>Gs.  <?php echo number_format($producto->precio,0,'.','.'); ?></td>
 
                                                                   <?php $sub_total=$producto->precio*$producto->cantidad; ?>
 
-                                                                  <td><b>Gs.  <?php echo number_format($sub_total,2,'.',','); ?></b></td>
+                                                                  <td><b>Gs.  <?php echo number_format($sub_total,0,'.','.'); ?></b></td>
 
                                                                 </tr>
                                                               <?php $total=$sub_total+$total; ?>
@@ -257,9 +257,9 @@
 
                                                         <ul class="list-unstyled">
                                                           <?php $final= $total+(($operacion->precio*$operacion->cant_noche)+$operacion->total);?>
-                                                            <li class="ng-binding"><strong class="inline-block w-sm mb-5">Subtotal:</strong> Gs.  <?php echo number_format(($final/1.18),2,'.',','); ?> </li>
-                                                            <li class="ng-binding"><strong class="inline-block w-sm mb-5">IVA:</strong>  Gs.  <?php echo number_format($final-($final/1.18),2,'.',','); ?></li>
-                                                            <li class="ng-binding"><strong class="inline-block w-sm mb-5"> Total:</strong>  Gs.  <?php echo number_format($final,2,'.',','); ?></li>
+                                                            <li class="ng-binding"><strong class="inline-block w-sm mb-5">Subtotal:</strong> Gs.  <?php echo number_format(($final/1.18),0,'.','.'); ?> </li>
+                                                            <li class="ng-binding"><strong class="inline-block w-sm mb-5">IVA:</strong>  Gs.  <?php echo number_format($final-($final/1.18),0,'.','.'); ?></li>
+                                                            <li class="ng-binding"><strong class="inline-block w-sm mb-5"> Total:</strong>  Gs.  <?php echo number_format($final,0,'.','.'); ?></li>
                                                            
                                                         </ul>
 
