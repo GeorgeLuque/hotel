@@ -1,175 +1,176 @@
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
 <?php if(isset($_POST['start']) and $_POST['start']!=''){ ?>
-                                <div class="tile-body">
+<div class="tile-body">
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="custom-font">
+                <strong>diagrama de barra desde: </strong>
+                <?php echo $_POST['start'] . ' - ' . $_POST['end']; ?>
+            </h4>
+            <h4>
+                <a href="" onclick="window.print();"><i class="fa fa-print" style="color: #da0e36"></i> </a>
+            </h4>
 
-                                    <div class="row">
+        </div>
+    </div>
+</div>
 
-                                        
-                                        <div class="col-md-12">
+<!-- INGRESOS -->
+<?php
+$montos_sin_cerrar = ProcesoData::getIngresoRangoFechas($_POST['start'], $_POST['end']);
+//print_r($montos_sin_cerrar);
+$total_sin_cerrar = 0;
+if (count($montos_sin_cerrar) > 0) {
+    foreach ($montos_sin_cerrar as $monto_sin_cerrar):
+        $total_sin_cerrar = $monto_sin_cerrar->precio * $monto_sin_cerrar->cant_noche + $monto_sin_cerrar->total + $total_sin_cerrar;
+    endforeach;
+}
+?>
 
-                                            <h4 class="custom-font">
-                                              <strong>diagrama de barra desde: </strong> 
-                                              <?php echo $_POST['start'].' - '. $_POST['end']; ?>
-                                            </h4>
+<?php
+/*
+$data = [
+    // Aquí iría el array de objetos ProcesoData que has proporcionado
+    // Por simplicidad, voy a usar un array de ejemplo
+    (object)[ 'fecha_entrada' => '2024-06-16 00:00:00', 'id_habitacion' => 1 ],
+    (object)[ 'fecha_entrada' => '2024-06-16 10:00:00', 'id_habitacion' => 1 ],
+    // ... otros datos
+];
 
-                                            <h4>
-                                              <a href="" onclick="window.print();" ><i class="fa fa-print" style="color: #da0e36"></i> </a>
-                                            </h4>
+// Crear un array para contar el uso de habitaciones por fecha
+$habitacionCounts = [];
 
-                                            <div id="bar-example" style="height: 450px;"></div>
-                                        </div>
-                                        
-                                    </div>
+// Procesar los datos
+foreach ($data as $entry) {
+    $fecha = substr($entry->fecha_entrada, 0, 10); // Extraer la fecha (YYYY-MM-DD)
+    $id_habitacion = $entry->id_habitacion;
 
-                                </div>
-                                <!-- /tile body -->
+    if (!isset($habitacionCounts[$fecha])) {
+        $habitacionCounts[$fecha] = [];
+    }
 
+    if (!isset($habitacionCounts[$fecha][$id_habitacion])) {
+        $habitacionCounts[$fecha][$id_habitacion] = 0;
+    }
 
+    $habitacionCounts[$fecha][$id_habitacion]++;
+}
 
+// Preparar datos para Chart.js
+$dates = [];
+$rooms = [];
+$counts = [];
 
+foreach ($habitacionCounts as $date => $roomsData) {
+    $dates[] = $date;
 
+    foreach ($roomsData as $roomId => $count) {
+        $rooms[$roomId][] = $count;
+        $counts[$roomId][] = $date;
+    }
+}
 
-        <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery/jquery-1.11.2.min.js"><\/script>')</script>
+// Convertir datos a formato JSON para usar en Chart.js
+$jsonDates = json_encode($dates);
+$jsonRooms = json_encode($rooms);
+$jsonCounts = json_encode($counts);
+*/
+?>
+<?php
 
+// Asegúrate de que las fechas están en un formato correcto
 
+// Supongamos que $data contiene los datos obtenidos de la base de datos
+$data = [
+    // Aquí irían los datos que recibiste
+];
 
-        <script src="assets/js/vendor/flot/jquery.flot.min.js"></script>
-        <script src="assets/js/vendor/flot/jquery.flot.resize.min.js"></script>
-        <script src="assets/js/vendor/flot/jquery.flot.orderBars.js"></script>
-        <script src="assets/js/vendor/flot/jquery.flot.stack.min.js"></script>
-        <script src="assets/js/vendor/flot/jquery.flot.pie.min.js"></script>
-        <script src="assets/js/vendor/flot-spline/jquery.flot.spline.min.js"></script>
-        <script src="assets/js/vendor/flot-tooltip/jquery.flot.tooltip.min.js"></script>
+// Crear un array para contar el uso de habitaciones por fecha
+$habitacionCounts = [];
 
-        <script src="assets/js/vendor/gaugejs/gauge.min.js"></script>
+foreach ($montos_sin_cerrar as $entry) {
+    $fecha = substr($entry->fecha_entrada, 0, 10); // Extraer la fecha (YYYY-MM-DD)
+    $id_habitacion = $entry->id_habitacion;
 
-        <script src="assets/js/vendor/raphael/raphael-min.js"></script> 
-        <script src="assets/js/vendor/d3/d3.v2.js"></script>
-        <script src="assets/js/vendor/rickshaw/rickshaw.min.js"></script>
+    if (!isset($habitacionCounts[$fecha])) {
+        $habitacionCounts[$fecha] = [];
+    }
 
-        <script src="assets/js/vendor/morris/morris.min.js"></script>
- 
-        <script src="assets/js/vendor/easypiechart/jquery.easypiechart.min.js"></script>
+    if (!isset($habitacionCounts[$fecha][$id_habitacion])) {
+        $habitacionCounts[$fecha][$id_habitacion] = 0;
+    }
 
-        <script src="assets/js/vendor/countTo/jquery.countTo.js"></script>
+    $habitacionCounts[$fecha][$id_habitacion]++;
+}
 
+// Preparar datos para Chart.js
+$dates = array_keys($habitacionCounts);
+$roomsData = [];
 
+foreach ($habitacionCounts as $date => $roomsDataForDate) {
+    foreach ($roomsDataForDate as $roomId => $count) {
+        if (!isset($roomsData[$roomId])) {
+            $roomsData[$roomId] = [
+                'label' => 'Habitación ' . $roomId,
+                'data' => array_fill(0, count($dates), 0),
+                'backgroundColor' => 'rgba(' . rand(0, 255) . ',' . rand(0, 255) . ',' . rand(0, 255) . ',0.2)',
+                'borderColor' => 'rgba(' . rand(0, 255) . ',' . rand(0, 255) . ',' . rand(0, 255) . ',1)',
+                'borderWidth' => 1,
+            ];
+        }
+        $index = array_search($date, $dates);
+        $roomsData[$roomId]['data'][$index] = $count;
+    }
+}
 
- 
-                   <!-- INGRESOS -->
-                                              <?php $montos_sin_cerrar = ProcesoData::getIngresoRangoFechas($_POST['start'],$_POST['end']);
-                                                    $total_sin_cerrar=0;
-                                                    if(count($montos_sin_cerrar)>0){
+$jsonDates = json_encode($dates);
+$jsonRoomsData = json_encode(array_values($roomsData));
 
-                                                      foreach($montos_sin_cerrar as $monto_sin_cerrar):
-                                                        $total_sin_cerrar=(($monto_sin_cerrar->precio*$monto_sin_cerrar->cant_noche)+$monto_sin_cerrar->total)+$total_sin_cerrar;
-                                                      endforeach;
-
-                                                    }
-                                              ?>  
-
-
-                                              <?php  
-                                             
-                                              $reporproducts = ProcesoVentaData::getIngresoRangoFechasEgreso($_POST['start'],$_POST['end']);
-                                              $subtotal3=0;
-                                              if(count($reporproducts)>0){ ?>
-                                                 <?php foreach($reporproducts as $reporproduct):?>
-                                                      <?php $subtotal1=$reporproduct->cantidad*$reporproduct->precio; ?>
-                                                  <?php $subtotal3=$subtotal1+$subtotal3; ?>
-                                                  <?php endforeach; ?>
-                                              <?php }else{$subtotal3=0;} ?>
-                                              
-
-                                              <!-- FIN INGRESOS -->
-
-
-
-
-                                              <!-- EGRESOS -->
-
-                                              <?php $montos_sin_cerrar_egresos = GastoData::getIngresoRangoFechas($_POST['start'],$_POST['end']);
-                                                    $total_sin_cerrar_egreso=0;
-                                                    if(count($montos_sin_cerrar_egresos)>0){
-
-                                                      foreach($montos_sin_cerrar_egresos as $montos_sin_cerrar_egreso):
-                                                        $total_sin_cerrar_egreso=$montos_sin_cerrar_egreso->precio+$total_sin_cerrar_egreso;
-                                                      endforeach;
-
-                                                    } 
-                                              ?>
-
-                                              <?php $montos_sin_cerrar_sueldos = ProcesoSueldoData::getIngresoRangoFechas($_POST['start'],$_POST['end']);
-                                                    $total_sin_cerrar_sueldos=0;
-                                                    if(count($montos_sin_cerrar_sueldos)>0){ 
-
-                                                      foreach($montos_sin_cerrar_sueldos as $montos_sin_cerrar_sueldo):
-                                                        $total_sin_cerrar_sueldos=$montos_sin_cerrar_sueldo->monto+$total_sin_cerrar_sueldos;
-                                                      endforeach;
-
-                                                    } 
-                                              ?>
-
-
-                                              <?php  
-                                           
-                                              $reporproducts_es = ProcesoVentaData::getIngresoRangoFechasEgreso($_POST['start'],$_POST['end']);
-                                              $subtotal4=0;
-                                              if(count($reporproducts_es)>0){ ?>
-                                                 <?php foreach($reporproducts_es as $reporproduct_e):?>
-                                                      <?php $subtotal1=$reporproduct_e->cantidad*$reporproduct_e->precio; ?>
-                                                  <?php $subtotal4=$subtotal1+$subtotal4; ?>
-                                                  <?php endforeach; ?>
-                                              <?php }else{$subtotal4=0;} ?>
-                                              
-
-
-                                              
-                                            <!-- Total egreso -->
-                                            <?php $total_egreso=$total_sin_cerrar_egreso+$total_sin_cerrar_sueldos+$subtotal4; ?>
-                                            <!-- Fin Total egreso -->
-
-                                            <!-- Total ingreso -->
-                                            <?php $total_ingreso=$total_sin_cerrar+$subtotal3; ?>
-                                            <!-- Fin Total ingreso -->
-                                            <?php ?>
-
-
-        <script>
-            $(window).load(function(){
-
-
-               
-
-                // Morris bar chart
-
-                Morris.Bar({
-                    element: 'bar-example',
-                    data: [
-                        { y: '<?php echo $_POST['start'].' - '. $_POST['end']; ?>', a: <?php echo $total_ingreso; ?>,  b: <?php echo $total_egreso; ?> }
-                    ],
-                    xkey: 'y',
-                    ykeys: ['a', 'b'],
-                    labels: ['Ingresos S/ ', 'Egresos S/ '],
-                    barColors:['#1693A5','#ff4a43']
-                });
+?>
 
 
 
-                
+<canvas id="myChart" width="400" height="200"></canvas>
+<script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: <?php echo $jsonDates; ?>,
+            datasets: <?php echo $jsonRoomsData; ?>
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true
+                },
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
 
 
-            });
-        </script>
-        <!--/ Page Specific Scripts -->
+</body>
 
 
-
-
-
-
-    </body>
-
-<!-- Mirrored from www.tattek.sk/Webadmin-noAngular/charts.html by HTTrack Website Copier/3.x [XR&CO'2024], Sunday, 09 Jun 2024 16:49:36 GMT -->
 </html>
 <?php }else{
     print "<script>window.location='index.php?view=pre_reporte_fecha_barra';</script>";

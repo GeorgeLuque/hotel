@@ -308,14 +308,14 @@
                                             </li> 
                                              
                                              <li>
-                                                <!--
+                                                
                                               <a  role="button" tabindex="0"><i class='fa fa-bar-chart-o'></i> <span>Gráficos</span></a>
                                               <ul >
                                                 <li><a href="./?view=pre_reporte_fecha_barra"><i class="fa fa-caret-right"></i> Reporte por fecha</a></li>
                                                 <li><a href="./?view=pre_reporte_fecha_circular"><i class="fa fa-caret-right"></i> Reporte Circular</a></li>
                                                 <li><a href="./?view=pre_reporte_anio_barra"><i class="fa fa-caret-right"></i> Reporte Anual</a></li>
                                             
-                                              </ul>-->
+                                              </ul>
                                             
 
                                             </li>

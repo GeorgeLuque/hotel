@@ -50,16 +50,14 @@
 
                                     <h4 class="custom-font"><strong>Selecciona</strong> AÑO</h4>
                                     <select class="form-control" name="anio">
-                                        <option value="2017">2017</option>
-                                        <option value="2018" selected>2018</option>
-                                        <option value="2019">2019</option>
-                                        <option value="2020">2020</option>
-                                        <option value="2021">2021</option>
-                                        <option value="2022">2022</option>
-                                        <option value="2023">2023</option>
-                                        <option value="2024">2024</option>
+                                        <option value="2024" selected>2024</option>
                                         <option value="2025">2025</option>
                                         <option value="2026">2026</option>
+                                        <option value="2026">2027</option>
+                                        <option value="2026">2028</option>
+                                        <option value="2026">2029</option>
+                                        <option value="2026">2030</option>
+                                        <option value="2026">2031</option>
                                     </select>
 
                                  
