@@ -6,7 +6,7 @@
             <ol class="breadcrumb">
                 <li><a href="index.php?view=reserva"><i class="fa fa-home"></i> Inicio</a></li>
                 <li><a href="#">Administración</a></li>
-                <li class="active">Counters</li>
+                <li class="active">Usuarios</li>
             </ol>
         </section>
     </div>
@@ -17,11 +17,11 @@
         <div class="col-md-12">
             <section class="tile">
                 <div class="tile-header dvd dvd-btm">
-                    <h1 class="custom-font"><strong>REGISTRO DE </strong> CLIENTE</h1>
+                    <h1 class="custom-font"><strong>REGISTRO DE </strong> USUARIOS</h1>
                     <ul class="controls">
                         <li class="remove">
                             <a data-toggle="modal" data-target="#myModal"><i class="fa fa-user-plus"></i> REGISTRAR
-                                NUEVO CLIENTE</a>
+                                NUEVO USUARIO</a>
                         </li>
                         <li class="dropdown">
                             <a role="button" tabindex="0" class="dropdown-toggle settings" data-toggle="dropdown">
@@ -126,7 +126,7 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title"><span class="fa fa-user"></span> INGRESAR NUEVO CLIENTE</h4>
+                            <h4 class="modal-title"><span class="fa fa-user"></span> INGRESAR NUEVO USUARIO</h4>
                         </div>
                         <div class="modal-body" style="background-color:#fff !important;">
 
