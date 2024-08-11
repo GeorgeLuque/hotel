@@ -314,6 +314,7 @@
                                                 <li><a href="./?view=pre_reporte_fecha_barra"><i class="fa fa-caret-right"></i> Reporte por fecha</a></li>
                                                 <li><a href="./?view=pre_reporte_fecha_circular"><i class="fa fa-caret-right"></i> Reporte Circular</a></li>
                                                 <li><a href="./?view=pre_reporte_anio_barra"><i class="fa fa-caret-right"></i> Reporte Anual</a></li>
+                                                <li><a href="./?view=pre_reporte_hora"><i class="fa fa-caret-right"></i> Horas de uso</a></li>
                                             
                                               </ul>
                                             
