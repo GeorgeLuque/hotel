@@ -33,16 +33,40 @@ foreach ($horas_uso as $entry) {
 
 // Preparar datos para Chart.js
 $habitaciones = array_keys($habitacionCounts);
+$h = array();
+$c = 0;
+foreach ($habitaciones as $i) {
+    $h[$c] =  HabitacionData::getById($i)->nombre;
+    $c++;
+}
+//print_r($h);
 $horasData = array_values($habitacionCounts);
 
-$jsonHabitaciones = json_encode($habitaciones);
-print_r($jsonHabitaciones);
+$jsonHabitaciones = json_encode($h);
 $jsonHorasData = json_encode($horasData);
 ?>
 
 <canvas id="myChart" width="400" height="200"></canvas>
+
 <script>
+    function getRandomColor() {
+        const r = Math.floor(Math.random() * 255);
+        const g = Math.floor(Math.random() * 255);
+        const b = Math.floor(Math.random() * 255);
+        return `rgba(${r}, ${g}, ${b}, 0.2)`; // Puedes ajustar la opacidad (0.2) si lo deseas
+    }
+
+    function generateColorArray(length) {
+        const colorArray = [];
+        for (let i = 0; i < length; i++) {
+            colorArray.push(getRandomColor());
+        }
+        return colorArray;
+    }
+
+
     const ctx = document.getElementById('myChart').getContext('2d');
+    
     const myChart = new Chart(ctx, {
         type: 'bar', // Puedes cambiarlo a 'line' si prefieres
         data: {
@@ -50,7 +74,7 @@ $jsonHorasData = json_encode($horasData);
             datasets: [{
                 label: 'Horas de uso por habitación',
                 data: <?php echo $jsonHorasData; ?>,
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                backgroundColor: generateColorArray(<?php echo count($h); ?>),
                 borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 1
             }]

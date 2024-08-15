@@ -92,7 +92,9 @@ $habitacionCounts = [];
 
 foreach ($montos_sin_cerrar as $entry) {
     $fecha = substr($entry->fecha_entrada, 0, 10); // Extraer la fecha (YYYY-MM-DD)
-    $id_habitacion = $entry->id_habitacion;
+    //$id_habitacion = $entry->id_habitacion;
+    $id_habitacion = HabitacionData::getById($entry->id_habitacion)->nombre;
+
 
     if (!isset($habitacionCounts[$fecha])) {
         $habitacionCounts[$fecha] = [];
