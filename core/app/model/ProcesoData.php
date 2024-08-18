@@ -125,6 +125,12 @@ class ProcesoData {
 		return Model::many($query[0],new ProcesoData());
 	}
 
+	public static function getIngresoRangoFechasReservas($start,$end){
+		$sql = "select * from ".self::$tablename." where  date(fecha_entrada) >= \"$start\" and date(fecha_entrada) <= \"$end\" and pagado = 0 and estado = 3  ";
+		$query = Executor::doit($sql);
+		return Model::many($query[0],new ProcesoData());
+	}
+
 
 	
 

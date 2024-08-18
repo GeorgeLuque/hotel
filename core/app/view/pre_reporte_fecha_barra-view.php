@@ -46,7 +46,7 @@ $fin = date('Y-12-31');
         <!-- /tile header -->
 
         <!-- tile body -->
-        <form method="post" action="index.php?view=reporte_fecha_barra">
+        <form method="post" action="index.php?view=reporte_fecha_linea">
             <div class="tile-body">
 
                 <h4 class="custom-font"><strong>Fecha</strong> Inicio</h4>
@@ -54,7 +54,11 @@ $fin = date('Y-12-31');
 
                 <h4 class="custom-font"><strong>Fecha</strong> Fin</h4>
                 <input type="date" class="typeahead form-control" name="end" value="<?php echo $fin; ?>">
-
+                <label for="selectReservasCheckin">Selecciona una opción:</label>
+                <select class="form-control" id="selectReservasCheckin" name="categoria">
+                    <option value="reservas">Reservas</option>
+                    <option value="checkin">Checkin</option>
+                </select>
 
 
             </div>
