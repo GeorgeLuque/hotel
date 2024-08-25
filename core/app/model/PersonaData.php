@@ -56,6 +56,10 @@ class PersonaData {
 	}
 
 // partiendo de que ya tenemos creado un objecto PersonaData previamente utilizamos el contexto
+	public static function updatePersona(){
+		$sql = "update ".self::$tablename." set nombre=\"$this->nombre\",descripcion=\"$this->descripcion\",id_categoria=$this->id_categoria where id=$this->id";
+		Executor::doit($sql); 
+	}
 	public function update(){
 		$sql = "update ".self::$tablename." set nombre=\"$this->nombre\",descripcion=\"$this->descripcion\",id_categoria=$this->id_categoria where id=$this->id";
 		Executor::doit($sql); 
@@ -71,8 +75,8 @@ class PersonaData {
 		Executor::doit($sql); 
 	}
 
-	public function updatecliente(){
-		$sql = "update ".self::$tablename." set tipo_documento=$this->tipo_documento,documento=\"$this->documento\",giro=\"$this->giro\",nombre=\"$this->nombre\",razon_social=\"$this->razon_social\",fecha_nac=\"$this->fecha_nac\",direccion=\"$this->direccion\" where id=$this->id";
+	public function updatecliente($cliente){
+		$sql = "update ".self::$tablename." set tipo_documento=$cliente->tipo_documento,documento=\"$cliente->documento\",giro=\"$cliente->giro\",nombre=\"$cliente->nombre\",razon_social=\"$cliente->razon_social\",fecha_nac=\"$cliente->fecha_nac\",direccion=\"$cliente->direccion\" where id=$cliente->id";
 		Executor::doit($sql);
 	}
 

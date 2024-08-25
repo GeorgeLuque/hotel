@@ -1,9 +1,11 @@
 <?php
- 
-if(count($_POST)>0){ 
 
+if(count($_POST)>0){ 
+	//print_r($_POST);
 	$cliente = PersonaData::getById($_POST["id_cliente"]);
-	$cliente->tipo_documento = $_POST["tipo_documento"];
+	//print_r($cliente);
+
+$cliente->tipo_documento = $_POST["tipo_documento"];
 	$cliente->documento = $_POST["documento"];
 	$cliente->nombre = $_POST["nombre"];
 
@@ -26,7 +28,7 @@ if(count($_POST)>0){
 	$cliente->direccion = $direccion;
 	$cliente->fecha_nac = $fecha_nac;
 
-	$cliente->updatecliente();
+	$cliente->updatecliente($cliente);
 
 print "<script>window.location='index.php?view=cliente';</script>";
 

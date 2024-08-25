@@ -225,11 +225,11 @@
         <div class="modal-dialog modal-warning">
           <div class="modal-dialog">
             <div class="modal-content">
-                <form class="form-horizontal" method="post" id="addproduct" action="index.php?view=updatecliente" role="form">
+                <form class="form-horizontal" method="POST" id="addproduct" action="index.php?view=updatecliente" role="form">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><span class="fa fa-users"></span> EDITAR  CLIENTE</h4>
+                <h4 class="modal-title"><span class="fa fa-users"></span> EDITAR AL CLIENTE</h4>
               </div>
               <div class="modal-body" style="background-color:#fff !important;">
                 

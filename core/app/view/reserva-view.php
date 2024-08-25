@@ -441,6 +441,21 @@
                      
 
                     }
+                    if (response.status === "true") {
+                        $('#calendar').fullCalendar('refetchEvents');
+                        Swal.fire({
+                            title: "Correcto",
+                            text: "Presiona OK para continuar",
+                            icon: "success"
+                        });
+                        if (!modal) {
+                            $('#ModalEvent').modal('toggle');
+                            $('#ModalRoom').modal('toggle');
+                        }
+                        // Si la respuesta es exitosa
+                     
+
+                    }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.error("Error details:", {

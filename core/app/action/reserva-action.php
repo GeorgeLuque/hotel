@@ -110,10 +110,20 @@ switch ($accion) {
                 'id' => $_POST['id'],
             ]);
         }
-        echo json_encode($respuesta);
-        break;
+        //echo json_encode($respuesta);
+        //break;
+
+        if($respuesta){
+            $resp = array(
+                'status' => 'success', // O 'success' según sea el caso
+                'message' => 'Eliminado  Correctamente' // Un mensaje opcional
+            );
+            echo json_encode($resp);
+            break;
+        }
     case 'actualizar':
         //update instruction
+        $clientes = PersonaData::getLikeDni($_POST['documento']);
 
         $sentenciaSQL = $pdo->prepare('UPDATE  proceso SET id_habitacion=:id_habitacion,fecha_entrada=:start,fecha_salida=:end,observacion=:observacion WHERE id=:id ');
         $respuesta = $sentenciaSQL->execute([
@@ -123,8 +133,26 @@ switch ($accion) {
             'observacion' => $_POST['observacion'],
             'end' => $_POST['end'],
         ]);
-        echo json_encode($respuesta);
-        break;
+
+
+        if (isset($clientes->id)) {
+            $clientes->nombre = $_POST['nombre'];
+            $clientes::updatecliente($clientes);
+           // PersonaData::updatePersona();
+        }
+
+
+        if($respuesta){
+            $resp = array(
+                'status' => 'success', // O 'success' según sea el caso
+                'message' => 'Actualizado Correctamente' // Un mensaje opcional
+            );
+            echo json_encode($resp);
+            break;
+        }
+
+        //echo json_encode($respuesta);
+        //break;
     default:
         //selecciona los eventos del calendario
         $sentenciaSQL = $pdo->prepare('SELECT id,nombre as title from habitacion');
