@@ -66,7 +66,8 @@
                         <th>Nº</th> 
                         <th>IMAGEN</th>
                         <th>NOMBRE</th>
-                        <th></th> 
+                        <th>EDITAR</th> 
+                        <th>ELIMINAR</th> 
                   </thead>
                    <?php foreach($categorias as $categoria):?>
                       <tr>
@@ -79,6 +80,9 @@
                         <td><?php echo $categoria->nombre; ?></td>
                         <td>
                         <a href=""  data-toggle="modal" data-target="#myModal<?php echo $categoria->id; ?>"  class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i> Editar</a>
+                        </td>
+                        <td>
+                        <a href="index.php?view=delcategoria&id=<?php echo $categoria->id;?>"  class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Eliminar</a>
                         </td>
                       </tr>  
 
