@@ -449,11 +449,11 @@
                                     <form role="form" action="./?action=processlogin" method="post"> 
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Usuario</label>
-                                            <input type="text" class="form-control" required="" id="exampleInputEmail1" placeholder="Ingrese su usuario" name="username">
+                                            <input type="text" class="form-control" required="" id="exampleInputEmail1" placeholder="Ingrese su usuario" name="username" autocomplete="off">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Password</label>
-                                            <input type="password" name="password" required="" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                            <input type="password" name="password" required="" class="form-control" id="exampleInputPassword1" placeholder="Password" autocomplete="off">
                                         </div>
                                      
                                         <div class="form-group">
