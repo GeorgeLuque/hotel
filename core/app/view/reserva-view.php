@@ -82,6 +82,8 @@
 </head>
 <body>
 
+
+
 <!--CALENDARIO-->
   <div id='calendar'></div>
  <!--FORMULARIO DE RESERVA-->

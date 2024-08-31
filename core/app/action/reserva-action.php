@@ -103,7 +103,11 @@ switch ($accion) {
 
     case 'eliminar':
         //delete instruction
+        $procesoCancelacion = ProcesoData::getById($_POST['id']);
+
         $respuesta = false;
+        $respuesta2 = false;
+        
         if (isset($_POST['id'])) {
             $sentenciaSQL = $pdo->prepare('DELETE FROM proceso WHERE id=:id');
             $respuesta = $sentenciaSQL->execute([
@@ -112,8 +116,23 @@ switch ($accion) {
         }
         //echo json_encode($respuesta);
         //break;
-
         if($respuesta){
+            $sentenciaSQL = $pdo->prepare("INSERT INTO
+            proceso_cancelados(id_habitacion,id_cliente,dinero_dejado,id_tipo_pago,fecha_entrada,fecha_salida,total,id_usuario,cant_personas,id_caja,estado,fecha_creada,observacion,pagado)
+            VALUES(:id_habitacion,:id_cliente,0,1,:fecha_entrada,:fecha_salida,0,:id_usuario,1,NULL,3,NOW(),:observacion,0)");
+        
+            $respuesta2 = $sentenciaSQL->execute([
+                'id_cliente' => $procesoCancelacion->id_cliente,
+                'id_habitacion' => $procesoCancelacion->id_habitacion,
+                'fecha_entrada' => $procesoCancelacion->fecha_entrada,
+                'fecha_salida' => $procesoCancelacion->fecha_salida,
+                'observacion' => $procesoCancelacion->observacion,
+                'id_usuario' => $procesoCancelacion->id_usuario, // Asegúrate de que este sea el nombre correcto
+            ]);
+        }
+        
+
+        if($respuesta2){
             $resp = array(
                 'status' => 'success', // O 'success' según sea el caso
                 'message' => 'Eliminado  Correctamente' // Un mensaje opcional
