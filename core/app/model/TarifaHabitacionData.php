@@ -39,6 +39,10 @@ class TarifaHabitacionData {
 		return Model::one($query[0],new TarifaHabitacionData());
 
 	}
+	public static function delByIdTArifa($id){
+		$sql = "delete from ".self::$tablename." where id_tarifa=$id";
+		Executor::doit($sql);
+	}
 
 
 	public static function getAll(){

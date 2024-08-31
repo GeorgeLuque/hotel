@@ -65,7 +65,8 @@
                   <thead style="color: white; background-color: #827e7e;">
                         <th>Nº</th> 
                         <th>NOMBRE</th>
-                        <th></th> 
+                        <th>EDITAR</th> 
+                        <th>ELIMINAR</th> 
                   </thead>
                    <?php foreach($tarifas as $tarifa):?>
                       <tr>
@@ -73,6 +74,9 @@
                         <td><?php echo $tarifa->nombre; ?></td>
                         <td>
                         <a href=""  data-toggle="modal" data-target="#myModal<?php echo $tarifa->id; ?>"  class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i> Editar</a>
+                        </td>
+                        <td>
+                        <a href="index.php?view=deltarifa_ha&id=<?php echo $tarifa->id;?>"  class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Eliminar</a>
                         </td>
                       </tr>  
 
