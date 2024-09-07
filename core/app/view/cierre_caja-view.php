@@ -9,18 +9,17 @@ $u = UserData::getById(Session::getUID());
 $usuario = $u->is_admin;
 $id_usuario = $u->id;
 
-
 $hora = date('H:i:s');
 $fecha_completo = date('Y-m-d H:i:s');
 
 ?>
 
 
-<?php 
-if($u->is_admin == 1){
-    $caja_abierta = CajaData::getCierreCaja(); 
-}else{
-    $caja_abierta = CajaData::getCierreCajaPorUsuario($id_usuario); 
+<?php
+if ($u->is_admin == 1) {
+    $caja_abierta = CajaData::getCierreCaja();
+} else {
+    $caja_abierta = CajaData::getCierreCajaPorUsuario($id_usuario);
 }
 
 ?>
@@ -53,9 +52,6 @@ if($u->is_admin == 1){
                         <h5 class="control-label text-red"><?php echo $hoy . ' ' . $hora; ?></h5>
                     </td>
                 </tr>
-
-
-
                 <!-- INGRESOS -->
                 <?php $montos_sin_cerrar = ProcesoData::getIngresoCaja($caja_abierta->id);
                 $total_sin_cerrar = 0;
@@ -68,10 +64,10 @@ if($u->is_admin == 1){
 
 
                 <?php  
-                                              if($caja_abierta->id!=0){ 
-                                              $reporproducts = ProcesoVentaData::getIngresoCaja($caja_abierta->id);
-                                              $subtotal3=0;
-                                              if(count($reporproducts)>0){ ?>
+                if($caja_abierta->id!=0){ 
+                $reporproducts = ProcesoVentaData::getIngresoCaja($caja_abierta->id);
+                $subtotal3=0;
+                if(count($reporproducts)>0){ ?>
                 <?php foreach($reporproducts as $reporproduct):?>
                 <?php $subtotal1 = $reporproduct->cantidad * $reporproduct->precio; ?>
                 <?php $subtotal3 = $subtotal1 + $subtotal3; ?>
@@ -102,10 +98,10 @@ if($u->is_admin == 1){
 
 
                 <?php  
-                                              if($caja_abierta->id!=0){ 
-                                              $reporproducts_es = ProcesoVentaData::getEgresoCaja($caja_abierta->id);
-                                              $subtotal4=0;
-                                              if(count($reporproducts_es)>0){ ?>
+                if($caja_abierta->id!=0){ 
+                $reporproducts_es = ProcesoVentaData::getEgresoCaja($caja_abierta->id);
+                $subtotal4=0;
+                if(count($reporproducts_es)>0){ ?>
                 <?php foreach($reporproducts_es as $reporproduct_e):?>
                 <?php $subtotal1 = $reporproduct_e->cantidad * $reporproduct_e->precio; ?>
                 <?php $subtotal4 = $subtotal1 + $subtotal4; ?>
@@ -158,6 +154,8 @@ if($u->is_admin == 1){
         </div>
         <!-- /tile footer -->
 
+        <!-- Hidden fields to store caja details -->
+
     </form>
     <?php }else{ ?>
     <div class="box-header with-border" style="text-align: center;">
@@ -179,11 +177,11 @@ if($u->is_admin == 1){
 
 
 
-<?php 
-if($u->is_admin == 1){
-    $cajas = CajaData::getAll(); 
-}else{
-    $cajas = CajaData::getAllPorUsuario($id_usuario); 
+<?php
+if ($u->is_admin == 1) {
+    $cajas = CajaData::getAll();
+} else {
+    $cajas = CajaData::getAllPorUsuario($id_usuario);
 }
 ?>
 
@@ -241,19 +239,20 @@ if($u->is_admin == 1){
                         } else {
                             echo "<label class='text-success'>CERRADO</label>";
                         } ?></td>
-                           <td>
-                                <?php if ($caja->estado == 1) { ?>
-                                <button class="btn btn-danger" onclick="seleccionarCaja(
+                        <td>
+                            <?php if ($caja->estado == 1) { ?>
+                            <button class="btn btn-danger"
+                                onclick="seleccionarCaja(
                                     '<?php echo $caja->id; ?>',
                                     '<?php echo $caja->monto_apertura; ?>',
                                     '<?php echo $caja->fecha_apertura; ?>',
                                     '<?php echo $caja->fecha_cierre; ?>',
                                     '<?php echo $caja->monto_cierre; ?>'
                                 )">SELECCIONAR</button>
-                                <?php } else { ?>
-                                <label class='text-success'>CERRADO</label>
-                                <?php } ?>
-                            </td>
+                            <?php } else { ?>
+                            <label class='text-success'>CERRADO</label>
+                            <?php } ?>
+                        </td>
                         <?php if($caja->estado==1){ ?>
                         <td><label class="form-label text-danger">[RE-IMPRIMIR]</label></td>
                         <?php } else{?>
@@ -273,13 +272,6 @@ if($u->is_admin == 1){
 
                 </div>
                 <?php }; ?>
-
-
-
-
-
-
-
             </div>
             <!-- /tile body -->
 
@@ -293,21 +285,22 @@ if($u->is_admin == 1){
 
 
 <script>
-function seleccionarCaja(id, montoApertura, fechaApertura, fechaCierre, montoCierre) {
-    // Actualiza los valores en los campos del formulario
-    document.querySelector('input[name="id_caja"]').value = id;
-    document.querySelector('input[name="monto_apertura"]').value = montoApertura;
-    document.querySelector('input[name="fecha_apertura"]').value = fechaApertura;
-    document.querySelector('input[name="fecha_cierre"]').value = fechaCierre;
+    function seleccionarCaja(id, montoApertura, fechaApertura, fechaCierre, montoCierre) {
+        // Actualiza los valores en los campos del formulario
+        document.querySelector('input[name="id_caja"]').value = id;
+        document.querySelector('input[name="monto_apertura"]').value = montoApertura;
+        document.querySelector('input[name="fecha_apertura"]').value = fechaApertura;
+        document.querySelector('input[name="fecha_cierre"]').value = fechaCierre;
 
-    // Actualizar el campo del monto de cierre con formato
-    const total = parseFloat(montoApertura) + parseFloat(montoCierre);
-    document.querySelector('input[name="monto_cierre"]').value = new Intl.NumberFormat('es-PY').format(total);
+        // Actualizar el campo del monto de cierre con formato
+        const total = parseFloat(montoApertura) + parseFloat(montoCierre);
+        document.querySelector('input[name="monto_cierre"]').value = new Intl.NumberFormat('es-PY').format(total);
 
-    // Actualiza el texto mostrado en la página
-    document.querySelector('.control-label.text-red').textContent = fechaCierre || '---';
-    document.querySelector('input[name="monto_apertura"]').value = new Intl.NumberFormat('es-PY').format(montoApertura);
-}
+        // Actualiza el texto mostrado en la página
+        //document.querySelector('.control-label.text-red').textContent = fechaCierre || '---';
+        document.querySelector('input[name="monto_apertura"]').value = new Intl.NumberFormat('es-PY').format(
+            montoApertura);
+    }
 </script>
 
 
@@ -329,14 +322,7 @@ function seleccionarCaja(id, montoApertura, fechaApertura, fechaCierre, montoCie
 </script>
 
 
-<script src="plugins/select2/select2.full.min.js"></script>
 
 
-<script>
-    $(function() {
-        //Initialize Select2 Elements
-        $(".select2").select2();
 
 
-    });
-</script>
