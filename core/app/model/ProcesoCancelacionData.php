@@ -1,9 +1,9 @@
 <?php
-class ProcesoData {
-	public static $tablename = "proceso";
+class ProcesoCanceladoData {
+	public static $tablename = "proceso_cancelados";
 
 
-	public function ProcesoData(){
+	public function ProcesoCanceladoData(){
 		$this->dinero_dejado = ""; 
 		$this->fecha_entrada = "";
 		$this->fecha_salida = "";
@@ -52,14 +52,14 @@ class ProcesoData {
 	public static function getById($id){
 		$sql = "select * from ".self::$tablename." where id=$id";
 		$query = Executor::doit($sql);
-		return Model::one($query[0],new ProcesoData());
+		return Model::one($query[0],new ProcesoCanceladoData());
 
 	}
 
 	public static function getByRecepcion($id){
 		$sql = "select * from ".self::$tablename." where id_habitacion=$id and estado=0";
 		$query = Executor::doit($sql);
-		return Model::one($query[0],new ProcesoData());
+		return Model::one($query[0],new ProcesoCanceladoData());
 
 	}
 
@@ -67,68 +67,68 @@ class ProcesoData {
 	public static function getAll(){
 		$sql = "select * from ".self::$tablename;
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new ProcesoData());
+		return Model::many($query[0],new ProcesoCanceladoData());
 	}
 
 
 	public static function getLike($q){
 		$sql = "select * from ".self::$tablename." where id_habitacion like '%$q%'";
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new ProcesoData());
+		return Model::many($query[0],new ProcesoCanceladoData());
 
 	}
 
 	public static function getProceso(){
 		$sql = "select * from ".self::$tablename." where estado=0";
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new ProcesoData());
+		return Model::many($query[0],new ProcesoCanceladoData());
 
 	} 
 
 	public static function getProcesoHabitacion($id_habitacion){
 		$sql = "select * from ".self::$tablename." where id_habitacion=$id_habitacion";
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new ProcesoData());
+		return Model::many($query[0],new ProcesoCanceladoData());
 
 	} 
 
 	public static function getProcesoCliente($q){
 		$sql = "select * from ".self::$tablename." where estado=0 and id_cliente=$q ";
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new ProcesoData()); 
+		return Model::many($query[0],new ProcesoCanceladoData()); 
 
 	}
 
 	public static function getReporteDiario($hoy){
 		$sql = "select * from ".self::$tablename." where (date(fecha_entrada) = \"$hoy\" or date(fecha_salida) = \"$hoy\") and pagado=1 ";
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new ProcesoData());
+		return Model::many($query[0],new ProcesoCanceladoData());
 
 	}
 
 	public static function getReporteDiarioUser($hoy,$user){
 		$sql = "select * from ".self::$tablename." where (date(fecha_entrada) = \"$hoy\" or date(fecha_salida) = \"$hoy\") and id_usuario=$user and pagado=1 ";
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new ProcesoData());
+		return Model::many($query[0],new ProcesoCanceladoData());
 
 	}
 
 	public static function getIngresoCaja($id_caja){
 		$sql = "select * from ".self::$tablename." where id_caja=$id_caja and pagado=1  ";
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new ProcesoData());
+		return Model::many($query[0],new ProcesoCanceladoData());
 	}
 
 	public static function getIngresoRangoFechas($start,$end){
 		$sql = "select * from ".self::$tablename." where  date(fecha_entrada) >= \"$start\" and date(fecha_entrada) <= \"$end\" and pagado=1  ";
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new ProcesoData());
+		return Model::many($query[0],new ProcesoCanceladoData());
 	}
 
 	public static function getIngresoRangoFechasReservas($start,$end){
 		$sql = "select * from ".self::$tablename." where  date(fecha_entrada) >= \"$start\" and date(fecha_entrada) <= \"$end\" and pagado = 0 and estado = 3  ";
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new ProcesoData());
+		return Model::many($query[0],new ProcesoCanceladoData());
 	}
 
 
@@ -137,21 +137,21 @@ class ProcesoData {
 	public static function getReporteMensualUser($anio,$mes,$user){
 		$sql = "select * from ".self::$tablename." where ( year(fecha_entrada) = $anio or year(fecha_salida) = $anio) and (month(fecha_entrada) = $mes or month(fecha_salida) = $mes) and id_usuario=$user ";
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new ProcesoData());
+		return Model::many($query[0],new ProcesoCanceladoData());
 
 	}
 
 	public static function getReporteMensual($anio,$mes){
 		$sql = "select * from ".self::$tablename." where ( year(fecha_entrada) = $anio or year(fecha_salida) = $anio) and (month(fecha_entrada) = $mes or month(fecha_salida) = $mes)  ";
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new ProcesoData());
+		return Model::many($query[0],new ProcesoCanceladoData());
 
 	}
 
 	public static function getReporteMensual11($dia,$mes){
 		$sql = "select * from ".self::$tablename." where day(fecha_entrada) = \"$dia\"  and month(fecha_entrada) = \"$mes\" ";
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new ProcesoData());
+		return Model::many($query[0],new ProcesoCanceladoData());
 
 	}
 
@@ -163,23 +163,18 @@ class ProcesoData {
 
 				GROUP BY id_habitacion";
 		$query = Executor::doit($sql);
-		return Model::Many($query[0], new ProcesoData());
+		return Model::Many($query[0], new ProcesoCanceladoData());
 	}
 	
-	public static function  getCantidadDeReservas($start ,$end){
-		$sql = "SELECT COUNT(*) as cantidad FROM ".self::$tablename." WHERE date(fecha_entrada) >= \"$start\" and date(fecha_entrada) <= \"$end\" and pagado = 0 and estado = 3 and id_tarifa is null";
+	public static function  getCantidadDeCancelaciones(){
+		$sql = "SELECT COUNT(*) as cantidad FROM ".self::$tablename." WHERE pagado = 0 and estado = 3 and id_tarifa is null";
         $query = Executor::doit($sql);
-        return Model::one($query[0], new ProcesoData());
+        return Model::one($query[0], new ProcesoCanceladoData());
 	}
-	public static function  getCantidadDeCancelaciones($start ,$end){
-		$sql = "SELECT COUNT(*) as cantidad FROM proceso_cancelados WHERE date(fecha_entrada) >= \"$start\" and date(fecha_entrada) <= \"$end\" and pagado = 0 and estado = 3";
+	public static function  getCantidadDeCheckin(){
+		$sql = "SELECT COUNT(*) as cantidad FROM ".self::$tablename." WHERE pagado = 0 and estado = 3";
         $query = Executor::doit($sql);
-        return Model::one($query[0], new ProcesoData());
-	}
-	public static function  getCantidadDeCheckin($start ,$end){
-		$sql = "SELECT COUNT(*) as cantidad FROM ".self::$tablename." WHERE date(fecha_entrada) >= \"$start\" and date(fecha_entrada) <= \"$end\" and  estado = 0 and id_caja = 0 and id_tarifa is not null";
-        $query = Executor::doit($sql);
-        return Model::one($query[0], new ProcesoData());
+        return Model::one($query[0], new ProcesoCanceladoData());
 	}
 	
 
