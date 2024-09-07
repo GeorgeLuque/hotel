@@ -30,6 +30,10 @@ class TarifaHabitacionData {
 		$sql = "update ".self::$tablename." set id_tarifa=$this->id_tarifa,id_habitacion=$this->id_habitacion,precio=\"$this->precio\" where id=$this->id";
 		Executor::doit($sql);
 	}
+	public static function updateConParams($id,$precio){
+		$sql = "update ".self::$tablename." set precio=\"$precio\" where id=$id";
+		Executor::doit($sql);
+	}
 
 	
 
