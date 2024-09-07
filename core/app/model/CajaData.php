@@ -58,6 +58,13 @@ class CajaData {
 
 
 
+	public static function getAllPorUsuario($id){
+		$sql = "select * from ".self::$tablename." where id_usuario=$id order by fecha_apertura desc ";
+		$query = Executor::doit($sql);
+		$cajas = Model::many($query[0],new CajaData());
+		//print_r($cajas);
+		return $cajas;
+	}
 	public static function getAll(){
 		$sql = "select * from ".self::$tablename." order by fecha_apertura desc ";
 		$query = Executor::doit($sql);
@@ -68,6 +75,14 @@ class CajaData {
 
 	public static function getCierreCaja(){
 		$sql = "select * from ".self::$tablename." where estado = 1";
+		$query = Executor::doit($sql);
+		$caja_abierta =  Model::one($query[0],new CajaData());
+		//$caja_abierta =  Model::many($query[0],new CajaData());
+		//print_r($caja_abierta);
+		return $caja_abierta;
+	}
+	public static function getCierreCajaPorUsuario($id){
+		$sql = "select * from ".self::$tablename." where estado = 1 and id_usuario = '$id'";
 		$query = Executor::doit($sql);
 		$caja_abierta =  Model::one($query[0],new CajaData());
 		//$caja_abierta =  Model::many($query[0],new CajaData());

@@ -9,6 +9,7 @@ $u = UserData::getById(Session::getUID());
 $usuario = $u->is_admin;
 $id_usuario = $u->id;
 
+
 $hora = date('H:i:s');
 $fecha_completo = date('Y-m-d H:i:s');
 
@@ -16,7 +17,11 @@ $fecha_completo = date('Y-m-d H:i:s');
 
 
 <?php 
-$caja_abierta = CajaData::getCierreCaja(); 
+if($u->is_admin == 1){
+    $caja_abierta = CajaData::getCierreCaja(); 
+}else{
+    $caja_abierta = CajaData::getCierreCajaPorUsuario($id_usuario); 
+}
 
 ?>
 <section class="tile tile-simple col-md-4 col-md-offset-4">
@@ -75,10 +80,6 @@ $caja_abierta = CajaData::getCierreCaja();
                 <?php }else{$subtotal3=0;} ?>
 
                 <!-- FIN INGRESOS -->
-
-
-
-
                 <!-- EGRESOS -->
 
                 <?php $montos_sin_cerrar_egresos = GastoData::getEgresoCaja($caja_abierta->id);
@@ -178,7 +179,13 @@ $caja_abierta = CajaData::getCierreCaja();
 
 
 
-<?php $cajas = CajaData::getAll(); ?>
+<?php 
+if($u->is_admin == 1){
+    $cajas = CajaData::getAll(); 
+}else{
+    $cajas = CajaData::getAllPorUsuario($id_usuario); 
+}
+?>
 
 
 
@@ -204,6 +211,7 @@ $caja_abierta = CajaData::getCierreCaja();
                         <th>FECHA CIERRE</th>
                         <th>MONTO CIERRE</th>
                         <th>ESTADO CAJA</th>
+                        <th>SELECCION</th>
                         <th>VOLVER A IMPRIMIR</th>
                     </thead>
 
@@ -233,6 +241,19 @@ $caja_abierta = CajaData::getCierreCaja();
                         } else {
                             echo "<label class='text-success'>CERRADO</label>";
                         } ?></td>
+                           <td>
+                                <?php if ($caja->estado == 1) { ?>
+                                <button class="btn btn-danger" onclick="seleccionarCaja(
+                                    '<?php echo $caja->id; ?>',
+                                    '<?php echo $caja->monto_apertura; ?>',
+                                    '<?php echo $caja->fecha_apertura; ?>',
+                                    '<?php echo $caja->fecha_cierre; ?>',
+                                    '<?php echo $caja->monto_cierre; ?>'
+                                )">SELECCIONAR</button>
+                                <?php } else { ?>
+                                <label class='text-success'>CERRADO</label>
+                                <?php } ?>
+                            </td>
                         <?php if($caja->estado==1){ ?>
                         <td><label class="form-label text-danger">[RE-IMPRIMIR]</label></td>
                         <?php } else{?>
@@ -271,6 +292,23 @@ $caja_abierta = CajaData::getCierreCaja();
 <!-- /row -->
 
 
+<script>
+function seleccionarCaja(id, montoApertura, fechaApertura, fechaCierre, montoCierre) {
+    // Actualiza los valores en los campos del formulario
+    document.querySelector('input[name="id_caja"]').value = id;
+    document.querySelector('input[name="monto_apertura"]').value = montoApertura;
+    document.querySelector('input[name="fecha_apertura"]').value = fechaApertura;
+    document.querySelector('input[name="fecha_cierre"]').value = fechaCierre;
+
+    // Actualizar el campo del monto de cierre con formato
+    const total = parseFloat(montoApertura) + parseFloat(montoCierre);
+    document.querySelector('input[name="monto_cierre"]').value = new Intl.NumberFormat('es-PY').format(total);
+
+    // Actualiza el texto mostrado en la página
+    document.querySelector('.control-label.text-red').textContent = fechaCierre || '---';
+    document.querySelector('input[name="monto_apertura"]').value = new Intl.NumberFormat('es-PY').format(montoApertura);
+}
+</script>
 
 
 <script src="assets/js/vendor/bootstrap/bootstrap.min.js"></script>
