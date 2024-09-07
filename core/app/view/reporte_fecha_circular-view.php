@@ -38,6 +38,7 @@
     <!-- Encabezado -->
     <div class="tile-header dvd dvd-btm">
         <h1 class="custom-font"><strong>Estadísticas de Reservas, Cancelaciones y Check-ins</strong></h1>
+        <h1 class="custom-font"><strong>    desde: </strong><?php echo $_POST['start'] . ' - ' . $_POST['end']; ?></h1>
         <ul class="controls">
             <li class="remove">
                 <a href="" onclick="window.print();">
