@@ -270,12 +270,7 @@
                     </div>
                   </div>
 
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon"> Giro &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                      <input type="text" class="form-control col-md-8" value="<?php echo $cliente->giro; ?>" name="giro"  placeholder="Ingrese Giro (OPCIONAL)">
-                    </div>
-                  </div>
+
 
                   <div class="form-group">
                     <div class="input-group">
