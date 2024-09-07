@@ -148,7 +148,7 @@
                 <div class="col-md-offset-1 col-md-10">
 
                   <div class="form-group" >
-                     <label>RUC</label>
+                     <label></label>
                     <div class="input-group">
                       <span class="input-group-addon"> RUC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                       <input type="text" class="form-control col-md-12" name="rnc" value="<?php if($rnc!='NULL'){ echo $rnc;  } ?>" >
@@ -180,7 +180,7 @@
                 <div class="col-md-offset-1 col-md-10">
          
                   <div class="form-group">
-                    <label>Ciudad</label>
+                    <label></label>
                     <div class="input-group">
                       <span class="input-group-addon"> Ciudad &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                       <input type="text" class="form-control col-md-12" name="ciudad" value="<?php if($ciudad!='NULL'){ echo $ciudad;  } ?>">
