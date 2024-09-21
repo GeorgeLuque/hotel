@@ -96,6 +96,12 @@ class CajaData {
 		$cajas = Model::many($query[0],new CajaData());
 		return $cajas;
 	}
+	public static function getAllAbiertoPorUsuario($id){
+		$sql = "select * from ".self::$tablename." where estado = 1 and id_usuario = '$id'";
+		$query = Executor::doit($sql);
+		$cajas = Model::one($query[0],new CajaData());
+		return $cajas;
+	}
 
 
 	public static function getLike($p){

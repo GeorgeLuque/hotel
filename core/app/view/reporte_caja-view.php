@@ -1,12 +1,9 @@
 <link rel="stylesheet" href="assets/js/vendor/footable/css/footable.core.min.css">
-
 <?php
 date_default_timezone_set('America/Asuncion');
 $hoy = date('Y-m-d');
 $hora = date('H:i:s');
-
 ?>
-
 <style type="text/css">
     table.dataTable thead .sorting:after {
         opacity: 0.0;
@@ -19,8 +16,6 @@ $hora = date('H:i:s');
         opacity: 0.0;
     }
 </style>
-
-
 <body id="minovate" class="appWrapper sidebar-sm-forced">
     <div class="row">
         <section class="content-header">
@@ -31,12 +26,6 @@ $hora = date('H:i:s');
             </ol>
         </section>
     </div>
-
-
-
-
-
-
     <style type="text/css">
         .hh:hover {
             background-color: white;
@@ -70,13 +59,8 @@ $hora = date('H:i:s');
             margin-bottom: 0px;
         }
     </style>
-
-
-
     <br>
-
     <?php $cajas = CajaData::getAllAbierto(); 
-
       /*
       if(count($cajas)>0){ 
         $id_caja=$cajas->id;
@@ -98,13 +82,11 @@ $hora = date('H:i:s');
             <!-- /.box-tools -->
         </div>
         <!-- /.box-header -->
-
-
-        <!-- /.box-header -->
         <form method="post" action="index.php?view=agregar_caja" id="addcaja">
             <div class="tile-body p-0" style="text-align: left;">
                 <!-- INGRESOS -->
                 <?php $montos_sin_cerrar = ProcesoData::getIngresoCaja($id_caja);
+            //    print_r($monto_sin_cerrar);
                 $total_sin_cerrar = 0;
                 if (count($montos_sin_cerrar) > 0) {
                     foreach ($montos_sin_cerrar as $monto_sin_cerrar):
@@ -112,13 +94,11 @@ $hora = date('H:i:s');
                     endforeach;
                 }
                 ?>
-
-
                 <?php  
-                                              if($id_caja!=0){ 
-                                              $reporproducts = ProcesoVentaData::getIngresoCaja($id_caja);
-                                              $subtotal3=0;
-                                              if(count($reporproducts)>0){ ?>
+                 if($id_caja!=0){ 
+                 $reporproducts = ProcesoVentaData::getIngresoCaja($id_caja);
+                 $subtotal3=0;
+                 if(count($reporproducts)>0){ ?>
                 <?php foreach($reporproducts as $reporproduct):?>
                 <?php $subtotal1 = $reporproduct->cantidad * $reporproduct->precio; ?>
                 <?php $subtotal3 = $subtotal1 + $subtotal3; ?>
@@ -128,54 +108,11 @@ $hora = date('H:i:s');
 
                 <!-- FIN INGRESOS -->
 
-
-
-
-                <!-- EGRESOS -->
-
-                <?php $montos_sin_cerrar_egresos = GastoData::getEgresoCaja($id_caja);
-                $total_sin_cerrar_egreso = 0;
-                if (count($montos_sin_cerrar_egresos) > 0) {
-                    foreach ($montos_sin_cerrar_egresos as $montos_sin_cerrar_egreso):
-                        $total_sin_cerrar_egreso = $montos_sin_cerrar_egreso->precio + $total_sin_cerrar_egreso;
-                    endforeach;
-                }
-                ?>
-
-                <?php $montos_sin_cerrar_sueldos = ProcesoSueldoData::getSueldoCaja($id_caja);
-                $total_sin_cerrar_sueldos = 0;
-                if (count($montos_sin_cerrar_sueldos) > 0) {
-                    foreach ($montos_sin_cerrar_sueldos as $montos_sin_cerrar_sueldo):
-                        $total_sin_cerrar_sueldos = $montos_sin_cerrar_sueldo->monto + $total_sin_cerrar_sueldos;
-                    endforeach;
-                }
-                ?>
-
-
-                <?php  
-                                              if($id_caja!=0){ 
-                                              $reporproducts_es = ProcesoVentaData::getEgresoCaja($id_caja);
-                                              $subtotal4=0;
-                                              if(count($reporproducts_es)>0){ ?>
-                <?php foreach($reporproducts_es as $reporproduct_e):?>
-                <?php $subtotal1 = $reporproduct_e->cantidad * $reporproduct_e->precio; ?>
-                <?php $subtotal4 = $subtotal1 + $subtotal4; ?>
-                <?php endforeach; ?>
-                <?php }else{$subtotal4=0;} ?>
-                <?php }else{$subtotal4=0;} ?>
-
-
-
-                <!-- Total egreso -->
-                <?php $total_egreso = $total_sin_cerrar_egreso + $total_sin_cerrar_sueldos + $subtotal4; ?>
-                <!-- Fin Total egreso -->
-
                 <!-- Total ingreso -->
                 <?php $total_ingreso = $total_sin_cerrar + $subtotal3; ?>
                 <!-- Fin Total ingreso -->
                 <?php ?>
                 <table class="table mb-0">
-
                     <tr>
                         <td>
                             <h5>FECHA:</h5>
@@ -228,22 +165,9 @@ $hora = date('H:i:s');
                       -->
 
                 </table>
-
             </div>
-
-
-
-
-
         </form>
-
-
     </section>
-
-
-
-
-
 
     <section>
         <div class="row">
@@ -252,7 +176,7 @@ $hora = date('H:i:s');
                 <!-- Custom Tabs (Pulled to the right) -->
 
                 <div class="nav-tabs-custom">
-                  <!--
+                    <!--
                     <ul class="nav nav-tabs" style="background-color: #d2d6de;">
                         <li class="active"><a href="#tab_1" data-toggle="tab">Tabla alquiler</a></li>
                         <li><a href="#tab_2" data-toggle="tab">Tabla servicio a la habitación</a></li>
@@ -320,7 +244,6 @@ $hora = date('H:i:s');
                   ?>
                             <table id="searchTextResults" data-filter="#filter" data-page-size="7"
                                 class="footable table table-custom" style="font-size: 11px;">
-
                                 <thead style="color: black; background-color: #d2d6de;">
                                     <th>Nº</th>
                                     <th>Habitación</th>
@@ -356,7 +279,6 @@ $hora = date('H:i:s');
                                     <th><b>Gs. <?php echo number_format($subtotal2, 0, '.', ','); ?></b> </th>
                                     <th></th>
                                 </tfoot>
-
                             </table>
 
                             <?php }else{ 
@@ -365,8 +287,6 @@ $hora = date('H:i:s');
                 };
                 ?>
                         </div>
-                        <!-- /.tab-pane -->
-
                         <!-- /.tab-pane -->
                     </div>
                     <!-- /.tab-content -->
@@ -383,7 +303,6 @@ $hora = date('H:i:s');
     }else{
   echo "<p class='danger'>No tiene ninguna caja abierta</p>";
 } ?>
-
 
     <script src="assets/js/vendor/bootstrap/bootstrap.min.js"></script>
     <script src="assets/js/vendor/jRespond/jRespond.min.js"></script>

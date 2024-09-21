@@ -246,7 +246,6 @@ if ($u->is_admin == 1) {
                                     '<?php echo $caja->id; ?>',
                                     '<?php echo $caja->monto_apertura; ?>',
                                     '<?php echo $caja->fecha_apertura; ?>',
-                                    '<?php echo $caja->fecha_cierre; ?>',
                                     '<?php echo $caja->monto_cierre; ?>'
                                 )">SELECCIONAR</button>
                             <?php } else { ?>
@@ -285,12 +284,12 @@ if ($u->is_admin == 1) {
 
 
 <script>
-    function seleccionarCaja(id, montoApertura, fechaApertura, fechaCierre, montoCierre) {
+    function seleccionarCaja(id, montoApertura, fechaApertura, montoCierre) {
         // Actualiza los valores en los campos del formulario
         document.querySelector('input[name="id_caja"]').value = id;
         document.querySelector('input[name="monto_apertura"]').value = montoApertura;
         document.querySelector('input[name="fecha_apertura"]').value = fechaApertura;
-        document.querySelector('input[name="fecha_cierre"]').value = fechaCierre;
+       // document.querySelector('input[name="fecha_cierre"]').value = fechaCierre;
 
         // Actualizar el campo del monto de cierre con formato
         const total = parseFloat(montoApertura) + parseFloat(montoCierre);

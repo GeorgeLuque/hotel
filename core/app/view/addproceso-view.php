@@ -1,5 +1,6 @@
 <?php
-$session_id= session_id(); 
+$u = UserData::getById(Session::getUID());
+$session_id = session_id(); 
 ini_set('date.timezone','America/Lima'); 
 
 	if(count($_POST)>0){
@@ -7,8 +8,10 @@ ini_set('date.timezone','America/Lima');
  
 	
 
-	$cajas = CajaData::getAllAbierto(); 
- 	if(count($cajas)>0){ $id_caja=$cajas->id;
+	$caja = CajaData::getAllAbiertoPorUsuario($u->id); 
+ // print_r($caja);
+ 	if(count(get_object_vars($caja))>0){ 
+    $id_caja=$caja->id;
  	}else{$id_caja='NULL';}
  
 
