@@ -177,7 +177,7 @@ class ProcesoData {
         return Model::one($query[0], new ProcesoData());
 	}
 	public static function  getCantidadDeCheckin($start ,$end){
-		$sql = "SELECT COUNT(*) as cantidad FROM ".self::$tablename." WHERE date(fecha_entrada) >= \"$start\" and date(fecha_entrada) <= \"$end\" and  estado = 0 and id_caja = 0 and id_tarifa is not null";
+		$sql = "SELECT COUNT(*) as cantidad FROM ".self::$tablename." WHERE date(fecha_entrada) >= '$start' and date(fecha_entrada) <= '$end' and  estado = 0  and id_tarifa is not null";
         $query = Executor::doit($sql);
         return Model::one($query[0], new ProcesoData());
 	}
