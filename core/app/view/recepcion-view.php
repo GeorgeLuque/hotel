@@ -37,8 +37,13 @@
       <div class="tile-body">
           <div class="row">
             <?php if(isset($_GET['buscar']) and $_GET['buscar']!=""){ ?>
-                  <?php $cliente=PersonaData::getLike($_GET['buscar']); ?>
-                  <?php $procesos = ProcesoData::getProcesoCliente($cliente->id);
+                  <?php $cliente=PersonaData::getLike($_GET['buscar']); 
+                  //print_r($cliente);
+                  ?>
+                  <?php 
+                  //print_r($cliente);
+                  $procesos = ProcesoData::getProcesoCliente($cliente->id);
+                 // print_r($procesos);
                   if(count($procesos)>0){ ?> 
                    <?php foreach($procesos as $proceso):?>
                   <div class="col-lg-2 col-xs-6">
@@ -80,7 +85,8 @@
                       <section class="tile bg-greensea widget-appointments">
                       
                       <?php } else if($habitacion->estado==2){?>
-                      <?php $proceso = ProcesoData::getByRecepcion($habitacion->id);?>
+                      <?php $proceso = ProcesoData::getByRecepcion($habitacion->id);
+                      ?>
                       <section class="tile bg-danger widget-appointments">
                       
                       <?php } else if($habitacion->estado==3){?>
@@ -135,12 +141,12 @@
 
                                 <!-- tile body -->
                                 <div class="tile-body" style="padding: 1px;">
-                                   <h4 style="text-align: center; font-size: 12px;"><?php echo substr($proceso->getCliente()->nombre, 0,20); ?></h4>
+                                   <h4 style="text-align: center; font-size: 12px;"><?php 
+                                   echo substr($proceso->getCliente()->nombre, 0,20); 
+                                  // $proceso->getCliente(); 
+                                   ?></h4>
                                 </div>
                                 <!-- /tile body -->
-
-
-
                                 <div class="modal fade bs-example-modal-xm" id="myModalCheckOut<?php echo $habitacion->id; ?>" role="dialog" aria-labelledby="myModalLabel">
                                         <div class="modal-dialog modal-info">
                                           <div class="modal-dialog">

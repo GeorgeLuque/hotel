@@ -109,7 +109,7 @@ class PersonaData {
  
 
 	public static function getLike($q){
-		$sql = "select * from ".self::$tablename." where nombre like '%$q%' or documento like '%$q%'";
+		$sql = "select * from ".self::$tablename." where nombre like '%$q%' or documento like '%$q%' order by 1 desc";
 		$query = Executor::doit($sql);
 		return Model::one($query[0],new PersonaData());
 

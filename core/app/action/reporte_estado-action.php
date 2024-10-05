@@ -19,7 +19,7 @@
 
               <?php $habitaciones = HabitacionData::getAll();
                 if(count($habitaciones)>0){
-                  // si hay usuarios
+
                   ?>
                   <table  class="table table-custom" style="font-size: 11px;" border="1px">
 
@@ -66,11 +66,6 @@
 
 </div>
 </div>
-
-     
-
-       
-
 
        <script src="assets/js/vendor/jquery/jquery-1.11.2.min.js"></script>
         

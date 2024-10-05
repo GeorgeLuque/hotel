@@ -83,12 +83,12 @@
                             <td><?php echo $tarifa_ha->getTarifa()->nombre; ?></td>
                             <td><?php echo number_format($tarifa_ha->precio, 0, '.', '.'); ?></td>
                             <td>
-                              <a data-toggle="modal" data-target="#myEditModal" 
-                                onclick="modTarifa(<?php echo $tarifa_ha->id; ?>, '<?php echo $tarifa_ha->getTarifa()->nombre; ?>')" 
-                                class="btn btn-info btn-xs">
-                                <i class="fa fa-pencil-square-o"></i> Modificar tarifa
-                              </a>
-                          </td>
+                                <a data-toggle="modal" data-target="#myEditModal"
+                                    onclick="modTarifa(<?php echo $tarifa_ha->id; ?>, '<?php echo $tarifa_ha->getTarifa()->nombre; ?>')"
+                                    class="btn btn-info btn-xs">
+                                    <i class="fa fa-pencil-square-o"></i> Modificar tarifa
+                                </a>
+                            </td>
 
 
                             <td>
@@ -193,7 +193,7 @@
                                             <span class="input-group-addon"> Tarifa</span>
                                             <input type="text" class="form-control" name="nombre_tarifa"
                                                 id="nombre_tarifa" required readonly>
-                                                <input type="hidden" id="id_mod" name="id">
+                                            <input type="hidden" id="id_mod" name="id">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -201,7 +201,7 @@
                                             <span class="input-group-addon"> Precio</span>
                                             <input type="number" class="form-control" name="precio" required
                                                 placeholder="Ejem. 180">
-                                                <input type="hidden" name="id_habitacion" value="<?php echo $_GET['id']; ?>">
+                                            <input type="hidden" name="id_habitacion" value="<?php echo $_GET['id']; ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -234,9 +234,9 @@
     <script src="assets/js/vendor/jquery/jquery-1.11.2.min.js"></script>
     <script>
         function modTarifa(id, nombre) {
-        //  console.log(nombre);
-            document.getElementById('nombre_tarifa').value=nombre;
-            document.getElementById('id_mod').value=id;
+            //  console.log(nombre);
+            document.getElementById('nombre_tarifa').value = nombre;
+            document.getElementById('id_mod').value = id;
         }
     </script>
 

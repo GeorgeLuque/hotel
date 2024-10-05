@@ -15,6 +15,14 @@ class TarifaHabitacionData {
 		$sql .= "value ($this->id_tarifa,$this->id_habitacion,\"$this->precio\")";
 		return Executor::doit($sql);
 	}
+	public function addNew(){
+		$sql = "INSERT INTO tarifa_habitacion (id_tarifa, id_habitacion, precio) ";
+		$sql .= "SELECT $this->id_tarifa, $this->id_habitacion, \"$this->precio\" ";
+		$sql .= "WHERE NOT EXISTS (";
+		$sql .= "    SELECT 1 FROM tarifa_habitacion WHERE id_tarifa = $this->id_tarifa AND id_habitacion = $this->id_habitacion";
+		$sql .= ")";
+		return Executor::doit($sql);
+	}
 
 	public static function delById($id){
 		$sql = "delete from ".self::$tablename." where id=$id";
@@ -44,7 +52,7 @@ class TarifaHabitacionData {
 
 	}
 	public static function delByIdTArifa($id){
-		$sql = "delete from ".self::$tablename." where id_tarifa=$id";
+		$sql = "delete from ".self::$tablename." where id=$id";
 		Executor::doit($sql);
 	}
 

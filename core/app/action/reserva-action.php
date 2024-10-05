@@ -5,13 +5,13 @@ $base = new Database();
 $pdo = $base->connect1();
 
 $accion = isset($_GET['accion']) ? $_GET['accion'] : 'leer';
-//echo '<pre>'; print_r($accion); echo '</pre>';
+
 switch ($accion) {
     case 'agregar':
-        //add instruction
+
         $clientes = PersonaData::getLikeDni($_POST['documento']);
         if (!is_array($clientes)) {
-            $clientes = []; // Devolver el array de resultados
+            $clientes = []; 
         }
         if (count($clientes) > 0) {
             $id_cliente = $clientes->id;
@@ -30,21 +30,24 @@ switch ($accion) {
             $id_cliente = $s[1];
         }
 
-        //validar si no hay reserva para ese dia
+
         $sentenciaSQL = $pdo->prepare('SELECT * FROM proceso WHERE id_habitacion = :id_habitacion AND fecha_entrada = :fecha_entrada');
 
-        // Asignar valores a los parámetros
-        $sentenciaSQL->bindParam(':id_habitacion', $_POST['id_habitacion'], PDO::PARAM_INT); // Si id_habitacion es un número entero
-        $sentenciaSQL->bindParam(':fecha_entrada', $_POST['start'], PDO::PARAM_STR); // Si fecha_entrada es una cadena
 
-        // Ejecutar la consulta
+        $sentenciaSQL->bindParam(':id_habitacion', $_POST['id_habitacion'], PDO::PARAM_INT); 
+       
+        $sentenciaSQL->bindParam(':fecha_entrada', $_POST['start'], PDO::PARAM_STR);
+
+        
+
+
         $sentenciaSQL->execute();
         $resultado = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 
 		if (!empty($resultado)) {
 					$resp = array(
-						'status' => 'error', // O 'success' según sea el caso
-						'message' => 'Reserva anterior ya existente' // Un mensaje opcional
+						'status' => 'error', 
+						'message' => 'Reserva anterior ya existente' 
 					);
 					echo json_encode($resp);
 					break;
@@ -63,14 +66,14 @@ switch ($accion) {
         ]);
 		
 		$resp = array(
-			'status' => 'success', // O 'success' según sea el caso
-			'message' => 'Registrado Correctamente' // Un mensaje opcional
+			'status' => 'success', 
+			'message' => 'Registrado Correctamente' 
 		);
         echo json_encode($resp);
         break;
 
     case 'agregarDefault':
-        //add instruction
+ 
         $sentenciaSQL = $pdo->prepare("INSERT INTO
 			events(title,color,textColor,start,end)
 			values(:title,:description,:textColor,:start,:end)");
@@ -87,7 +90,7 @@ switch ($accion) {
         break;
 
     case 'addstatic':
-        //add instruction
+    
         $sentenciaSQL = $pdo->prepare("INSERT INTO
 			static(s_title,s_color,s_textcolor)
 			values(:s_title,:s_color,:s_textcolor)");
@@ -102,7 +105,7 @@ switch ($accion) {
         break;
 
     case 'eliminar':
-        //delete instruction
+        
         $procesoCancelacion = ProcesoData::getById($_POST['id']);
 
         $respuesta = false;
@@ -114,8 +117,7 @@ switch ($accion) {
                 'id' => $_POST['id'],
             ]);
         }
-        //echo json_encode($respuesta);
-        //break;
+
         if($respuesta){
             $sentenciaSQL = $pdo->prepare("INSERT INTO
             proceso_cancelados(id_habitacion,id_cliente,dinero_dejado,id_tipo_pago,fecha_entrada,fecha_salida,total,id_usuario,cant_personas,id_caja,estado,fecha_creada,observacion,pagado)
@@ -127,21 +129,21 @@ switch ($accion) {
                 'fecha_entrada' => $procesoCancelacion->fecha_entrada,
                 'fecha_salida' => $procesoCancelacion->fecha_salida,
                 'observacion' => $procesoCancelacion->observacion,
-                'id_usuario' => $procesoCancelacion->id_usuario, // Asegúrate de que este sea el nombre correcto
+                'id_usuario' => $procesoCancelacion->id_usuario, 
             ]);
         }
         
 
         if($respuesta2){
             $resp = array(
-                'status' => 'success', // O 'success' según sea el caso
-                'message' => 'Eliminado  Correctamente' // Un mensaje opcional
+                'status' => 'success', 
+                'message' => 'Eliminado  Correctamente' 
             );
             echo json_encode($resp);
             break;
         }
     case 'actualizar':
-        //update instruction
+
         $clientes = PersonaData::getLikeDni($_POST['documento']);
 
         $sentenciaSQL = $pdo->prepare('UPDATE  proceso SET id_habitacion=:id_habitacion,fecha_entrada=:start,fecha_salida=:end,observacion=:observacion WHERE id=:id ');
@@ -157,23 +159,22 @@ switch ($accion) {
         if (isset($clientes->id)) {
             $clientes->nombre = $_POST['nombre'];
             $clientes::updatecliente($clientes);
-           // PersonaData::updatePersona();
+   
         }
 
 
         if($respuesta){
             $resp = array(
-                'status' => 'success', // O 'success' según sea el caso
-                'message' => 'Actualizado Correctamente' // Un mensaje opcional
+                'status' => 'success', 
+                'message' => 'Actualizado Correctamente' 
             );
             echo json_encode($resp);
             break;
         }
 
-        //echo json_encode($respuesta);
-        //break;
+    
     default:
-        //selecciona los eventos del calendario
+        
         $sentenciaSQL = $pdo->prepare('SELECT id,nombre as title from habitacion');
         $sentenciaSQL->execute();
 

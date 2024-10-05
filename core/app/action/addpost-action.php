@@ -10,8 +10,6 @@ $p->is_public = $public;
 $p->user_id = 1;
 $p->add();
 
-// setcookie("added",$p->title);
-
  print "<script>window.location='index.php?view=newpost';</script>";
 }
 ?>

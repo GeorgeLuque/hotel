@@ -70,12 +70,10 @@ $operacion = ProcesoData::getById($_GET['id']);
 
 	    $pdf->setXY(2,$get_YD + 4);
 	    $pdf->SetFont('Arial', '', 7);
-	    //$pdf->MultiCell(73, 4.2, 'Javier Bogarin /Luque /Paraguay', 0,'C',0 ,1);
+	 
 
 	    $pdf->setXY(2,$get_YD + 8);
 	    $pdf->SetFont('Arial', 'B', 7);
-	    //$pdf->MultiCell(73, 4.2, 'Serie : '.'A de 1 a 5000', 0,'C',0 ,1);
-
 	   
 
 	    $get_YH = $pdf->GetY();
@@ -96,19 +94,19 @@ $operacion = ProcesoData::getById($_GET['id']);
 		$pdf->SetXY(3.8,$get_YH + 26);
 		$pdf->MultiCell(68, 4.2, 'Documento: '.$operacion->getCliente()->documento, 0,'L',0 ,1);
 		$pdf->SetXY(3.8,$get_YH + 30);
-		//$pdf->MultiCell(68, 4.2, 'Fecha nac: '.$operacion->getCliente()->fecha_nac, 0,'L',0 ,1);
+
 		$pdf->SetXY(3.8,$get_YH + 34);
 		$pdf->MultiCell(68, 4.2, 'Direccion: '.$operacion->getCliente()->direccion, 0,'L',0 ,1);
 		$pdf->SetXY(3.8,$get_YH + 38);
-		//$pdf->MultiCell(68, 4.2, 'Nacionalidad: '.$operacion->getCliente()->nacionalidad, 0,'L',0 ,1);
+
 		$pdf->SetXY(3.8,$get_YH + 42);
 		$pdf->MultiCell(68, 4.2, 'Telefono: '.$operacion->getCliente()->estado_civil, 0,'L',0 ,1);
 		$pdf->SetXY(3.8,$get_YH + 46);
-		//$pdf->MultiCell(68, 4.2, 'Ocupacion: '.$operacion->getCliente()->ocupacion, 0,'L',0 ,1);
+
 		$pdf->SetXY(3.8,$get_YH + 50);
-		//$pdf->MultiCell(68, 4.2, 'Medio transporte: '.$operacion->getCliente()->medio_transporte, 0,'L',0 ,1);
+
 		$pdf->SetXY(3.8,$get_YH + 54);
-		//$pdf->MultiCell(68, 4.2, 'Destino: '.$operacion->getCliente()->destino, 0,'L',0 ,1);
+
 		$pdf->SetFont('Arial', '', 9.2);
 		$pdf->Text(2, $get_YH + 60.5, '------------------------------------------------------------------');
 

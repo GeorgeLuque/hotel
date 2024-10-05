@@ -9,7 +9,6 @@ $operacion_n->id_tipo_pago = $_POST["id_tipo_pago"];
 $operacion_n->voucher = "NULL";
 $operacion_n->id_proceso=$_POST['id_proceso'];
 $operacion_n->add();
-// setcookie("added",$p->title);
 
 ?>
 

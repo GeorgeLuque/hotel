@@ -33,7 +33,7 @@ if(count($producto)>0){
 
 
 
-if (isset($_GET['id']))//codigo elimina un elemento del array
+if (isset($_GET['id']))
 {
 	
 	$del = TmpData::getById($_GET["id"]);
@@ -45,7 +45,7 @@ if (isset($_GET['id']))//codigo elimina un elemento del array
 
 		$tmps = TmpData::getAllTemporalCompra($session_id);
 		
-			// si hay usuarios
+
 			?>
 			
 			<?php

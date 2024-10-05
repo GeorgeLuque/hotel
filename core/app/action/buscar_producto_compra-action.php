@@ -7,7 +7,6 @@
 
 <?php $productos = ProductoData::getAll();
                 if(count($productos)>0){
-                  // si hay usuarios
                   ?>
                   <div class="form-group">
                     <label for="filter" style="padding-top: 5px">Buscar:</label>
@@ -33,11 +32,6 @@
                         if(count($entradas)>0){ ?>
                             <?php foreach($entradas as $entrada): $entrada_producto=$entrada->cantidad+$entrada_producto;  endforeach; ?>
                         <?php }else{ $entrada_producto=0; }; ?>
-
-                        
- 
-                        
-
                         <?php $salida_producto=0; ?>
                         <?php $salidas = ProcesoVentaData::getAllSalidas($producto->id);
                         if(count($salidas)>0){ ?>
@@ -86,12 +80,12 @@
 function valida(e){
     tecla = (document.all) ? e.keyCode : e.which;
 
-    //Tecla de retroceso para borrar, siempre la permite
+  
     if (tecla==8){
         return true;
     }
         
-    // Patron de entrada, en este caso solo acepta numeros
+
     patron =/[0-9]/;
     tecla_final = String.fromCharCode(tecla);
     return patron.test(tecla_final);

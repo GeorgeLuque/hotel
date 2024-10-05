@@ -1549,27 +1549,27 @@ if (is_array($inBL) && ($inBL[0] <= 0 || $inBL[1] <= 0)) {
     $inBL = null;
 }
 
-            // prepare the background color
+
             $pdfStyle = '';
             if ($background['color']) {
                 $this->pdf->setFillColorArray($background['color']);
                 $pdfStyle.= 'F';
             }
 
-            // if we have a background to fill => fill it with a path (because of the radius)
+
             if ($pdfStyle) {
                 $this->pdf->clippingPathStart($x, $y, $w, $h, $outTL, $outTR, $outBL, $outBR);
                 $this->pdf->Rect($x, $y, $w, $h, $pdfStyle);
                 $this->pdf->clippingPathStop();
             }
 
-            // prepare the background image
+
             if ($background['image']) {
                 $iName      = $background['image'];
                 $iPosition  = $background['position']!==null ? $background['position'] : array(0, 0);
                 $iRepeat    = $background['repeat']!==null   ? $background['repeat']   : array(true, true);
 
-                // size of the background without the borders
+
                 $bX = $x;
                 $bY = $y;
                 $bW = $w;
@@ -1590,21 +1590,20 @@ if (is_array($inBL) && ($inBL[0] <= 0 || $inBL[1] <= 0)) {
                     $bW-= $border['r']['width'];
                 }
 
-                // get the size of the image
-                // WARNING : if URL, "allow_url_fopen" must turned to "on" in php.ini
+
                 $imageInfos=@getimagesize($iName);
 
-                // if the image can not be loaded
+
                 if (count($imageInfos)<2) {
                     if ($this->_testIsImage) {
                         throw new HTML2PDF_exception(6, $iName);
                     }
                 } else {
-                    // convert the size of the image from pixel to the unit of the PDF
+
                     $imageWidth    = 72./96.*$imageInfos[0]/$this->pdf->getK();
                     $imageHeight    = 72./96.*$imageInfos[1]/$this->pdf->getK();
 
-                    // prepare the position of the backgroung
+
                     if ($iRepeat[0]) $iPosition[0] = $bX;
                     else if (preg_match('/^([-]?[0-9\.]+)%/isU', $iPosition[0], $match)) $iPosition[0] = $bX + $match[1]*($bW-$imageWidth)/100;
                     else $iPosition[0] = $bX+$iPosition[0];
@@ -1627,10 +1626,10 @@ if (is_array($inBL) && ($inBL[0] <= 0 || $inBL[1] <= 0)) {
                         $imageXmin =     $iPosition[0]; $imageXmax =     $iPosition[0]+$imageWidth;
                     }
 
-                    // build the path to display the image (because of radius)
+
                     $this->pdf->clippingPathStart($bX, $bY, $bW, $bH, $inTL, $inTR, $inBL, $inBR);
 
-                    // repeat the image
+
                     for ($iY=$imageYmin; $iY<$imageYmax; $iY+=$imageHeight) {
                         for ($iX=$imageXmin; $iX<$imageXmax; $iX+=$imageWidth) {
                             $cX = null;
@@ -1652,12 +1651,12 @@ if (is_array($inBL) && ($inBL[0] <= 0 || $inBL[1] <= 0)) {
                         }
                     }
 
-                    // end of the path
+
                     $this->pdf->clippingPathStop();
                 }
             }
 
-            // adding some loose (0.01mm)
+
             $loose = 0.01;
             $x-= $loose;
             $y-= $loose;
@@ -1668,13 +1667,13 @@ if (is_array($inBL) && ($inBL[0] <= 0 || $inBL[1] <= 0)) {
             if ($border['r']['width']) $border['r']['width']+= 2.*$loose;
             if ($border['b']['width']) $border['b']['width']+= 2.*$loose;
 
-            // prepare the test on borders
+
             $testBl = ($border['l']['width'] && $border['l']['color'][0]!==null);
             $testBt = ($border['t']['width'] && $border['t']['color'][0]!==null);
             $testBr = ($border['r']['width'] && $border['r']['color'][0]!==null);
             $testBb = ($border['b']['width'] && $border['b']['color'][0]!==null);
 
-            // draw the radius bottom-left
+
             if (is_array($outBL) && ($testBb || $testBl)) {
                 if ($inBL) {
                     $courbe = array();
@@ -1693,7 +1692,7 @@ if (is_array($inBL) && ($inBL[0] <= 0 || $inBL[1] <= 0)) {
                 $this->_drawCurve($courbe, $border['l']['color']);
             }
 
-            // draw the radius left-top
+
             if (is_array($outTL) && ($testBt || $testBl)) {
                 if ($inTL) {
                     $courbe = array();
@@ -1712,7 +1711,7 @@ if (is_array($inBL) && ($inBL[0] <= 0 || $inBL[1] <= 0)) {
                 $this->_drawCurve($courbe, $border['t']['color']);
             }
 
-            // draw the radius top-right
+
             if (is_array($outTR) && ($testBt || $testBr)) {
                 if ($inTR) {
                     $courbe = array();
@@ -1731,7 +1730,7 @@ if (is_array($inBL) && ($inBL[0] <= 0 || $inBL[1] <= 0)) {
                 $this->_drawCurve($courbe, $border['r']['color']);
             }
 
-            // draw the radius right-bottom
+
             if (is_array($outBR) && ($testBb || $testBr)) {
                 if ($inBR) {
                     $courbe = array();
@@ -1750,7 +1749,7 @@ if (is_array($inBL) && ($inBL[0] <= 0 || $inBL[1] <= 0)) {
                 $this->_drawCurve($courbe, $border['b']['color']);
             }
 
-            // draw the left border
+
             if ($testBl) {
                 $pt = array();
                 $pt[] = $x;                       $pt[] = $y+$h;
@@ -1778,7 +1777,7 @@ if (is_array($inBL) && ($inBL[0] <= 0 || $inBL[1] <= 0)) {
                 $this->_drawLine($pt, $border['l']['color'], $border['l']['type'], $border['l']['width'], $bord);
             }
 
-            // draw the top border
+
             if ($testBt) {
                 $pt = array();
                 $pt[] = $x;                          $pt[] = $y;
@@ -1806,7 +1805,7 @@ if (is_array($inBL) && ($inBL[0] <= 0 || $inBL[1] <= 0)) {
                 $this->_drawLine($pt, $border['t']['color'], $border['t']['type'], $border['t']['width'], $bord);
             }
 
-            // draw the right border
+
             if ($testBr) {
                 $pt = array();
                 $pt[] = $x+$w;                       $pt[] = $y;
@@ -1834,7 +1833,7 @@ if (is_array($inBL) && ($inBL[0] <= 0 || $inBL[1] <= 0)) {
                 $this->_drawLine($pt, $border['r']['color'], $border['r']['type'], $border['r']['width'], $bord);
             }
 
-            // draw the bottom border
+
             if ($testBb) {
                 $pt = array();
                 $pt[] = $x+$w;                       $pt[] = $y+$h;
@@ -1902,10 +1901,10 @@ if (is_array($inBL) && ($inBL[0] <= 0 || $inBL[1] <= 0)) {
             // set the fill color
             $this->pdf->setFillColorArray($color);
 
-            // if dashed or dotted
+
             if ($type=='dashed' || $type=='dotted') {
 
-                // clean the end of the line, if radius
+
                 if ($radius==1) {
                     $tmp = array(); $tmp[]=$pt[0]; $tmp[]=$pt[1]; $tmp[]=$pt[2]; $tmp[]=$pt[3]; $tmp[]=$pt[8]; $tmp[]=$pt[9];
                     $this->pdf->Polygon($tmp, 'F');
@@ -1929,7 +1928,7 @@ if (is_array($inBL) && ($inBL[0] <= 0 || $inBL[1] <= 0)) {
                     $pt = $tmp;
                 }
 
-                // horisontal or vertical line
+
                 if ($pt[2]==$pt[0]) {
                     $l = abs(($pt[3]-$pt[1])*0.5);
                     $px = 0;
@@ -1944,14 +1943,14 @@ if (is_array($inBL) && ($inBL[0] <= 0 || $inBL[1] <= 0)) {
                     $x2 = ($pt[6]+$pt[4])*0.5; $y2 = $pt[7];
                 }
 
-                // if dashed : 3x bigger than dotted
+
                 if ($type=='dashed') {
                     $px = $px*3.;
                     $py = $py*3.;
                 }
                 $mode = ($l/($px+$py)<.5);
 
-                // display the dotted/dashed line
+
                 for ($i=0; $l-($px+$py)*($i-0.5)>0; $i++) {
                     if (($i%2)==$mode) {
                         $j = $i-0.5;
@@ -1979,12 +1978,12 @@ if (is_array($inBL) && ($inBL[0] <= 0 || $inBL[1] <= 0)) {
                 }
             } else if ($type=='double') {
 
-                // if double, 2 lines : 0=>1/3 and 2/3=>1
+
                 $pt1 = $pt;
                 $pt2 = $pt;
 
                 if (count($pt)==12) {
-                    // line 1
+
                     $pt1[0] = ($pt[0]-$pt[10])*0.33 + $pt[10];
                     $pt1[1] = ($pt[1]-$pt[11])*0.33 + $pt[11];
                     $pt1[2] = ($pt[2]-$pt[10])*0.33 + $pt[10];
@@ -1996,7 +1995,7 @@ if (is_array($inBL) && ($inBL[0] <= 0 || $inBL[1] <= 0)) {
                     $pt2[10]= ($pt[10]-$pt[0])*0.33 + $pt[0];
                     $pt2[11]= ($pt[11]-$pt[1])*0.33 + $pt[1];
 
-                    // line 2
+
                     $pt2[2] = ($pt[2] -$pt[0])*0.33 + $pt[0];
                     $pt2[3] = ($pt[3] -$pt[1])*0.33 + $pt[1];
                     $pt2[4] = ($pt[4] -$pt[6])*0.33 + $pt[6];
@@ -2004,13 +2003,13 @@ if (is_array($inBL) && ($inBL[0] <= 0 || $inBL[1] <= 0)) {
                     $pt2[8] = ($pt[8] -$pt[6])*0.33 + $pt[6];
                     $pt2[9] = ($pt[9] -$pt[7])*0.33 + $pt[7];
                 } else {
-                    // line 1
+
                     $pt1[0] = ($pt[0]-$pt[6])*0.33 + $pt[6];
                     $pt1[1] = ($pt[1]-$pt[7])*0.33 + $pt[7];
                     $pt1[2] = ($pt[2]-$pt[4])*0.33 + $pt[4];
                     $pt1[3] = ($pt[3]-$pt[5])*0.33 + $pt[5];
 
-                    // line 2
+
                     $pt2[6] = ($pt[6]-$pt[0])*0.33 + $pt[0];
                     $pt2[7] = ($pt[7]-$pt[1])*0.33 + $pt[1];
                     $pt2[4] = ($pt[4]-$pt[2])*0.33 + $pt[2];
@@ -2019,7 +2018,7 @@ if (is_array($inBL) && ($inBL[0] <= 0 || $inBL[1] <= 0)) {
                 $this->pdf->Polygon($pt1, 'F');
                 $this->pdf->Polygon($pt2, 'F');
             } else if ($type=='solid') {
-                // solid line : draw directly the polygon
+
                 $this->pdf->Polygon($pt, 'F');
             }
         }

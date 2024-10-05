@@ -54,7 +54,7 @@ if(isset($_POST['documento']) and isset($_POST['nombre'])){
  
 
 
-if (isset($_GET['id']))//codigo elimina un elemento del array
+if (isset($_GET['id']))
 {
 	$del = ClienteProcesoData::getById($_GET["id"]);
 	$del->del();
@@ -64,7 +64,7 @@ if (isset($_GET['id']))//codigo elimina un elemento del array
 
 		$tmps = ClienteProcesoData::getAllTemporal($session_id);
 		
-			// si hay usuarios
+
 			?>
             <table class="table" border="1">
                 <thead>

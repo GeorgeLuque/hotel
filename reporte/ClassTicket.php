@@ -56,7 +56,7 @@ function Code39($xpos, $ypos, $code, $baseline=0.5, $height=5){
     $barChar['%'] = 'nnnwnwnwn';
 
     $this->SetFont('Arial','',10);
-    //$this->Text($xpos, $ypos + $height + 4, $code);
+
     $this->SetFillColor(0);
 
     $code = '*'.strtoupper($code).'*';
