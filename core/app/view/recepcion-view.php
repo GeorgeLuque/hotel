@@ -38,13 +38,10 @@
           <div class="row">
             <?php if(isset($_GET['buscar']) and $_GET['buscar']!=""){ ?>
                   <?php $cliente=PersonaData::getLike($_GET['buscar']); 
-                  //print_r($cliente);
-                  ?>
-                  <?php 
-                  //print_r($cliente);
-                  $procesos = ProcesoData::getProcesoCliente($cliente->id);
+                  if($cliente != null ){
+                    $procesos = ProcesoData::getProcesoCliente($cliente->id);
                  // print_r($procesos);
-                  if(count($procesos)>0){ ?> 
+                  if( count($procesos)>0 ){ ?> 
                    <?php foreach($procesos as $proceso):?>
                   <div class="col-lg-2 col-xs-6">
                     <section class="tile bg-danger widget-appointments">
@@ -67,9 +64,11 @@
                      </section>
                     </div>
                      <?php endforeach; ?>
-            
+                    
 
-               <?php }else{ echo"<h4 class='alert alert-success'>No se encontró Huesped en ninguna habitación</h4>";};
+               <?php 
+                  }else{ echo"<h4 class='alert alert-success'>No se encontró Huesped en ninguna habitación</h4>";}
+                }else{ echo"<h4 class='alert alert-success'>No se encontró Huesped en ninguna habitación</h4>";}
                 ?>
 
             <?php }else{ ?>
