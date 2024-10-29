@@ -12,9 +12,13 @@ ini_set('date.timezone','America/Lima');
  	}else{$id_caja='NULL';}
 
   $clienteV = PersonaData::getbyDni($_POST["documento"]);
-
+  $proceso = new ProcesoData();
+  $cliente_proceso = new ClienteProcesoData();
   if (!empty($clienteV)) {
     $s = $clienteV;
+    $proceso->id_cliente = $s->id;
+    $cliente_proceso->id_cliente=$s->id;
+
   } else {
     printf('cliente no existe');
  	$cliente = new PersonaData();
@@ -52,6 +56,8 @@ ini_set('date.timezone','America/Lima');
       $cliente->motivo = $motivo;
 
       $s = $cliente->add(); 
+      $proceso->id_cliente = $s[1];
+      $cliente_proceso->id_cliente=$s[1];
       
       
 }
@@ -70,10 +76,10 @@ ini_set('date.timezone','America/Lima');
   */
  
 
-	$proceso = new ProcesoData();
+
 	$proceso->id_habitacion = $_POST["id_habitacion"];
 	$proceso->id_tarifa = $_POST["id_tarifa"];
-	$proceso->id_cliente = $s->id;
+
 
 	$proceso->precio = $_POST["precio"];
 	
@@ -90,8 +96,8 @@ ini_set('date.timezone','America/Lima');
 	$f=$proceso->addIngreso();
 
 
-	$cliente_proceso = new ClienteProcesoData();
-      $cliente_proceso->id_cliente=$s->id;
+
+      
       $cliente_proceso->sesion=$session_id;
       $cliente_proceso->id_proceso=$f[1]; 
       $cliente_proceso->add(); 
