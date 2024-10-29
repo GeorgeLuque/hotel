@@ -5,17 +5,18 @@ ini_set('date.timezone','America/Lima');
 
 	if(count($_POST)>0){
 
- 
-	
-
-	$caja = CajaData::getAllAbiertoPorUsuario($u->id); 
+ 	$caja = CajaData::getAllAbiertoPorUsuario($u->id); 
  // print_r($caja);
  	if(count(get_object_vars($caja))>0){ 
     $id_caja=$caja->id;
  	}else{$id_caja='NULL';}
- 
 
- 	
+  $clienteV = PersonaData::getbyDni($_POST["documento"]);
+
+  if (!empty($clienteV)) {
+    $s = $clienteV;
+  } else {
+    printf('cliente no existe');
  	$cliente = new PersonaData();
       $cliente->tipo_documento = $_POST["tipo_documento"];
       $cliente->documento = $_POST["documento"];
@@ -51,18 +52,28 @@ ini_set('date.timezone','America/Lima');
       $cliente->motivo = $motivo;
 
       $s = $cliente->add(); 
+      
+      
+}
 
       
 
 	$habitacion = HabitacionData::getById($_POST["id_habitacion"]);
 	$habitacion->estado = 2;
 	$habitacion->updateEstado();
+  
+/* ******
+  $proc = ProcesoData::getProcesoHabitacion($_POST["id_habitacion"]) ;
+  if($proc['id_caja'] == null && $proc['estado'] == 3 && $proc['pagado'] == 0 ){
+    ProcesoData::delById($proc['id_habitacion']);
+  }
+  */
  
 
 	$proceso = new ProcesoData();
 	$proceso->id_habitacion = $_POST["id_habitacion"];
 	$proceso->id_tarifa = $_POST["id_tarifa"];
-	$proceso->id_cliente = $s[1];
+	$proceso->id_cliente = $s->id;
 
 	$proceso->precio = $_POST["precio"];
 	
@@ -80,7 +91,7 @@ ini_set('date.timezone','America/Lima');
 
 
 	$cliente_proceso = new ClienteProcesoData();
-      $cliente_proceso->id_cliente=$s[1];
+      $cliente_proceso->id_cliente=$s->id;
       $cliente_proceso->sesion=$session_id;
       $cliente_proceso->id_proceso=$f[1]; 
       $cliente_proceso->add(); 

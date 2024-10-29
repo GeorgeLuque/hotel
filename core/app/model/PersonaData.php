@@ -121,6 +121,12 @@ class PersonaData {
 		return Model::one($query[0],new PersonaData());
 
 	}
+	public static function getbyDni($documento){
+		$sql = "select * from ".self::$tablename." where documento=\"$documento\" ";
+		$query = Executor::doit($sql);
+		return Model::one($query[0],new PersonaData());
+
+	}
 
 }
 
