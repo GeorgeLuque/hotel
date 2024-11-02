@@ -463,7 +463,7 @@
 
 
         function estaCompleto() {
-            let txtId = document.getElementById("txtId").value.trim();
+            //let txtId = document.getElementById("txtId").value.trim();
             let idHabitacion = document.getElementById("id_habitacion").value.trim();
             let documento = document.getElementById("documento").value.trim();
             let nombre = document.getElementById("nombre").value.trim();
