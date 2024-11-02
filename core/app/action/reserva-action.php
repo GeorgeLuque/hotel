@@ -8,9 +8,9 @@ $accion = isset($_GET['accion']) ? $_GET['accion'] : 'leer';
 
 switch ($accion) {
     case 'agregar':
-
+        /*
         $clientes = PersonaData::getLikeDni($_POST['documento']);
-        if (!is_array($clientes)) {
+        if (!empty($clientes)) {
             $clientes = []; 
         }
         if (count($clientes) > 0) {
@@ -29,13 +29,39 @@ switch ($accion) {
             $s = $cliente->add001();
             $id_cliente = $s[1];
         }
+        */
+
+        $clientes = PersonaData::getLikeDni($_POST['documento']);
+
+        if (!empty($clientes)) {
+            $id_cliente = $clientes->id; // Suponiendo que $clientes es una lista de objetos PersonaData
+        /*
+
+           $resp = array(
+            'status' => 'error', 
+            'message' => 'cliente' 
+        );
+        echo json_encode($clientes->id);
+        break;
+
+
+     */
+        } else {
+            $cliente = new PersonaData();
+            $cliente->tipo_documento = 1;
+            $cliente->documento = $_POST['documento'];
+            $cliente->nombre = $_POST['nombre'];
+
+            $direccion = ($_POST['direccion'] != '') ? $_POST['direccion'] : 'NULL';
+            $cliente->direccion = $direccion;
+            $s = $cliente->add001();
+            $id_cliente = $s[1];
+        }
+
 
 
         $sentenciaSQL = $pdo->prepare('SELECT * FROM proceso WHERE id_habitacion = :id_habitacion AND fecha_entrada = :fecha_entrada');
-
-
-        $sentenciaSQL->bindParam(':id_habitacion', $_POST['id_habitacion'], PDO::PARAM_INT); 
-       
+        $sentenciaSQL->bindParam(':id_habitacion', $_POST['id_habitacion'], PDO::PARAM_INT);       
         $sentenciaSQL->bindParam(':fecha_entrada', $_POST['start'], PDO::PARAM_STR);
 
         
