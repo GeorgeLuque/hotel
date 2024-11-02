@@ -181,6 +181,12 @@ class ProcesoData {
         $query = Executor::doit($sql);
         return Model::one($query[0], new ProcesoData());
 	}
+
+	public static function  getReservaByParams($cliente ,$id_habitacion){
+		$sql = "SELECT * FROM ".self::$tablename." WHERE id_habitacion = '$id_habitacion' and id_cliente ='$cliente'  and id_tarifa is null  and estado =3 ";
+        $query = Executor::doit($sql);
+        return Model::one($query[0], new ProcesoData());
+	}
 	
 
 	

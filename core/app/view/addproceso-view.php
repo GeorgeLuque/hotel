@@ -1,121 +1,114 @@
 <?php
 $u = UserData::getById(Session::getUID());
-$session_id = session_id(); 
-ini_set('date.timezone','America/Lima'); 
+$session_id = session_id();
+ini_set('date.timezone', 'America/Lima');
 
-	if(count($_POST)>0){
+if (count($_POST) > 0) {
+    $caja = CajaData::getAllAbiertoPorUsuario($u->id);
+    // print_r($caja);
+    if (count(get_object_vars($caja)) > 0) {
+        $id_caja = $caja->id;
+    } else {
+        $id_caja = 'NULL';
+    }
 
- 	$caja = CajaData::getAllAbiertoPorUsuario($u->id); 
- // print_r($caja);
- 	if(count(get_object_vars($caja))>0){ 
-    $id_caja=$caja->id;
- 	}else{$id_caja='NULL';}
+    $clienteV = PersonaData::getbyDni($_POST['documento']);
+    $proceso = new ProcesoData();
+    $cliente_proceso = new ClienteProcesoData();
+    if (!empty($clienteV)) {
+        $s = $clienteV;
+        $proceso->id_cliente = $s->id;
+        $cliente_proceso->id_cliente = $s->id;
+    } else {
+        printf('cliente no existe');
+        $cliente = new PersonaData();
+        $cliente->tipo_documento = $_POST['tipo_documento'];
+        $cliente->documento = $_POST['documento'];
+        $cliente->nombre = $_POST['nombre'];
+        $cliente->giro = $_POST['giro'];
 
-  $clienteV = PersonaData::getbyDni($_POST["documento"]);
-  $proceso = new ProcesoData();
-  $cliente_proceso = new ClienteProcesoData();
-  if (!empty($clienteV)) {
-    $s = $clienteV;
-    $proceso->id_cliente = $s->id;
-    $cliente_proceso->id_cliente=$s->id;
+        $direccion = 'NULL';
+        if ($_POST['direccion'] != '') {
+            $direccion = $_POST['direccion'];
+        }
+        $cliente->direccion = $direccion;
 
-  } else {
-    printf('cliente no existe');
- 	$cliente = new PersonaData();
-      $cliente->tipo_documento = $_POST["tipo_documento"];
-      $cliente->documento = $_POST["documento"];
-      $cliente->nombre = $_POST["nombre"]; 
-      $cliente->giro = $_POST["giro"]; 
+        $nacionalidad = 'NULL';
+        if ($_POST['nacionalidad'] != '') {
+            $nacionalidad = $_POST['nacionalidad'];
+        }
+        $cliente->nacionalidad = $nacionalidad;
 
-      $direccion="NULL";
-        if($_POST["direccion"]!=""){ $direccion=$_POST["direccion"];}
-      $cliente->direccion = $direccion;
+        $estado_civil = 'NULL';
+        if ($_POST['estado_civil'] != '') {
+            $estado_civil = $_POST['estado_civil'];
+        }
+        $cliente->estado_civil = $estado_civil;
 
-      $nacionalidad="NULL";
-        if($_POST["nacionalidad"]!=""){ $nacionalidad=$_POST["nacionalidad"];}
-      $cliente->nacionalidad = $nacionalidad;
+        $ocupacion = 'NULL';
+        if ($_POST['ocupacion'] != '') {
+            $ocupacion = $_POST['ocupacion'];
+        }
+        $cliente->ocupacion = $ocupacion;
 
-      $estado_civil="NULL";
-        if($_POST["estado_civil"]!=""){ $estado_civil=$_POST["estado_civil"];}
-      $cliente->estado_civil = $estado_civil;
+        $medio_transporte = 'NULL';
+        if ($_POST['medio_transporte'] != '') {
+            $medio_transporte = $_POST['medio_transporte'];
+        }
+        $cliente->medio_transporte = $medio_transporte;
 
-      $ocupacion="NULL";
-        if($_POST["ocupacion"]!=""){ $ocupacion=$_POST["ocupacion"];}
-      $cliente->ocupacion = $ocupacion;
+        $destino = 'NULL';
+        if ($_POST['destino'] != '') {
+            $destino = $_POST['destino'];
+        }
+        $cliente->destino = $destino;
 
-      $medio_transporte="NULL";
-        if($_POST["medio_transporte"]!=""){ $medio_transporte=$_POST["medio_transporte"];}
-      $cliente->medio_transporte = $medio_transporte;
+        $motivo = 'NULL';
+        if ($_POST['motivo'] != '') {
+            $motivo = $_POST['motivo'];
+        }
+        $cliente->motivo = $motivo;
 
-      $destino="NULL";
-        if($_POST["destino"]!=""){ $destino=$_POST["destino"];}
-      $cliente->destino = $destino;
+        $s = $cliente->add();
+        $proceso->id_cliente = $s[1];
+        $cliente_proceso->id_cliente = $s[1];
+    }
 
-      $motivo="NULL";
-        if($_POST["motivo"]!=""){ $motivo=$_POST["motivo"];}
-      $cliente->motivo = $motivo;
+    $habitacion = HabitacionData::getById($_POST['id_habitacion']);
+    $habitacion->estado = 2;
+    $habitacion->updateEstado();
 
-      $s = $cliente->add(); 
-      $proceso->id_cliente = $s[1];
-      $cliente_proceso->id_cliente=$s[1];
-      
-      
-}
+    $proceso->id_habitacion = $_POST['id_habitacion'];
+    $proceso->id_tarifa = $_POST['id_tarifa'];
 
-      
+    $proceso->precio = $_POST['precio'];
+    $proceso->cant_noche = $_POST['cant_noche'];
+    $proceso->dinero_dejado = 0;
+    $proceso->fecha_entrada = date('Y-m-j H:i:s');
+    $proceso->fecha_salida = $_POST['fecha_salida'] . ' ' . $_POST['hora_salida'];
+    $proceso->id_usuario = $_SESSION['user_id'];
+    $proceso->cant_personas = 1;
+    $proceso->id_caja = $id_caja;
+    $proceso->cantidad = $_POST['cantidad'];
+    $proceso->pagado = $_POST['pagado'];
+    $f = $proceso->addIngreso();
 
-	$habitacion = HabitacionData::getById($_POST["id_habitacion"]);
-	$habitacion->estado = 2;
-	$habitacion->updateEstado();
-  
-/* ******
-  $proc = ProcesoData::getProcesoHabitacion($_POST["id_habitacion"]) ;
-  if($proc['id_caja'] == null && $proc['estado'] == 3 && $proc['pagado'] == 0 ){
-    ProcesoData::delById($proc['id_habitacion']);
-  }
-  */
- 
+    $cliente_proceso->sesion = $session_id;
+    $cliente_proceso->id_proceso = $f[1];
+    $cliente_proceso->add();
 
+    $reserva = ProcesoData::getReservaByParams($proceso->id_cliente,$_POST['id_habitacion']);
 
-	$proceso->id_habitacion = $_POST["id_habitacion"];
-	$proceso->id_tarifa = $_POST["id_tarifa"];
-
-
-	$proceso->precio = $_POST["precio"];
-	
-	
-	$proceso->cant_noche = $_POST["cant_noche"];
-	$proceso->dinero_dejado = 0;
-	$proceso->fecha_entrada = date('Y-m-j H:i:s');
-	$proceso->fecha_salida = $_POST["fecha_salida"].' '.$_POST['hora_salida'];
-	$proceso->id_usuario = $_SESSION["user_id"];
-	$proceso->cant_personas = 1;
-	$proceso->id_caja = $id_caja;
-	$proceso->cantidad = $_POST["cantidad"];
-	$proceso->pagado = $_POST["pagado"];
-	$f=$proceso->addIngreso();
-
-
-
-      
-      $cliente_proceso->sesion=$session_id;
-      $cliente_proceso->id_proceso=$f[1]; 
-      $cliente_proceso->add(); 
-
-	
-
+    if(!empty($reserva)){
+      ProcesoData::delById($reserva->id);
+    }
 
 
 
-print "<script>window.location='index.php?view=recepcion';</script>";
-
-
-}else{
-	 	
-	 	echo "<script>alert('NO SE AGREGÓ NINGÚN CLIENTE. FAVOR DE INGRESAR');</script>";
-	 	print "<script>window.location='index.php?view=recepcion';</script>";
-
-	 
+    print "<script>window.location='index.php?view=recepcion';</script>";
+} else {
+    echo "<script>alert('NO SE AGREGÓ NINGÚN CLIENTE. FAVOR DE INGRESAR');</script>";
+    print "<script>window.location='index.php?view=recepcion';</script>";
 }
 
 ?>
