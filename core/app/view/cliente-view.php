@@ -392,8 +392,8 @@
 
                   <div class="form-group">
                     <div class="input-group">
-                      <span class="input-group-addon"> Giro </span>
-                      <input type="text" class="form-control col-md-8" name="giro"  placeholder="Ingrese Giro (OPCIONAL)">
+                      <span class="input-group-addon"> Ruc </span>
+                      <input type="text" class="form-control col-md-8" name="ruc"  placeholder="Ingrese Ruc (OPCIONAL)">
                     </div>
                   </div>
 
