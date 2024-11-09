@@ -187,6 +187,70 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="ModalView" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-success">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="titleEvent_view"> </h4>
+                </div>
+                <div class="modal-body" style="background-color: #f5eded !important;">
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-10">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"> Habitación &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <select name="id_habitacion_view" id="id_habitacion_view" class="form-control" disabled >
+                                        <?php $rooms = HabitacionData::getAll(); ?>
+                                        <?php foreach($rooms as $room):?>
+                                        <option value="<?php echo $room->id; ?>"><?php echo $room->nombre; ?></option>
+                                        <?php endforeach;?>
+                                    </select>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"> Check In &nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="date" class="form-control" name="txtDate_view" id="txtDate_view" required>
+                                    <span class="input-group-addon"> Hora</span>
+                                    <input type="time" class="form-control" name="txtHour_view" id="txtHour_view" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"> Check Out &nbsp;&nbsp; &nbsp;</span>
+                                    <input type="date" class="form-control" name="txtDateEnd_view" id="txtDateEnd_view"
+                                        required>
+                                    <span class="input-group-addon"> Hora &nbsp;&nbsp;</span>
+                                    <input type="time" class="form-control" name="txtHourEnd_view" id="txtHourEnd_view"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"> Nombres &nbsp;&nbsp; &nbsp;&nbsp;</span>
+                                    <input type="text" class="form-control" name="nombre_view" id="nombre_view" required
+                                        placeholder="Nombres completos">
+                                </div>
+                            </div>
+   
+  
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="btnClose"
+                        data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -221,16 +285,12 @@
                 }],
 
                 select: function(startDate, endDate, mjsEvent, view, resource) {
-
                     var fechaHora = startDate.format().split("T");
                     var fechaHoraEnd = endDate.format().split("T");
-
                     var check = moment(startDate).format('YYYY-MM-DD');
                     var today = moment(new Date()).format('YYYY-MM-DD');
-
                     $('#txtDate').val(fechaHora[0]);
                     $('#txtHour').val(fechaHora[1]);
-
                     $('#txtDateEnd').val(fechaHoraEnd[0]);
                     $('#txtHourEnd').val(fechaHoraEnd[1]);
                     $('#id_habitacion').val(resource.id);
@@ -245,36 +305,37 @@
                             icon: 'error',
                             confirmButtonText: 'Entendido'
                         });
-
                     }
-
                 },
                 eventClick: function(calEvent) {
-                    // H2
                     if (calEvent.estado == "3") {
                         $('#titleEvent').html(calEvent.title);
-                        // Information events
                         $('#id_habitacion').val(calEvent.resourceId);
                         $('#documento').val(calEvent.documento);
                         $('#txtId').val(calEvent.id);
                         $('#nombre').val(calEvent.title);
                         $('#direccion').val(calEvent.direccion);
                         $('#observacion').val(calEvent.observacion);
-
-
                         datehhour = calEvent.start._i.split(" ");
                         datehhourEnd = calEvent.end._i.split(" ");
                         $('#txtDate').val(datehhour[0]);
                         $('#txtHour').val(datehhour[1]);
                         $('#txtDateEnd').val(datehhourEnd[0]);
                         $('#txtHourEnd').val(datehhourEnd[1]);
-
                         $("#ModalEvent").modal();
                     }
-
-
-
-
+                    if (calEvent.estado == "0") {
+                        $('#titleEvent_view').html(calEvent.title);
+                        $('#id_habitacion_view').val(calEvent.resourceId);
+                        $('#nombre_view').val(calEvent.title);
+                        datehhour = calEvent.start._i.split(" ");
+                        datehhourEnd = calEvent.end._i.split(" ");
+                        $('#txtDate_view').val(datehhour[0]);
+                        $('#txtHour_view').val(datehhour[1]);
+                        $('#txtDateEnd_view').val(datehhourEnd[0]);
+                        $('#txtHourEnd_view').val(datehhourEnd[1]);
+                        $("#ModalView").modal();
+                    }
                 },
                 eventResize: function(calEvent, delta, revertFunc) {
                     if (calEvent.estado == "3") {
@@ -284,26 +345,18 @@
                         $('#direccion').val(calEvent.direccion);
                         $('#id_habitacion').val(calEvent.resourceId);
                         $('#observacion').val(calEvent.observacion);
-
                         var fechaHora = calEvent.start.format().split("T");
                         var fechaHoraEnd = calEvent.end.format().split("T");
                         $('#txtDate').val(fechaHora[0]);
                         $('#txtHour').val(fechaHora[1]);
-
                         $('#txtDateEnd').val(fechaHoraEnd[0]);
                         $('#txtHourEnd').val(fechaHoraEnd[1]);
-
                         DataGUI();
                         DataSendUI('actualizar', NewEvent, true);
                     }
-
-
-
                 },
                 eventDrop: function(calEvent) {
                     if (calEvent.estado == "3") {
-
-
                         $('#id_habitacion').val(calEvent.resourceId);
                         $('#documento').val(calEvent.documento);
                         $('#txtId').val(calEvent.id);
@@ -317,7 +370,6 @@
 
                         $('#txtDateEnd').val(fechaHoraEnd[0]);
                         $('#txtHourEnd').val(fechaHoraEnd[1]);
-
                         DataGUI();
                         DataSendUI('actualizar', NewEvent, true);
                     }
