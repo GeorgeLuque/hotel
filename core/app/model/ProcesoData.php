@@ -160,7 +160,7 @@ class ProcesoData {
 					id_habitacion,
 					SUM(TIMESTAMPDIFF(HOUR, fecha_entrada, fecha_salida)) AS total_horas_uso
 				FROM ".self::$tablename."
-
+				WHERE id_tarifa is not null
 				GROUP BY id_habitacion";
 		$query = Executor::doit($sql);
 		return Model::Many($query[0], new ProcesoData());
