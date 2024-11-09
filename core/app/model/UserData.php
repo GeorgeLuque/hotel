@@ -79,6 +79,12 @@ class UserData {
 		return Model::many($query[0],new UserData());
 
 	}
+	public static function getByUserName($q){
+		$sql = "select * from ".self::$tablename." where TRIM(username) = '$q'";
+		$query = Executor::doit($sql);
+		return Model::one($query[0],new UserData());
+
+	}
 
 
 }

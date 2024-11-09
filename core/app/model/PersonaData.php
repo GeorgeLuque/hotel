@@ -15,8 +15,8 @@ class PersonaData {
 	public function getTipoDocumento(){ return TipoDocumentoData::getById($this->tipo_documento);}
 
 	public function addCliente(){
-		$sql = "insert into persona (tipo_documento,documento,giro,nombre,fecha_nac,direccion,tipo,fecha_creada) ";
-		$sql .= "value ($this->tipo_documento,\"$this->documento\",\"$this->giro\",\"$this->nombre\",\"$this->fecha_nac\",\"$this->direccion\",1,$this->fecha_creada)";
+		$sql = "insert into persona (tipo_documento,documento,giro,nombre,fecha_nac,direccion,tipo,razon_social,fecha_creada) ";
+		$sql .= "value ($this->tipo_documento,\"$this->documento\",\"$this->giro\",\"$this->nombre\",\"$this->fecha_nac\",\"$this->direccion\",1,\"$this->razon_social\",$this->fecha_creada)";
 		return Executor::doit($sql);
 	}
 
