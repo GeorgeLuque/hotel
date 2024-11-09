@@ -210,7 +210,7 @@ $hora = date('H:i:s');
                                     <td><?php echo $numero; ?></td>
                                     <td><?php echo $reportediario->getHabitacion()->nombre; ?></td>
                                     <td><b>Gs. <?php echo number_format($reportediario->precio, 0, '.', ','); ?></b></td>
-                                    <td><b>Gs. <?php echo number_format($reportediario->cant_noche, 0, '.', ','); ?></b></td>
+                                    <td><b> <?php echo number_format($reportediario->cant_noche, 0, '.', ','); ?></b></td>
                                     <?php $subtotal = $reportediario->precio * $reportediario->cant_noche + $reportediario->total; ?>
                                     <td>Gs. <?php echo number_format($subtotal, 0, '.', ','); ?></td>
                                     <td><?php echo date($reportediario->fecha_entrada); ?></td>
