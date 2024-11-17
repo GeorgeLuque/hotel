@@ -234,7 +234,7 @@
                                                           </div>
                                                           <!-- /.input group -->
                                                       </div>
-
+                                                    <!--
                                                       <div class="form-group">
                                                           <div class="input-group">
                                                               <div class="input-group-addon">
@@ -250,9 +250,9 @@
                                                                   name="destino" id="destino" required
                                                                   placeholder="Ingrese folio de factura ">
                                                           </div>
-                                                          <!-- /.input group -->
+                                                         
                                                       </div>
-
+                                                                  -->
                                                       <div class="form-group">
                                                           <div class="input-group">
                                                               <div class="input-group-addon">

@@ -8,52 +8,20 @@ $accion = isset($_GET['accion']) ? $_GET['accion'] : 'leer';
 
 switch ($accion) {
     case 'agregar':
-        /*
-        $clientes = PersonaData::getLikeDni($_POST['documento']);
-        if (!empty($clientes)) {
-            $clientes = []; 
-        }
-        if (count($clientes) > 0) {
-            $id_cliente = $clientes->id;
-        } else {
-            $cliente = new PersonaData();
-            $cliente->tipo_documento = 1;
-            $cliente->documento = $_POST['documento'];
-            $cliente->nombre = $_POST['nombre'];
-
-            $direccion = 'NULL';
-            if ($_POST['direccion'] != '') {
-                $direccion = $_POST['direccion'];
-            }
-            $cliente->direccion = $direccion;
-            $s = $cliente->add001();
-            $id_cliente = $s[1];
-        }
-        */
+ 
 
         $clientes = PersonaData::getLikeDni($_POST['documento']);
 
         if (!empty($clientes)) {
             $id_cliente = $clientes->id; // Suponiendo que $clientes es una lista de objetos PersonaData
-        /*
-
-           $resp = array(
-            'status' => 'error', 
-            'message' => 'cliente' 
-        );
-        echo json_encode($clientes->id);
-        break;
-
-
-     */
+ 
         } else {
             $cliente = new PersonaData();
             $cliente->tipo_documento = 1;
             $cliente->documento = $_POST['documento'];
             $cliente->nombre = $_POST['nombre'];
-
-            $direccion = ($_POST['direccion'] != '') ? $_POST['direccion'] : 'NULL';
-            $cliente->direccion = $direccion;
+            $telefono = ($_POST['telefono'] != '') ? $_POST['telefono'] : 'NULL';
+            $cliente->telefono = $telefono;
             $s = $cliente->add001();
             $id_cliente = $s[1];
         }
@@ -184,6 +152,7 @@ switch ($accion) {
 
         if (isset($clientes->id)) {
             $clientes->nombre = $_POST['nombre'];
+            $clientes->telefono = $_POST['telefono'];
             $clientes::updatecliente($clientes);
    
         }

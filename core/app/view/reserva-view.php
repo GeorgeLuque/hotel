@@ -161,9 +161,9 @@
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <span class="input-group-addon"> Dirección &nbsp;&nbsp; &nbsp;&nbsp;</span>
-                                    <input type="text" class="form-control" name="direccion" id="direccion" required
-                                        placeholder="Dirección">
+                                    <span class="input-group-addon"> Telefono &nbsp;&nbsp; &nbsp;&nbsp;</span>
+                                    <input type="text" class="form-control" name="telefono" id="telefono" required
+                                        placeholder="Telefono">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -246,7 +246,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" id="btnClose"
-                        data-dismiss="modal">Cancelar</button>
+                        data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
@@ -314,7 +314,7 @@
                         $('#documento').val(calEvent.documento);
                         $('#txtId').val(calEvent.id);
                         $('#nombre').val(calEvent.title);
-                        $('#direccion').val(calEvent.direccion);
+                        $('#telefono').val(calEvent.telefono);
                         $('#observacion').val(calEvent.observacion);
                         datehhour = calEvent.start._i.split(" ");
                         datehhourEnd = calEvent.end._i.split(" ");
@@ -342,7 +342,7 @@
                         $('#txtId').val(calEvent.id);
                         $('#nombre').val(calEvent.title);
                         $('#documento').val(calEvent.documento);
-                        $('#direccion').val(calEvent.direccion);
+                        $('#telefono').val(calEvent.telefono);
                         $('#id_habitacion').val(calEvent.resourceId);
                         $('#observacion').val(calEvent.observacion);
                         var fechaHora = calEvent.start.format().split("T");
@@ -362,6 +362,7 @@
                         $('#txtId').val(calEvent.id);
                         $('#nombre').val(calEvent.title);
                         $('#observacion').val(calEvent.observacion);
+                        $('#telefono').val(calEvent.telefono);
 
                         var fechaHora = calEvent.start.format().split("T");
                         var fechaHoraEnd = calEvent.end.format().split("T");
@@ -505,7 +506,7 @@
             document.getElementById("id_habitacion").value = "";
             document.getElementById("documento").value = "";
             document.getElementById("nombre").value = "";
-            document.getElementById("direccion").value = "";
+            document.getElementById("telefono").value = "";
             document.getElementById("txtDate").value = "";
             document.getElementById("txtDateEnd").value = "";
             document.getElementById("observacion").value = "";
@@ -515,14 +516,11 @@
 
 
         function estaCompleto() {
-            //let txtId = document.getElementById("txtId").value.trim();
             let idHabitacion = document.getElementById("id_habitacion").value.trim();
             let documento = document.getElementById("documento").value.trim();
             let nombre = document.getElementById("nombre").value.trim();
-           // let direccion = document.getElementById("direccion").value.trim();
             let txtDate = document.getElementById("txtDate").value.trim();
             let txtDateEnd = document.getElementById("txtDateEnd").value.trim();
-           // let observacion = document.getElementById("observacion").value.trim();
 
             if (txtId && idHabitacion && documento && nombre  && txtDate && txtDateEnd ) {
                 return true; // o return 1;
@@ -540,7 +538,7 @@
                 id_habitacion: $('#id_habitacion').val(),
                 documento: $('#documento').val(),
                 nombre: $('#nombre').val(),
-                direccion: $('#direccion').val(),
+                telefono: $('#telefono').val(),
                 observacion: $('#observacion').val(),
                 start: $('#txtDate').val() + " " + $('#txtHour').val(),
                 end: $('#txtDateEnd').val() + " " + $('#txtHourEnd').val()
