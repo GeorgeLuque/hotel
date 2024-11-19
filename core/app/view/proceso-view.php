@@ -1,5 +1,5 @@
   <?php
-  date_default_timezone_set('America/Asuncion');
+  date_default_timezone_set('America/Sao_Paulo');
   $hoy = date('Y-m-d');
   $hora = date('H:i:s');
   $doce = date('12:00:00');

@@ -130,7 +130,7 @@ if (count(get_object_vars($operacion)) > 0 ) {
                                                         <p class="text-uppercase text-strong mb-10 custom-font">DETALLES</p>
                                                         <ul class="list-unstyled text-default lt mb-20">
 
-                                                            <li><b>TICKET NRO: #0000<?php echo $operacion->id; ?></b> </li>
+                                                            <li><b>FACTURA NRO: #0000<?php echo $operacion->id; ?></b> </li>
                                                             <li><?php echo $nombre; ?></li>
                                                             <li><?php echo $rnc; ?></li>
                                                         </ul>
