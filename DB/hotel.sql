@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 07-09-2024 a las 17:14:40
+-- Tiempo de generación: 20-11-2024 a las 14:43:01
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -62,8 +62,9 @@ INSERT INTO `caja` (`id`, `fecha_apertura`, `fecha_cierre`, `monto_apertura`, `m
 (18, '2024-07-06 11:55:38', '2024-07-06 11:59:20', 2000, 0, 0, 1, '2024-07-06 11:55:43'),
 (19, '2024-07-06 11:59:39', '2024-09-07 10:18:16', 15000, 0, 0, 1, '2024-07-06 11:59:44'),
 (20, '2024-07-06 11:59:44', '2024-09-07 10:18:24', 7500, 0, 0, 1, '2024-07-06 11:59:53'),
-(21, '2024-09-07 10:18:54', NULL, 100000, NULL, 1, 1, '2024-09-07 10:19:01'),
-(22, '2024-09-07 10:37:11', NULL, 50000, NULL, 1, 3, '2024-09-07 10:37:28');
+(21, '2024-09-07 10:18:54', '2024-09-21 08:52:56', 100000, 0, 0, 1, '2024-09-07 10:19:01'),
+(23, '2024-09-21 08:53:54', '2024-09-21 10:45:48', 10000, 650, 0, 1, '2024-09-21 08:54:03'),
+(24, '2024-10-05 11:13:39', NULL, 100000, NULL, 1, 1, '2024-10-05 11:13:45');
 
 -- --------------------------------------------------------
 
@@ -106,16 +107,12 @@ CREATE TABLE `cliente_proceso` (
 --
 
 INSERT INTO `cliente_proceso` (`id`, `id_cliente`, `id_proceso`, `sesion`) VALUES
-(40, 71, 1, 'f740aa50bf12ee1967eae65ed656c442'),
-(41, 129, 8, 'c7fdebcf081b16a4a423049867e0919a'),
-(42, 130, 9, 'c7fdebcf081b16a4a423049867e0919a'),
-(43, 131, 10, 'c7fdebcf081b16a4a423049867e0919a'),
-(44, 132, 11, 'c7fdebcf081b16a4a423049867e0919a'),
-(45, 133, 12, 'c7fdebcf081b16a4a423049867e0919a'),
-(46, 134, 13, 'c7fdebcf081b16a4a423049867e0919a'),
-(47, 135, 14, '9e9cb4962191aab96a5c4146b31ac330'),
-(48, 136, 15, '9e9cb4962191aab96a5c4146b31ac330'),
-(49, 160, 36, 'bececde54c317fcb75f3973748e085ce');
+(1, 153, 5, '924d2e737864e5a130c03aa2e5d63604'),
+(2, 153, 7, '8f9d017704eeafc5742651b737a91f43'),
+(3, 178, 11, '8f9d017704eeafc5742651b737a91f43'),
+(4, 178, 12, '8f9d017704eeafc5742651b737a91f43'),
+(5, 183, 20, 'f2339e0d405217401f73cbe18ddd0866'),
+(6, 183, 21, 'f2339e0d405217401f73cbe18ddd0866');
 
 -- --------------------------------------------------------
 
@@ -205,7 +202,7 @@ CREATE TABLE `habitacion` (
 --
 
 INSERT INTO `habitacion` (`id`, `nombre`, `descripcion`, `precio`, `id_categoria`, `estado`, `capacidad`, `fecha_creada`) VALUES
-(1, '101', 'habitacion simple', 0, 1, 2, 1, '2024-06-15 14:55:20'),
+(1, '101', 'habitacion simple', 0, 1, 1, 1, '2024-06-15 14:55:20'),
 (2, '102', 'habitacion para matrimonio e hijos', 0, 2, 1, 1, '2024-06-21 11:57:37'),
 (3, '103', 'habitacion para 1 persona', 0, 1, 1, 1, '2024-08-18 08:02:27');
 
@@ -260,17 +257,17 @@ CREATE TABLE `persona` (
 INSERT INTO `persona` (`id`, `tipo_documento`, `documento`, `giro`, `nombre`, `fecha_nac`, `razon_social`, `direccion`, `fecha_creada`, `tipo`, `vip`, `contador`, `limite`, `nacionalidad`, `estado_civil`, `ocupacion`, `medio_transporte`, `destino`, `motivo`, `telefono`, `celular`) VALUES
 (68, 1, '2132132', NULL, 'asdasd', NULL, NULL, 'asdasd', '2024-06-10 15:44:35', 1, 0, 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (72, 1, '12321321', NULL, 'pepito', NULL, NULL, 'asdfsdfs', '2024-06-15 11:47:31', 1, 0, 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(90, 1, '123', NULL, 'qweqwe', NULL, NULL, 'qweqwe', '2024-06-15 13:53:34', 1, 0, 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (131, 1, '12345678', '12345678', 'jorge ', NULL, NULL, 'luque', '2024-07-06 11:06:59', 1, 0, 0, 7, 'jorge gomez', '12123123', '1', '12345678', '001-002', 'nigun', NULL, NULL),
 (133, 1, '123456', '123456-8', 'marcos ian lopez', '0000-00-00', 'NULL', 'san lorenzo ', '2024-07-06 11:27:13', 1, 0, 0, 7, 'marcos lopez', '03323', '1', '1234578', '112-003', 'nignuna', NULL, NULL),
-(148, 1, '12345', '', 'juan Perez', '0000-00-00', '', 'sdfsdfsdfsdf', '2024-08-31 09:24:08', 1, 0, 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(153, 1, '3669922', '', 'francis ramon lopez', '0000-00-00', '', 'san lorenzo', '2024-08-31 10:36:50', 1, 0, 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(155, 1, '3669922', NULL, 'francis ramon lopez', NULL, NULL, 'san lorenzo', '2024-08-31 10:46:38', 1, 0, 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(156, 1, '3669922', NULL, 'francis ramon lopez', NULL, NULL, 'san lorenzo', '2024-08-31 10:57:16', 1, 0, 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(157, 1, '3669922', NULL, 'francis ramon lopez', NULL, NULL, 'san lorenzo', '2024-08-31 11:24:27', 1, 0, 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(158, 1, '3669922', NULL, 'francis ramon lopez', NULL, NULL, 'luque', '2024-08-31 11:34:00', 1, 0, 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(159, 1, '3669922', NULL, 'francis ramon lopez', NULL, NULL, 'san lorenzo', '2024-09-07 08:39:27', 1, 0, 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(160, 1, '3669922', '3669922', 'francis ramon lopez', NULL, NULL, 'san lorenzo', '2024-09-07 08:41:04', 1, 0, 0, 7, 'francis lopez', '0962255534', '1', '12345678', '001-002', '  ', NULL, NULL);
+(168, 1, '8115151', NULL, 'marcos ian lopez', NULL, NULL, 'luque', '2024-10-05 12:31:11', 1, 0, 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(178, 1, '77777', '77777-2', 'juan perez', '2024-11-09', 'juan perez', 'luque', '2024-11-09 09:40:59', 1, 0, 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(179, 1, 'asdasdasdasd', 'NULL', 'asdasdasd', '0000-00-00', 'asdasdasd prueba', 'asdasdasd', '2024-11-09 11:25:05', 1, 0, 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, '1111', NULL),
+(182, 1, '3660435', NULL, 'sandra isabel', NULL, NULL, NULL, '2024-11-16 10:33:03', 1, 0, 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, '0962255534', NULL),
+(183, 1, '3669922', '3669922-5', 'francis ramon lopez', '2024-11-15', 'francis lopez', 'san lorenzo', '2024-11-16 15:59:31', 1, 0, 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, '0962123123', NULL),
+(184, 1, '11', '11-2', 'pepitoi', '2024-11-14', 'pepito', 'edmundo reyes', '0000-00-00 00:00:00', 1, 0, 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, '1234', NULL),
+(185, 1, '113', NULL, 'Cuadruple', NULL, NULL, NULL, '2024-11-16 19:13:29', 1, 0, 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, '0962123124', NULL),
+(188, 1, '222', '', 'test', '0000-00-00', '', '', '2024-11-17 07:59:47', 1, 0, 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, '0961222', NULL),
+(189, 1, '111555', NULL, 'test', NULL, NULL, NULL, '2024-11-17 08:01:31', 1, 0, 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, '0962123123', NULL);
 
 -- --------------------------------------------------------
 
@@ -306,24 +303,16 @@ CREATE TABLE `proceso` (
 --
 
 INSERT INTO `proceso` (`id`, `id_habitacion`, `id_tarifa`, `id_cliente`, `precio`, `cant_noche`, `dinero_dejado`, `id_tipo_pago`, `fecha_entrada`, `fecha_salida`, `total`, `id_usuario`, `cant_personas`, `id_caja`, `estado`, `fecha_creada`, `cantidad`, `observacion`, `pagado`, `nro_operacion`) VALUES
-(1, 1, NULL, 118, 0, 1, 0, 1, '2024-06-16 00:00:00', '2024-06-17 00:00:00', 0, 1, 1, NULL, 3, '2024-06-16 14:23:23', 1, '', 1, NULL),
-(2, 1, NULL, 119, 0, 1, 0, 1, '2024-06-16 00:00:00', '2024-06-17 00:00:00', 0, 1, 1, NULL, 3, '2024-06-16 14:23:43', 1, '', 1, NULL),
-(3, 1, NULL, 120, 0, 1, 0, 1, '2024-06-16 00:00:00', '2024-06-17 00:00:00', 0, 1, 1, NULL, 3, '2024-06-16 14:24:03', 1, '', 1, NULL),
-(4, 1, NULL, 123, 0, 1, 0, 1, '2024-06-16 10:00:00', '2024-06-17 10:00:00', 0, 1, 1, NULL, 3, '2024-06-16 14:28:10', 1, '', 1, NULL),
-(5, 1, NULL, 124, 0, 1, 0, 1, '2024-06-16 11:00:00', '2024-06-17 11:00:00', 0, 1, 1, NULL, 3, '2024-06-16 14:30:36', 1, '', 1, NULL),
-(6, 1, NULL, 126, 0, 1, 0, 1, '2024-06-16 13:00:00', '2024-06-17 13:00:00', 0, 1, 1, NULL, 3, '2024-06-16 14:32:23', 1, '', 1, NULL),
-(7, 1, NULL, 128, 0, 1, 0, 1, '2024-07-06 00:00:00', '2024-07-07 00:00:00', 0, 1, 1, NULL, 3, '2024-07-06 09:46:35', 1, 'ninguna', 0, NULL),
-(8, 1, 54, 129, 200, 1, 0, 1, '2024-07-06 09:03:43', '2024-07-07 12:00:00', 0, 1, 1, 0, 1, '2024-07-06 10:03:43', 1, NULL, 1, NULL),
-(9, 1, 54, 130, 200, 1, 0, 1, '2024-07-06 10:01:33', '2024-07-07 12:00:00', 30, 1, 1, 0, 1, '2024-07-06 11:01:33', 1, NULL, 1, NULL),
-(10, 2, 55, 131, 200, 1, 0, 1, '2024-07-06 10:06:59', '2024-07-07 12:00:00', 0, 1, 1, 0, 1, '2024-07-06 11:06:59', 1, NULL, 1, NULL),
-(11, 1, 54, 132, 200, 1, 0, 1, '2024-07-06 10:10:04', '2024-07-07 12:00:00', 0, 1, 1, 0, 1, '2024-07-06 11:10:04', 1, NULL, 1, NULL),
-(12, 1, 54, 133, 200, 1, 0, 1, '2024-07-06 10:27:13', '2024-07-07 12:00:00', 0, 1, 1, 0, 1, '2024-07-06 11:27:13', 1, NULL, 1, NULL),
-(13, 1, 54, 134, 200, 1, 0, 1, '2024-07-06 10:37:27', '2024-07-07 12:00:00', 0, 3, 1, 0, 1, '2024-07-06 11:37:27', 1, NULL, 1, NULL),
-(14, 1, 54, 135, 200, 1, 0, 1, '2024-08-03 11:43:26', '2024-08-04 12:00:00', 0, 1, 1, 0, 1, '2024-08-03 12:43:26', 1, NULL, 1, NULL),
-(15, 2, 55, 136, 200, 1, 0, 1, '2024-08-03 11:44:37', '2024-08-04 12:00:00', 0, 1, 1, 0, 0, '2024-08-03 12:44:37', 2, NULL, 1, NULL),
-(21, 3, NULL, 144, 0, 1, 0, 1, '2024-08-25 00:00:00', '2024-08-26 00:00:00', 0, 1, 1, NULL, 3, '2024-08-25 14:15:58', 1, '', 0, NULL),
-(35, 1, NULL, 159, 0, 1, 0, 1, '2024-09-07 10:09:00', '2024-09-07 19:00:00', 0, 1, 1, NULL, 3, '2024-09-07 08:39:27', 1, '', 0, NULL),
-(36, 1, 54, 160, 200, 1, 0, 1, '2024-09-07 07:41:04', '2024-09-08 12:00:00', 0, 1, 1, 0, 0, '2024-09-07 08:41:04', 1, NULL, 1, NULL);
+(5, 1, 61, 153, 100, 1, 0, 1, '2024-11-02 13:12:14', '2024-11-03 12:00:00', 0, 1, 1, 24, 1, '2024-11-02 15:12:14', 1, NULL, 1, NULL),
+(7, 1, 61, 153, 100, 1, 0, 1, '2024-11-09 09:22:54', '2024-11-10 12:00:00', 0, 1, 1, 24, 1, '2024-11-09 11:22:54', 2, NULL, 1, NULL),
+(11, 1, 61, 178, 100, 1, 0, 1, '2024-11-09 09:39:25', '2024-11-10 12:00:00', 0, 1, 1, 24, 1, '2024-11-09 11:39:25', 1, NULL, 1, NULL),
+(12, 2, 55, 178, 0, 1, 0, 1, '2024-11-09 09:40:46', '2024-11-10 12:00:00', 0, 1, 1, 24, 1, '2024-11-09 11:40:46', 1, NULL, 1, NULL),
+(13, 2, NULL, 153, 0, 1, 0, 1, '2024-11-09 10:00:00', '2024-11-10 09:00:00', 0, 1, 1, NULL, 3, '2024-11-09 12:04:26', 1, '', 0, NULL),
+(20, 1, 61, 183, 100, 1, 0, 1, '2024-11-17 05:48:28', '2024-11-18 12:00:00', 0, 1, 1, 24, 1, '2024-11-17 07:48:28', 2, NULL, 1, NULL),
+(21, 1, 61, 183, 100, 1, 0, 1, '2024-11-17 05:58:58', '2024-11-18 12:00:00', 0, 1, 1, 24, 1, '2024-11-17 07:58:58', 1, NULL, 1, NULL),
+(22, 1, NULL, 188, 0, 1, 0, 1, '2024-11-18 10:00:00', '2024-11-19 10:00:00', 0, 1, 1, NULL, 3, '2024-11-17 07:59:47', 1, '  ', 0, NULL),
+(23, 1, NULL, 189, 0, 1, 0, 1, '2024-11-17 08:00:00', '2024-11-17 12:00:00', 0, 1, 1, NULL, 3, '2024-11-17 08:01:31', 1, 'asdasd', 0, NULL),
+(24, 1, NULL, 184, 0, 1, 0, 1, '2024-11-17 13:00:00', '2024-11-18 13:00:00', 0, 1, 1, NULL, 3, '2024-11-17 08:01:55', 1, 'sdsdsd', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -360,7 +349,20 @@ CREATE TABLE `proceso_cancelados` (
 
 INSERT INTO `proceso_cancelados` (`id`, `id_habitacion`, `id_tarifa`, `id_cliente`, `precio`, `cant_noche`, `dinero_dejado`, `id_tipo_pago`, `fecha_entrada`, `fecha_salida`, `total`, `id_usuario`, `cant_personas`, `id_caja`, `estado`, `fecha_creada`, `cantidad`, `observacion`, `pagado`, `nro_operacion`) VALUES
 (2, 1, NULL, 155, 0, 1, 0, 1, NULL, NULL, 0, NULL, 1, NULL, 3, '2024-08-31 10:46:41', 1, '', 0, NULL),
-(3, 3, NULL, 158, 0, 1, 0, 1, '2024-08-31 00:00:00', '2024-09-01 00:00:00', 0, 1, 1, NULL, 3, '2024-08-31 11:34:03', 1, '', 0, NULL);
+(3, 3, NULL, 158, 0, 1, 0, 1, '2024-08-31 00:00:00', '2024-09-01 00:00:00', 0, 1, 1, NULL, 3, '2024-08-31 11:34:03', 1, '', 0, NULL),
+(4, 3, NULL, 168, 0, 1, 0, 1, '2024-10-05 00:00:00', '2024-10-06 00:00:00', 0, 1, 1, NULL, 3, '2024-10-05 12:31:15', 1, 'asasas', 0, NULL),
+(5, 1, NULL, 169, 0, 1, 0, 1, '2024-11-02 00:00:00', '2024-11-03 00:00:00', 0, 1, 1, NULL, 3, '2024-11-02 10:08:01', 1, '', 0, NULL),
+(6, 1, NULL, 170, 0, 1, 0, 1, '2024-11-02 00:00:00', '2024-11-03 00:00:00', 0, 1, 1, NULL, 3, '2024-11-02 10:14:00', 1, '', 0, NULL),
+(7, 1, NULL, 171, 0, 1, 0, 1, '2024-11-02 00:00:00', '2024-11-03 00:00:00', 0, 1, 1, NULL, 3, '2024-11-02 10:17:00', 1, '', 0, NULL),
+(8, 1, NULL, 174, 0, 1, 0, 1, '2024-11-02 00:00:00', '2024-11-03 00:00:00', 0, 1, 1, NULL, 3, '2024-11-02 13:55:36', 1, '', 0, NULL),
+(9, 1, NULL, 153, 0, 1, 0, 1, '2024-11-02 00:00:00', '2024-11-03 00:00:00', 0, 1, 1, NULL, 3, '2024-11-02 14:21:55', 1, '', 0, NULL),
+(10, 1, NULL, 179, 0, 1, 0, 1, '2024-11-09 00:00:00', '2024-11-10 00:00:00', 0, 1, 1, NULL, 3, '2024-11-09 11:26:24', 1, 'asdasdasd', 0, NULL),
+(11, 1, NULL, 178, 0, 1, 0, 1, '2024-11-10 00:00:00', '2024-11-11 00:00:00', 0, 1, 1, NULL, 3, '2024-11-09 11:36:45', 1, '', 0, NULL),
+(12, 1, NULL, 180, 0, 1, 0, 1, '2024-11-16 00:00:00', '2024-11-17 00:00:00', 0, 1, 1, NULL, 3, '2024-11-16 10:27:48', 1, 'asdasd', 0, NULL),
+(13, 2, NULL, 153, 0, 1, 0, 1, '2024-11-16 00:00:00', '2024-11-17 00:00:00', 0, 1, 1, NULL, 3, '2024-11-16 10:27:51', 1, '', 0, NULL),
+(14, 2, NULL, 153, 0, 1, 0, 1, '2024-11-16 00:00:00', '2024-11-17 00:00:00', 0, 1, 1, NULL, 3, '2024-11-16 10:28:44', 1, 'asdasdasd', 0, NULL),
+(15, 2, NULL, 153, 0, 1, 0, 1, '2024-11-16 00:00:00', '2024-11-17 00:00:00', 0, 1, 1, NULL, 3, '2024-11-16 15:57:35', 1, 'qweqweqwe', 0, NULL),
+(16, 1, NULL, 183, 0, 1, 0, 1, '2024-11-16 00:00:00', '2024-11-17 00:00:00', 0, 1, 1, NULL, 3, '2024-11-16 19:18:34', 1, '', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -533,13 +535,12 @@ INSERT INTO `tarifa_habitacion` (`id`, `id_tarifa`, `id_habitacion`, `precio`) V
 (46, 8, 29, 380),
 (48, 8, 31, 380),
 (49, 7, 32, 580),
-(50, 7, 33, 580),
 (51, 8, 34, 380),
 (52, 7, 35, 400),
 (53, 11, 35, 800),
-(54, 1, 1, 200),
-(55, 4, 2, 200),
-(56, 4, 3, 100);
+(55, 4, 2, 300),
+(56, 4, 3, 100),
+(61, 4, 1, 100);
 
 -- --------------------------------------------------------
 
@@ -827,7 +828,7 @@ ALTER TABLE `venta`
 -- AUTO_INCREMENT de la tabla `caja`
 --
 ALTER TABLE `caja`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -839,7 +840,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `cliente_proceso`
 --
 ALTER TABLE `cliente_proceso`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `configuracion`
@@ -875,19 +876,19 @@ ALTER TABLE `inventario`
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=190;
 
 --
 -- AUTO_INCREMENT de la tabla `proceso`
 --
 ALTER TABLE `proceso`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `proceso_cancelados`
 --
 ALTER TABLE `proceso_cancelados`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `proceso_sueldo`
@@ -929,7 +930,7 @@ ALTER TABLE `tarifa`
 -- AUTO_INCREMENT de la tabla `tarifa_habitacion`
 --
 ALTER TABLE `tarifa_habitacion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_comprobante`
@@ -959,7 +960,7 @@ ALTER TABLE `tmp`
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `venta`
