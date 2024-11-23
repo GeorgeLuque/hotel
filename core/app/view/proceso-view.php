@@ -234,36 +234,7 @@
                                                           </div>
                                                           <!-- /.input group -->
                                                       </div>
-                                                    <!--
-                                                      <div class="form-group">
-                                                          <div class="input-group">
-                                                              <div class="input-group-addon">
-                                                                  Factura:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                              </div>
-                                                              <input type="text" class="form-control"
-                                                                  name="medio_transporte" id="medio_transporte"
-                                                                  required placeholder="Ingrese factura">
-                                                              <div class="input-group-addon">
-                                                                  Folio de factura:
-                                                              </div>
-                                                              <input type="text" class="form-control"
-                                                                  name="destino" id="destino" required
-                                                                  placeholder="Ingrese folio de factura ">
-                                                          </div>
-                                                         
-                                                      </div>
-                                                                  -->
-                                                      <div class="form-group">
-                                                          <div class="input-group">
-                                                              <div class="input-group-addon">
-                                                                  Nota:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                              </div>
-                                                              <input type="text" class="form-control"
-                                                                  name="motivo" id="motivo" required
-                                                                  placeholder="Ingrese Nota">
-                                                          </div>
-                                                          <!-- /.input group -->
-                                                      </div>
+                                            
 
                                                       <div class="form-group" style="display: none;">
                                                           <div class="input-group">
