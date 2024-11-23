@@ -52,7 +52,7 @@ class TarifaHabitacionData {
 
 	}
 	public static function delByIdTArifa($id){
-		$sql = "delete from ".self::$tablename." where id=$id";
+		$sql = "delete from ".self::$tablename." where id_tarifa=$id";
 		Executor::doit($sql);
 	}
 
