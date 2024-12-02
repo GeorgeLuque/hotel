@@ -138,7 +138,7 @@ CREATE TABLE `configuracion` (
 --
 
 INSERT INTO `configuracion` (`id`, `nombre`, `direccion`, `estado`, `telefono`, `fax`, `rnc`, `registro_empresarial`, `ciudad`, `logo`) VALUES
-(1, 'HOTEL EDEN', 'DIRECCION EXACTA', 'MÃ©xico', '+52 1 953 114 9', 'NULL', '0038947384786', 'NULL', 'Mexico', '122321_2.png');
+(1, 'HOTELEL DESCANSO', 'DIRECCION EXACTA', 'luque', '0981123123', 'NULL', '0038947384786', 'NULL', 'Luque', '122321_2.png');
 
 -- --------------------------------------------------------
 
