@@ -37,7 +37,11 @@ if (count($_POST) > 0) {
         if ($_POST['nacionalidad'] != '') {
             $nacionalidad = $_POST['nacionalidad'];
         }
-        $cliente->nacionalidad = $nacionalidad;
+        $razon_social = 'NULL';
+        if ($_POST['razon_social'] != '') {
+            $razon_social= $_POST['razon_social'];
+        }
+        $cliente->razon_social = $razon_social;
 
         $estado_civil = 'NULL';
         if ($_POST['estado_civil'] != '') {
@@ -50,6 +54,12 @@ if (count($_POST) > 0) {
             $ocupacion = $_POST['ocupacion'];
         }
         $cliente->ocupacion = $ocupacion;
+
+        $telefono = 'NULL';
+        if ($_POST['telefono'] != '') {
+            $telefono = $_POST['telefono'];
+        }
+        $cliente->telefono = $telefono;
 
         $medio_transporte = 'NULL';
         if ($_POST['medio_transporte'] != '') {

@@ -203,8 +203,8 @@
                                                                   Teléfono:
                                                               </div>
                                                               <input type="text" class="form-control"
-                                                                  placeholder="Ingrese teléfono" name="estado_civil"
-                                                                  id="estado_civil" required value="">
+                                                                  placeholder="Ingrese teléfono" name="telefono"
+                                                                  id="telefono" required value="">
                                                           </div>
                                                           <!-- /.input group -->
                                                       </div>
@@ -216,7 +216,7 @@
                                                                   social:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                               </div>
                                                               <input type="text" class="form-control"
-                                                                  name="nacionalidad" id="nacionalidad" required
+                                                                  name="razon_social" id="razon_social" required
                                                                   placeholder="Ingrese razon social">
                                                           </div>
                                                           <!-- /.input group -->

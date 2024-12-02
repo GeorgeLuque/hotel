@@ -29,8 +29,8 @@ class PersonaData {
        
 
 	public function add(){
-		$sql = "insert into persona (tipo_documento,documento,nombre,giro,direccion,tipo,fecha_creada,nacionalidad,estado_civil,ocupacion,medio_transporte,destino,motivo,telefono) ";
-		$sql .= "value ($this->tipo_documento,\"$this->documento\",\"$this->nombre\",\"$this->giro\",\"$this->direccion\",1,$this->fecha_creada,\"$this->nacionalidad\",\"$this->estado_civil\",\"$this->ocupacion\",\"$this->medio_transporte\",\"$this->destino\",\"$this->motivo\",\"$this->telefono\")";
+		$sql = "insert into persona (tipo_documento,documento,nombre,giro,direccion,tipo,fecha_creada,razon_social,estado_civil,ocupacion,medio_transporte,destino,motivo,telefono) ";
+		$sql .= "value ($this->tipo_documento,\"$this->documento\",\"$this->nombre\",\"$this->giro\",\"$this->direccion\",1,$this->fecha_creada,\"$this->razon_social\",\"$this->estado_civil\",\"$this->ocupacion\",\"$this->medio_transporte\",\"$this->destino\",\"$this->motivo\",\"$this->telefono\")";
 		return Executor::doit($sql);
 	}
 
