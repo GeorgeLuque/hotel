@@ -1,9 +1,8 @@
   <?php
-  date_default_timezone_set('America/Sao_Paulo');
+   date_default_timezone_set('America/Asuncion');
   $hoy = date('Y-m-d');
   $hora = date('H:i:s');
   $doce = date('12:00:00');
-  
   $nuevafecha = strtotime('+1 day', strtotime($hoy));
   $nuevafecha = date('Y-m-j', $nuevafecha);
   ?>
@@ -11,7 +10,6 @@
       .table>tbody>tr>td {
           padding: 0px !important;
       }
-
       .input-group {
           position: relative;
           display: table;
@@ -19,11 +17,9 @@
           width: 100%;
       }
   </style>
-
   <link rel="stylesheet" href="js/jquery-ui.css">
   <script src="js/jquery-1.10.2.js"></script>
   <script src="js/jquery-ui.js"></script>
-
   <script type="text/javascript">
       $(function() {
           $("#documento").autocomplete({
@@ -39,7 +35,6 @@
           });
       });
   </script>
-
   <script type="text/javascript">
       $(function() {
           $("#nombre").autocomplete({
@@ -55,7 +50,6 @@
           });
       });
   </script>
-
   <body id="minovate" class="appWrapper sidebar-sm-forced">
       <div class="row">
           <section class="content-header">
@@ -66,25 +60,17 @@
               </ol>
           </section>
       </div>
-
-      <!-- row -->
       <div class="row">
-          <!-- col -->
           <div class="col-md-12">
               <section class="tile">
-
-
                   <?php if (isset($_GET['id_habitacion'])) { ?>
                   <?php $habitacion = HabitacionData::getById($_GET['id_habitacion']);
-                        // print_r($habitacion);
-                        if ( /*is_array($habitacion) && */count(get_object_vars($habitacion)) > 0) {
-                            // si hay habitacion
+                        if ( count(get_object_vars($habitacion)) > 0) {
                         ?>
                   <div class="tile-header dvd dvd-btm">
                       <div class="box-header with-border">
                           <h3 class="box-title">Datos de la habitación</h3>
                       </div>
-                      <!-- /.box-header -->
                       <div class="box-body">
                           <div class="table-responsive">
                               <table class="table no-margin">
@@ -116,21 +102,11 @@
                                                       class="label label-success">DISPONIBLE</span></div>
                                           </td>
                                       </tr>
-
                                   </tbody>
                               </table>
-
                           </div>
-                          <!-- /.table-responsive -->
                       </div>
-
                   </div>
-                  <!-- /.box -->
-
-                  <!-- Modal -->
-
-
-
                   <form class="form-horizontal" method="post" id="addproduct" action="index.php?view=addproceso"
                       role="form">
                       <div class="box box-info">
@@ -148,12 +124,9 @@
                                               </th>
                                           </tr>
                                           <tbody style="padding: 0px;">
-
                                               <tr style="padding: 0px;">
-
                                                   <td colspan="2">
                                                       <div class="form-group">
-
                                                           <div class="input-group">
                                                               <div class="input-group-addon">
                                                                   <i class="fa fa-globe"></i> Tipo Documento:
@@ -166,20 +139,16 @@
                                                                       <?php echo $tipo_documento->nombre; ?></option>
                                                                   <?php endforeach; ?>
                                                               </select>
-
                                                               <div class="input-group-addon">
                                                                   <i class="fa  fa-arrow-circle-o-right"></i> Documento:
                                                               </div>
-
                                                               <input type="text" class="form-control"
                                                                   name="documento" id="documento" required
                                                                   placeholder="Ingrese nro documento para buscar"
                                                                   autocomplete="off">
                                                               <input type="hidden" id="id">
                                                           </div>
-                                                          <!-- /.input group -->
                                                       </div>
-
                                                       <div class="form-group">
                                                           <div class="input-group">
                                                               <div class="input-group-addon">
@@ -188,9 +157,7 @@
                                                               <input type="text" class="form-control" name="nombre"
                                                                   id="nombre" required placeholder="Ingrese nombres">
                                                           </div>
-                                                          <!-- /.input group -->
                                                       </div>
-
                                                       <div class="form-group">
                                                           <div class="input-group">
                                                               <div class="input-group-addon">
@@ -206,9 +173,7 @@
                                                                   placeholder="Ingrese teléfono" name="telefono"
                                                                   id="telefono" required value="">
                                                           </div>
-                                                          <!-- /.input group -->
                                                       </div>
-
                                                       <div class="form-group">
                                                           <div class="input-group">
                                                               <div class="input-group-addon">
@@ -219,9 +184,7 @@
                                                                   name="razon_social" id="razon_social" required
                                                                   placeholder="Ingrese razon social">
                                                           </div>
-                                                          <!-- /.input group -->
                                                       </div>
-
                                                       <div class="form-group">
                                                           <div class="input-group">
                                                               <div class="input-group-addon">
@@ -232,10 +195,7 @@
                                                                   placeholder="Ingrese procedencia (No es obligatorio)"
                                                                   data-inputmask='"mask": "(999) 999-9999"' data-mask>
                                                           </div>
-                                                          <!-- /.input group -->
                                                       </div>
-                                            
-
                                                       <div class="form-group" style="display: none;">
                                                           <div class="input-group">
                                                               <div class="input-group-addon">
@@ -245,12 +205,7 @@
                                                                   class="form-control" name="ocupacion"
                                                                   id="ocupacion" required value="1">
                                                           </div>
-                                                          <!-- /.input group -->
                                                       </div>
-
-                                                      <!-- /.FIN -->
-
-
                                   </div>
                                   </td>
                                   </tr>
@@ -267,15 +222,10 @@
                                           </tr>
                                       </thead>
                                       <tbody style="padding: 0px;">
-
                                           <tr style="padding: 0px;">
-
                                               <td colspan="3">
-
-                                                  <!-- Date dd/mm/yyyy -->
                                                   <div class="form-group">
                                                       <label>Tarifa:</label>
-
                                                       <div class="input-group">
                                                           <div class="input-group-addon">
                                                               <i class="fa fa-globe"></i>
@@ -289,18 +239,13 @@
                                                               <option value="<?php echo $tarifa_ha->id; ?>"><?php echo $tarifa_ha->getTarifa()->nombre; ?>
                                                               </option>
                                                               <?php endforeach; ?>
-
                                                           </select>
                                                       </div>
-                                                      <!-- /.input group -->
-                                                  </div>
 
+                                                  </div>
                                                   <div class="form-group" id="mostrar_precio">
-
                                                   </div>
-
                                                   <div class="form-group">
-
                                                       <div class="input-group">
                                                           <div class="input-group-addon">
                                                               Cant. de personas:
@@ -313,11 +258,8 @@
                                                               <option value="5">5</option>
                                                               <option value="6">6</option>
                                                           </select>
-
                                                       </div>
-                                                      <!-- /.input group -->
                                                   </div>
-
                                                   <div class="form-group">
                                                       <div class="input-group">
                                                           <div class="input-group-addon">
@@ -330,20 +272,11 @@
                                                               <option value="0">Falta pagar</option>
                                                           </select>
                                                       </div>
-                                                      <!-- /.input group -->
                                                   </div>
-
-                                                  <!-- Date dd/mm/yyyy -->
                                                   <div class="form-group" id="mostrar_selectmediopago">
-
-                                                      <!-- /.input group -->
                                                   </div>
-
                                                   <div class="form-group" id="mostrar_mediopago">
-
                                                   </div>
-
-
                                                   <div class="form-group">
                                                       <div class="input-group">
                                                           <div class="input-group-addon">
@@ -360,9 +293,7 @@
                                                           <input type="time" class="form-control"
                                                               name="hora_salida" value="<?php echo $doce; ?>">
                                                       </div>
-                                                      <!-- /.input group -->
                                                   </div>
-
                                                   <div class="box-footer">
                                                       <a href="index.php?view=recepcion"
                                                           class="btn btn-danger">Cancelar</a>
@@ -371,52 +302,33 @@
                                                       <button type="submit"
                                                           class="btn btn-success pull-right">Registrar ingreso</button>
                                                   </div>
-
                                               </td>
-
                                           </tr>
-
                                       </tbody>
                                   </table>
                               </div>
 
                           </div>
-                          <!-- /.table-responsive -->
                       </div>
-
           </div>
-
           </form>
-          <!-- /.box -->
-
           <?php } else {
                             echo "<h4 class='alert alert-success'>NO EXISTE ESTA HABITACIÓN</h4>";
                         }; ?>
-
           <?php } else {
                         echo "<h4 class='alert alert-success'>NO SE SELECCIONÓ HABITACIÓN</h4>";
                     }; ?>
-
-
           </section>
-
       </div>
       </div>
-
       <script>
-          $(function() {
-              $("#fechamin").datepicker();
-          });
+          $(function() {   $("#fechamin").datepicker();     });
       </script>
       <script>
-          $(function() {
-              $("#fechamax").datepicker();
-          });
+          $(function() {  $("#fechamax").datepicker();   });
       </script>
       </head>
-
       <body>
-
           <script>
               sumaFecha = function(d, fecha) {
                   var Fecha = new Date();
@@ -434,22 +346,16 @@
                   var fechaFinal = anno + sep + mes + sep + dia;
                   return (fechaFinal);
               }
-
               function sumar() {
-
                   m1 = document.getElementById("precio").value;
                   m2 = document.getElementById("cant_noche").value;
                   r = m1 * m2;
-
-                  //alert(total);
                   document.getElementById('spTotal').innerHTML = r;
 
                   var fechamin = $("#fecha1").val()
                   var fechaSumada = sumaFecha(m2, fechamin); /* Le sumas un dia */
                   document.getElementById('fecha_salida').value = fechaSumada;
-
               }
-
               function CargarTarifa(val) {
                   $('#mostrar_precio').html("Por favor espera un momento");
                   $.ajax({
@@ -461,7 +367,6 @@
                       }
                   });
               };
-
               function CargarMediopago(val) {
                   $('#mostrar_mediopago').html("Por favor espera un momento");
                   $.ajax({
@@ -473,7 +378,6 @@
                       }
                   });
               };
-
               function MostrarDocumento(val) {
                   $('#mostrar_documento').html("Por favor espera un momento");
                   $.ajax({
@@ -485,7 +389,6 @@
                       }
                   });
               };
-
               function MostrarSelectMedioPago(val) {
                   $('#mostrar_selectmediopago').html("Por favor espera un momento");
                   $.ajax({
