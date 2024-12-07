@@ -1,7 +1,8 @@
 <?php
 $u = UserData::getById(Session::getUID());
 $session_id = session_id();
-ini_set('date.timezone', 'America/Lima');
+ini_set('date.timezone', 'America/Asuncion');
+
 
 if (count($_POST) > 0) {
     $caja = CajaData::getAllAbiertoPorUsuario($u->id);
