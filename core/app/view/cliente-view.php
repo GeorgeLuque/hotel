@@ -74,7 +74,7 @@
                                 <th data-hide='phone, tablet'>Nombres completos</th>
                                 <th data-hide='phone, tablet'>Razón social</th>
                                 <th data-hide='phone, tablet'>Dirección</th>
-                                <th data-hide='phone, tablet'>Fecha nac.</th>
+
                                 <!--
                   <th></th>
                 -->
@@ -101,11 +101,7 @@
                                 } else {
                                     echo '--------';
                                 } ?></td>
-                                <td><?php if ($cliente->fecha_nac != null and $cliente->fecha_nac != '0000-00-00') {
-                                    echo $cliente->fecha_nac;
-                                } else {
-                                    echo '--------';
-                                } ?></td>
+
 
                                 <!--
                         <td>
