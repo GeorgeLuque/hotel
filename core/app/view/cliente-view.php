@@ -372,16 +372,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="form-group">
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon"> Fecha
-                                                                        nac&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                    </span>
-                                                                    <input type="date" name="fecha_nac"
-                                                                        class="form-control"
-                                                                        value="<?php echo $cliente->fecha_nac; ?>">
-                                                                </div>
-                                                            </div>
+
 
 
 
@@ -517,13 +508,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"> Fecha nac </span>
-                                            <input type="date" name="fecha_nac" class="form-control"
-                                                value="<?php echo $hoy; ?>">
-                                        </div>
-                                    </div>
+                                 
 
 
 
