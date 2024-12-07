@@ -56,19 +56,26 @@ if (count(get_object_vars($operacion)) > 0 ) {
                             <!-- tab in tabs -->
                             <div role="tabpanel" class="tab-pane active" id="details">
 
-                            <?php 
-                        $configuracion = ConfiguracionData::getAllConfiguracion(); 
-                        if(count(get_object_vars($configuracion))>0){ 
-                          $nombre=$configuracion->nombre;
-                          $direccion=$configuracion->direccion;
-                          $estado=$configuracion->estado;
-                          $telefono=$configuracion->telefono;
-                          $fax=$configuracion->fax;
-                          $rnc=$configuracion->rnc;
-                          $registro_empresarial=$configuracion->registro_empresarial;
-                          $ciudad=$configuracion->ciudad;
+                                <?php
+                                $configuracion = ConfiguracionData::getAllConfiguracion();
+                               // print_r($configuracion);
+                                /*
+                                if(!is_array($configuracion)){
+                                    $configuracion  = array();
+                                }
+                                */
+                                //if (count(get_object_vars($configuracion)) > 0) {
+                                if (is_object($configuracion) && count(get_object_vars($configuracion)) > 0) {
+                                    $nombre = $configuracion->nombre;
+                                    $direccion = $configuracion->direccion;
+                                    $estado = $configuracion->estado;
+                                    $telefono = $configuracion->telefono;
+                                    $fax = $configuracion->fax;
+                                    $rnc = $configuracion->rnc;
+                                    $registro_empresarial = $configuracion->registro_empresarial;
+                                    $ciudad = $configuracion->ciudad;
 
-                          $id=$configuracion->id; ?>
+                                    $id = $configuracion->id; ?>
 
 
 
