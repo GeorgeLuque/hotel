@@ -58,10 +58,14 @@ if (count(get_object_vars($operacion)) > 0 ) {
 
                                 <?php
                                 $configuracion = ConfiguracionData::getAllConfiguracion();
+                               // print_r($configuracion);
+                                /*
                                 if(!is_array($configuracion)){
                                     $configuracion  = array();
                                 }
-                                if (count($configuracion) > 0) {
+                                */
+                                //if (count(get_object_vars($configuracion)) > 0) {
+                                if (is_object($configuracion) && count(get_object_vars($configuracion)) > 0) {
                                     $nombre = $configuracion->nombre;
                                     $direccion = $configuracion->direccion;
                                     $estado = $configuracion->estado;
