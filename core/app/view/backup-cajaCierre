@@ -1,0 +1,120 @@
+ <form method="post" action="index.php?view=addcierre_caja">
+        <div class="tile-body p-0" style="text-align: left;">
+
+            <table>
+                <th style="width: 50%;"></th>
+                <th style="width: 45%;"></th>
+                <tr>
+                    <td>
+                        <h5>FECHA CIERRE:</h5>
+                    </td>
+                    <td>
+                        <h5 class="control-label text-red"><?php echo $hoy . ' ' . $hora; ?></h5>
+                    </td>
+                </tr>
+
+
+
+                <!-- INGRESOS -->
+                <?php $montos_sin_cerrar = ProcesoData::getIngresoCaja($caja_abierta->id);
+                $total_sin_cerrar = 0;
+                if (count($montos_sin_cerrar) > 0) {
+                    foreach ($montos_sin_cerrar as $monto_sin_cerrar):
+                        $total_sin_cerrar = $monto_sin_cerrar->precio * $monto_sin_cerrar->cant_noche + $monto_sin_cerrar->total + $total_sin_cerrar;
+                    endforeach;
+                }
+                ?>
+
+
+                <?php  
+                                              if($caja_abierta->id!=0){ 
+                                              $reporproducts = ProcesoVentaData::getIngresoCaja($caja_abierta->id);
+                                              $subtotal3=0;
+                                              if(count($reporproducts)>0){ ?>
+                <?php foreach($reporproducts as $reporproduct):?>
+                <?php $subtotal1 = $reporproduct->cantidad * $reporproduct->precio; ?>
+                <?php $subtotal3 = $subtotal1 + $subtotal3; ?>
+                <?php endforeach; ?>
+                <?php }else{$subtotal3=0;} ?>
+                <?php }else{$subtotal3=0;} ?>
+
+                <!-- FIN INGRESOS -->
+                <!-- EGRESOS -->
+
+                <?php $montos_sin_cerrar_egresos = GastoData::getEgresoCaja($caja_abierta->id);
+                $total_sin_cerrar_egreso = 0;
+                if (count($montos_sin_cerrar_egresos) > 0) {
+                    foreach ($montos_sin_cerrar_egresos as $montos_sin_cerrar_egreso):
+                        $total_sin_cerrar_egreso = $montos_sin_cerrar_egreso->precio + $total_sin_cerrar_egreso;
+                    endforeach;
+                }
+                ?>
+
+                <?php $montos_sin_cerrar_sueldos = ProcesoSueldoData::getSueldoCaja($caja_abierta->id);
+                $total_sin_cerrar_sueldos = 0;
+                if (count($montos_sin_cerrar_sueldos) > 0) {
+                    foreach ($montos_sin_cerrar_sueldos as $montos_sin_cerrar_sueldo):
+                        $total_sin_cerrar_sueldos = $montos_sin_cerrar_sueldo->monto + $total_sin_cerrar_sueldos;
+                    endforeach;
+                }
+                ?>
+
+
+                <?php  
+                                              if($caja_abierta->id!=0){ 
+                                              $reporproducts_es = ProcesoVentaData::getEgresoCaja($caja_abierta->id);
+                                              $subtotal4=0;
+                                              if(count($reporproducts_es)>0){ ?>
+                <?php foreach($reporproducts_es as $reporproduct_e):?>
+                <?php $subtotal1 = $reporproduct_e->cantidad * $reporproduct_e->precio; ?>
+                <?php $subtotal4 = $subtotal1 + $subtotal4; ?>
+                <?php endforeach; ?>
+                <?php }else{$subtotal4=0;} ?>
+                <?php }else{$subtotal4=0;} ?>
+
+
+
+                <!-- Total egreso -->
+                <?php $total_egreso = $total_sin_cerrar_egreso + $total_sin_cerrar_sueldos + $subtotal4; ?>
+                <!-- Fin Total egreso -->
+
+                <!-- Total ingreso -->
+                <?php $total_ingreso = $total_sin_cerrar + $subtotal3;
+                if (!$total_egreso) {
+                    $total_egreso = 0;
+                } ?>
+                <!-- Fin Total ingreso -->
+                <?php ?>
+                <tr>
+                    <td>
+                        <h5>MONTO CIERRE: Gs. </h5>
+                    </td>
+                    <td>
+                        <input type="text" name="monto_apertura" required class="form-control text-red"
+                            placeholder="Ingrese monto" style="border-color: #dd4b47;" value="<?php echo number_format($caja_abierta->monto_apertura + $total_ingreso - $total_egreso, 0, ',', '.'); ?>">
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+
+
+        <!-- tile footer -->
+        <div class="tile-footer dvd dvd-top">
+
+            <div class="input-group">
+                <input type="hidden" name="fecha_apertura" value="<?php echo $caja_abierta->fecha_apertura; ?>">
+                <input type="hidden" name="fecha_cierre" value="<?php echo $fecha_completo; ?>">
+                <input type="hidden" name="monto_apertura" value="<?php echo $caja_abierta->monto_apertura; ?>">
+                <input type="hidden" name="monto_cierre" value="<?php echo $total_sin_cerrar + $subtotal3 - $total_sin_cerrar_egreso; ?>">
+                <input type="hidden" name="id_caja" value="<?php echo $caja_abierta->id; ?>">
+                <?php if($_SESSION['user_id']==$caja_abierta->id_usuario){ ?>
+                <input type="submit" class="btn btn-sm btn-warning btn-flat pull-right" value="Cerrar caja">
+                <?php }else{ echo "<h2>No tienes acceso a cerra la caja</h2>";} ?>
+            </div>
+
+        </div>
+        <!-- /tile footer -->
+
+    </form>
