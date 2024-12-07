@@ -160,9 +160,9 @@ if (count(get_object_vars($operacion)) > 0 ) {
                                                     <div class="col-md-5">
                                                         <p class="text-uppercase text-strong mb-10 custom-font">Cliente</p>
                                                         <ul class="list-unstyled text-default lt mb-20">
-                                                            <li><strong class="inline-block w-xs">Nombre:</strong> <?php echo $operacion->getCliente()->nombre; ?></li>
-                                                            <li><strong class="inline-block w-xs">Documento:</strong> <?php echo $operacion->getCliente()->documento; ?></li>
-                                                            <li><strong class="inline-block w-xs">Dirección:</strong> <?php echo $operacion->getCliente()->direccion; ?></li>
+                                                            <li><strong class="inline-block w-xs">Nombre/Razon social:</strong> <?php echo $operacion->getCliente()->nombre; ?></li>
+                                                            <li><strong class="inline-block w-xs">Ruc:</strong> <?php echo $operacion->getCliente()->documento; ?></li>
+                                                            
 
                                                         </ul>
                                                     </div>
