@@ -160,8 +160,8 @@ if (count(get_object_vars($operacion)) > 0 ) {
                                                     <div class="col-md-5">
                                                         <p class="text-uppercase text-strong mb-10 custom-font">Cliente</p>
                                                         <ul class="list-unstyled text-default lt mb-20">
-                                                            <li><strong class="inline-block w-xs">Nombre/Razon social:</strong> <?php echo $operacion->getCliente()->nombre; ?></li>
-                                                            <li><strong class="inline-block w-xs">Ruc:</strong> <?php echo $operacion->getCliente()->documento; ?></li>
+                                                            <li><strong class="inline-block w-xs">Razon Social:</strong> <?php echo $operacion->getCliente()->razon_social; ?></li>
+                                                            <li><strong class="inline-block w-xs">Ruc:</strong> <?php echo $operacion->getCliente()->giro; ?></li>
                                                             
 
                                                         </ul>
@@ -259,8 +259,8 @@ if (count(get_object_vars($operacion)) > 0 ) {
 
                                                 <ul class="list-unstyled">
                                                     <?php $final = $total + (($operacion->precio * $operacion->cant_noche) + $operacion->total); ?>
-                                                    <li class="ng-binding"><strong class="inline-block w-sm mb-5">Subtotal:</strong> Gs. <?php echo number_format(($final / 1.18), 0, '.', ','); ?> </li>
-                                                    <li class="ng-binding"><strong class="inline-block w-sm mb-5">IVA:</strong> Gs. <?php echo number_format($final - ($final / 1.18), 0, '.', ','); ?></li>
+                                                    <li class="ng-binding"><strong class="inline-block w-sm mb-5">Subtotal:</strong> Gs. <?php echo number_format(($final / 1.1), 0, '.', ','); ?> </li>
+                                                    <li class="ng-binding"><strong class="inline-block w-sm mb-5">IVA:</strong> Gs. <?php echo number_format($final - ($final / 1.1), 0, '.', ','); ?></li>
                                                     <li class="ng-binding"><strong class="inline-block w-sm mb-5"> Total:</strong> Gs. <?php echo number_format($final, 0, '.', ','); ?></li>
 
                                                 </ul>

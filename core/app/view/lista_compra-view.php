@@ -177,12 +177,12 @@
                                 endforeach ?>
                                       <tr style="background-color: #f3f3f3;">
                                           <td colspan=4><span class="pull-right">SUBTOTAL </span></td>
-                                          <td><span class="pull-left"><?php echo '$  '.number_format(($sumador_total/1.18),2,'.',',');?></span></td>
+                                          <td><span class="pull-left"><?php echo '$  '.number_format(($sumador_total/1.1),2,'.',',');?></span></td>
                                       
                                       </tr>
                                       <tr style="background-color: #f3f3f3;">
                                           <td colspan=4><span class="pull-right">IGV </span></td>
-                                          <td><span class="pull-left"><?php echo '$  '.number_format($sumador_total-($sumador_total/1.18),2,'.',',');?></span></td>
+                                          <td><span class="pull-left"><?php echo '$  '.number_format($sumador_total-($sumador_total/1.1),2,'.',',');?></span></td>
                                          
                                       </tr>
                                       <tr style="background-color: #e4e4e4;">

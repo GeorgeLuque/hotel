@@ -257,8 +257,8 @@
 
                                                         <ul class="list-unstyled">
                                                           <?php $final= $total+(($operacion->precio*$operacion->cant_noche)+$operacion->total);?>
-                                                            <li class="ng-binding"><strong class="inline-block w-sm mb-5">Subtotal:</strong> Gs.  <?php echo number_format(($final/1.18),0,'.','.'); ?> </li>
-                                                            <li class="ng-binding"><strong class="inline-block w-sm mb-5">IVA:</strong>  Gs.  <?php echo number_format($final-($final/1.18),0,'.','.'); ?></li>
+                                                            <li class="ng-binding"><strong class="inline-block w-sm mb-5">Subtotal:</strong> Gs.  <?php echo number_format(($final/1.1),0,'.','.'); ?> </li>
+                                                            <li class="ng-binding"><strong class="inline-block w-sm mb-5">IVA:</strong>  Gs.  <?php echo number_format($final-($final/1.1),0,'.','.'); ?></li>
                                                             <li class="ng-binding"><strong class="inline-block w-sm mb-5"> Total:</strong>  Gs.  <?php echo number_format($final,0,'.','.'); ?></li>
                                                            
                                                         </ul>

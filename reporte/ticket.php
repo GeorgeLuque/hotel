@@ -166,9 +166,9 @@ $operacion = ProcesoData::getById($_GET['id']);
 		
 
 		$pdf->Text(4,$get_Y + 10,'SUBTOTAL :');
-		$pdf->Text(57,$get_Y + 10,number_format(($final/1.18),0,',','.'));
+		$pdf->Text(57,$get_Y + 10,number_format(($final/1.1),0,',','.'));
 		$pdf->Text(4,$get_Y + 15,'TOTAL IVA :');
-		$pdf->Text(57,$get_Y + 15,number_format($final-($final/1.18),0,',','.'));
+		$pdf->Text(57,$get_Y + 15,number_format($final-($final/1.1),0,',','.'));
 		$pdf->Text(4,$get_Y + 20,'TOTAL A PAGAR :');
 		$pdf->Text(57,$get_Y + 20,number_format($final,0,',','.'));
 		
